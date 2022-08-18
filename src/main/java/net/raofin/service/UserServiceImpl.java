@@ -29,10 +29,13 @@ public class UserServiceImpl implements UserService
         if (user == null)
             throw new UsernameNotFoundException("Username not found.");
 
+        System.out.println("Logged in!");
         ArrayList<GrantedAuthority> authorities = new ArrayList<>();
 
+        System.out.println(user);
         authorities.add(new SimpleGrantedAuthority(user.getRole()));
 
+        System.out.println(authorities);
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(), user.getPassword(), authorities);
     }

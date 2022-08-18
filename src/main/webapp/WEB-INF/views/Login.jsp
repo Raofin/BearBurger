@@ -3,7 +3,7 @@
 <c:import url="/templates/Header.jsp"/>
 
 <div class="form-container">
-    <form:form id="login-form" action="/home" method="POST">
+    <form:form id="login-form" method="POST">
         <h2 class="login-form-title">Log In</h2>
 
         <fieldset>
