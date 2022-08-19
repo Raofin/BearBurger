@@ -20,10 +20,16 @@
     </nav>
 </header>
 
-<div class="welcome" id="welcome">
-    <img alt="logo" class="welcome-logo" src="<c:url value="/assets/img/logo.svg"/>">
-    <div class="welcome-message">
-        <h1 class="welcome-title">Admin Dashboard</h1>
+<div class="admin-container" id="welcome">
+    <h1 class="admin-title">Admin Dashboard</h1>
+    <div class="admin-items">
+        <img class="admin-logo" src="<c:url value="/assets/img/admin-logo.svg"/>" alt="logo">
+        <div class="admin-buttons">
+            <div><button onmousedown="location.href='/admin/manageUser'">Manage User</button></div>
+            <div><button onmousedown="location.href='/admin/addUser'">Add User</button></div>
+            <div><button onmousedown="location.href='/admin/addFood'">Add Foods</button></div>
+            <div><button onmousedown="location.href=''">Purchase Log</button></div>
+        </div>
     </div>
 </div>
 

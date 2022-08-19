@@ -11,4 +11,19 @@ public class AdminController
     public String showDashboardPage() {
         return "admin/Dashboard";
     }
+
+    @RequestMapping("/addFood")
+    public String showAddFoodPage() {
+        return "admin/AddFood";
+    }
+
+    @RequestMapping("/addUser")
+    public String showAddUserPage() {
+        return "admin/AddUser";
+    }
+
+    @RequestMapping("/manageUser")
+    public String showPage() {
+        return "admin/ManageUser";
+    }
 }

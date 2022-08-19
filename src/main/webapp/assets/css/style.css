@@ -637,7 +637,6 @@ input[type='radio'].form-input-error {
     box-shadow: rgba(0, 0, 0, 0.9) 0 5px 15px;
 }
 
-
 .author-name {
     font-weight: 800;
     padding: 2px 10px;
@@ -738,4 +737,192 @@ input[type='radio'].form-input-error {
 
 #database-error h1 {
     padding: 15px;
+}
+
+/*======================= Admin ======================*/
+
+.admin-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0 auto 140px auto;
+    padding: 50px;
+    transform: translate(-50%, -50%);
+
+
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgba(41, 40, 40, 0.50);
+    box-shadow: rgba(0, 0, 0, 0.9) 0 5px 15px;
+    filter: drop-shadow(0px 3px 3px black);
+}
+
+.admin-items {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.admin-title {
+
+    font-size: 30px;
+    font-weight: 800;
+    width: 300px;
+    margin: 0 auto 20px;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    border-radius: 12px;
+    background-color: #252525;
+
+}
+
+.username a {
+    font-weight: 800;
+    padding: 5px 10px;
+    color: rgb(0, 0, 0);
+    border-radius: 12px;
+    background-color: #fff;
+}
+
+.admin-logo {
+    position: relative;
+    width: 200px;
+    margin-right: 30px;
+}
+
+.admin-form-title {
+    font-size: 32px;
+    font-weight: 900;
+    text-align: center;
+    filter: drop-shadow(5px 3px 5px black);
+    -webkit-filter: drop-shadow(5px 3px 5px black);
+}
+
+.username a {
+    font-weight: 800;
+    padding: 5px 10px;
+    color: rgb(0, 0, 0);
+    border-radius: 12px;
+    background-color: #fff;
+}
+
+.admin-form-bottom {
+    margin-top: 30px;
+}
+
+.admin-buttons {
+    text-align: left;
+}
+
+.admin-buttons button {
+    font-size: 15px;
+    margin: 10px 0 10px 10px;
+    padding: 10px 40px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 0;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: rgba(68, 67, 67, 0.87) 0 2px 8px 0;
+}
+
+.admin-buttons button:hover {
+    letter-spacing: 3px;
+    color: hsl(0, 0%, 100%);
+    background-color: #1d8af5;
+    box-shadow: rgba(0, 0, 0, 0.801) 0 7px 29px 0;
+}
+
+.admin-buttons button:active {
+    transition: 100ms;
+    transform: translateY(10px);
+    letter-spacing: 3px;
+    color: hsl(0, 0%, 100%);
+    background-color: #1d8af5;
+    box-shadow: black 0 0 0 0;
+}
+
+.add-user-form {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    width: 450px;
+    min-width: 420px;
+    min-height: 400px;
+    margin: 0 auto 140px auto;
+    padding: 50px;
+    color: #fff;
+    border-radius: 10px;
+    background-color: rgba(41, 40, 40, 0.74);
+    box-shadow: rgba(0, 0, 0, 0.9) 0 5px 15px;
+}
+
+.food-description {
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    margin: 5px 0 0 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.manage-user-container {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    width: 100%;
+    min-width: 420px;
+    max-width: 1000px;
+    margin: 0 auto 140px auto;
+    padding: 50px;
+    text-align: center;
+    color: #fff;
+    border-radius: 10px;
+    background-color: rgba(41, 40, 40, 0.74);
+    box-shadow: rgba(0, 0, 0, 0.9) 0 5px 15px;
+}
+
+.manage-user-container table,
+.manage-user-container th,
+.manage-user-container td {
+    padding: 5px 0;
+    border-collapse: collapse;
+
+
+    text-align: center;
+    color: #fff;
+}
+
+.table-wrapper {
+    margin-top: 20px;
+    border: 2px solid black;
+    border-radius: 6px;
+    background: black;
+    box-shadow: rgb(0 0 0 / 90%) 0 0 5px;
+}
+
+.manage-user-container table {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 3px;
+    background: rgb(41, 40, 40);
+}
+
+.manage-user-container th {
+    background: rgb(0, 0, 0);
+}
+
+.manage-user-container tr:nth-child(odd) {
+    background: rgb(26, 25, 25);
+}
+
+.manage-user-container a:first-child {
+    padding-right: 20px;
+}
+
+.manage-user-container button {
+    margin-bottom: 0;
 }
