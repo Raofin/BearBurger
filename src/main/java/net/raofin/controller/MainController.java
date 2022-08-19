@@ -28,8 +28,8 @@ public class MainController
         return "Home";
     }
 
-    @GetMapping("/accessDenied")
+    @GetMapping("/403")
     public String showDeniedPage() {
-        return "AccessDenied";
+        return "403";
     }
 }

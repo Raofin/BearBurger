@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <head>
@@ -23,7 +24,11 @@
             <li><a href="">Register</a></li>";
 <%--            else echo "--%>
             <li><a href="">View Profile</a></li>
-            <li><a href="">Log Out</a></li>
+            <li><a href="<c:url value="/logout"/>">Log Out</a></li>
+
+            <li><form:form action="logout" method="POST">
+                <input type="submit" value="logout">
+            </form:form></li>
             <li class='username'><a href="">{<%--$_SESSION['username']--%>}</a></li>";
 <%--            ?>
             <li><a class="project-details" href="">Project Details</a></li>--%>

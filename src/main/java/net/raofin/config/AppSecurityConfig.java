@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -21,13 +22,20 @@ public class AppSecurityConfig
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/customer/**").hasAuthority("CUSTOMER")
-                .antMatchers("/").permitAll()
+                    .antMatchers("/admin/**").hasAuthority("ADMIN")
+                    .antMatchers("/customer/**").hasAuthority("CUSTOMER")
+                    .antMatchers("/").permitAll()
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/home")
+                    .formLogin()
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/home")
                 .and()
-                .exceptionHandling().accessDeniedPage("/accessDenied");
+                    .logout()
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                    .logoutSuccessUrl("/login")
+                .and()
+                    .exceptionHandling()
+                    .accessDeniedPage("/403");
 
         return httpSecurity.build();
     }
