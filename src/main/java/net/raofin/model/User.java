@@ -2,6 +2,8 @@ package net.raofin.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -11,9 +13,6 @@ public class User
     @Column(name = "userID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userID;
-
-    @Column(name = "role", nullable = false)
-    private String role;
 
     @Column(name = "username", nullable = false)
     private String username;
@@ -36,20 +35,15 @@ public class User
     @Column(name = "regDate")
     private Date regDate;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<UserRoles> userRoles = new HashSet<UserRoles>(0);
+
     public int getUserID() {
         return userID;
     }
 
     public void setUserID(int userID) {
         this.userID = userID;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public String getUsername() {
@@ -108,11 +102,18 @@ public class User
         this.regDate = regDate;
     }
 
+    public Set<UserRoles> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<UserRoles> userRoles) {
+        this.userRoles = userRoles;
+    }
+
     @Override
     public String toString() {
-        return "Customer{" +
+        return "User{" +
                 "userID=" + userID +
-                ", role='" + role + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
@@ -120,6 +121,7 @@ public class User
                 ", spent='" + spent + '\'' +
                 ", isEnabled=" + isEnabled +
                 ", regDate=" + regDate +
+                ", userRole=" + userRoles +
                 '}';
     }
 }

@@ -2,6 +2,7 @@ package net.raofin.service;
 
 import net.raofin.dao.UserDao;
 import net.raofin.model.User;
+import net.raofin.model.UserRoles;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,13 +30,11 @@ public class UserServiceImpl implements UserService
         if (user == null)
             throw new UsernameNotFoundException("Username not found.");
 
-        System.out.println("Logged in!");
         ArrayList<GrantedAuthority> authorities = new ArrayList<>();
 
-        System.out.println(user);
-        authorities.add(new SimpleGrantedAuthority(user.getRole()));
+        for (UserRoles userRoles : user.getUserRoles())
+            authorities.add(new SimpleGrantedAuthority(userRoles.getRole()));
 
-        System.out.println(authorities);
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(), user.getPassword(), authorities);
     }

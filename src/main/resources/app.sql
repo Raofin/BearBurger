@@ -1,15 +1,15 @@
-DROP DATABASE Bearburger_Jsp;
+DROP DATABASE IF EXISTS bearburger_jsp;
+
 # create database
 CREATE DATABASE IF NOT EXISTS BearBurger_JSP;
 
 # select the database
-USE Bearburger_Jsp;
+USE bearburger_jsp;
 
 # create users table
 CREATE TABLE IF NOT EXISTS Users
 (
     UserID      INT AUTO_INCREMENT PRIMARY KEY,
-    Role        VARCHAR(10) NOT NULL,
     Username    VARCHAR(30) NOT NULL UNIQUE,
     Email       VARCHAR(30) NOT NULL UNIQUE,
     Password    VARCHAR(30) NOT NULL,
@@ -20,20 +20,45 @@ CREATE TABLE IF NOT EXISTS Users
     RegDate     TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+# create roles table
+CREATE TABLE IF NOT EXISTS Roles
+(
+    RoleID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT         NOT NULL,
+    Role   VARCHAR(10) NOT NULL,
+    CONSTRAINT Role_FK FOREIGN KEY (UserID) REFERENCES Users (UserID)
+);
+
 # insert user data
-INSERT IGNORE INTO Users (Role, Username, Email, Password, PhoneNumber, Gender, Spent, Enabled)
-VALUES ('CUSTOMER', 'Raofin', 'hello@raofin.net', 'Asdfgh', '+8801234567890', 'male', 6801, TRUE),
-       ('CUSTOMER', 'Sazzad', 'sazzad96@gmail.com', 'sazzaz123', '+1263343299123', 'male', 9252, TRUE),
-       ('CUSTOMER', 'Authoi', 'authoi123@gmail.com', 'authoi999', '+2369543156441', 'female', 8056, TRUE),
-       ('CUSTOMER', 'Bill Gates', 'billgates@outlook.com', 'billgates68457', '+6963343233159', 'male', 9960, TRUE),
-       ('CUSTOMER', 'Elon Musk', 'elonmusk@yahoo.com', 'elon123', '+9668508170248', 'male', 7856, TRUE),
-       ('CUSTOMER', 'Jack Ma', 'jackma@gmail.com', 'jackma144', '+1667698473784', 'male', 4567, TRUE),
-       ('CUSTOMER', 'Steve Jobs', 'stevejobs@icloud.com', 'steve1213', '+1527475095845', 'male', 421, TRUE),
-       ('CUSTOMER', 'Jeff Bezos', 'jeffbezos@gmail.com', 'jeffbe1334', '+8966295324845', 'male', 2152, TRUE),
-       ('CUSTOMER', 'Mark Zuckerberg', 'markzuckerberg@live.com', 'markz131', '+2657146731697', 'male', 3972, TRUE),
-       ('CUSTOMER', 'Sundar Pichai', 'sundarpichai@gmail.com', 'sundarp296', '+9815680737969', 'male', 1546, TRUE),
-       ('CUSTOMER', '1111', '1111@1111.com', '1111', '+4795131456789', 'male', 0, TRUE),
-       ('ADMIN', 'admin', 'admin@email.com', 'admin', '+6478912356147', 'male', 0, TRUE);
+INSERT IGNORE INTO Users (Username, Email, Password, PhoneNumber, Gender, Spent, Enabled)
+VALUES ('Raofin', 'hello@raofin.net', 'Asdfgh', '+8801234567890', 'male', 6801, TRUE),
+       ('Sazzad', 'sazzad96@gmail.com', 'sazzaz123', '+1263343299123', 'male', 9252, TRUE),
+       ('Authoi', 'authoi123@gmail.com', 'authoi999', '+2369543156441', 'female', 8056, TRUE),
+       ('Bill Gates', 'billgates@outlook.com', 'billgates68457', '+6963343233159', 'male', 9960, TRUE),
+       ('Elon Musk', 'elonmusk@yahoo.com', 'elon123', '+9668508170248', 'male', 7856, TRUE),
+       ('Jack Ma', 'jackma@gmail.com', 'jackma144', '+1667698473784', 'male', 4567, TRUE),
+       ('Steve Jobs', 'stevejobs@icloud.com', 'steve1213', '+1527475095845', 'male', 421, TRUE),
+       ('Jeff Bezos', 'jeffbezos@gmail.com', 'jeffbe1334', '+8966295324845', 'male', 2152, TRUE),
+       ('Mark Zuckerberg', 'markzuckerberg@live.com', 'markz131', '+2657146731697', 'male', 3972, TRUE),
+       ('Sundar Pichai', 'sundarpichai@gmail.com', 'sundarp296', '+9815680737969', 'male', 1546, TRUE),
+       ('1111', '1111@1111.com', '1111', '+4795131456789', 'male', 0, TRUE),
+       ('admin', 'admin@email.com', 'admin', '+6478912356147', 'male', 0, TRUE);
+
+# insert user data
+INSERT IGNORE INTO Roles (UserID, Role)
+VALUES (1, 'CUSTOMER'),
+       (2, 'CUSTOMER'),
+       (3, 'CUSTOMER'),
+       (4, 'CUSTOMER'),
+       (5, 'CUSTOMER'),
+       (6, 'CUSTOMER'),
+       (7, 'CUSTOMER'),
+       (8, 'CUSTOMER'),
+       (9, 'CUSTOMER'),
+       (10, 'CUSTOMER'),
+       (11, 'CUSTOMER'),
+       (11, 'ADMIN'),
+       (12, 'ADMIN');
 
 # create foods table
 CREATE TABLE IF NOT EXISTS Foods
@@ -41,7 +66,7 @@ CREATE TABLE IF NOT EXISTS Foods
     FoodID      INT AUTO_INCREMENT PRIMARY KEY,
     Category    VARCHAR(30) NOT NULL,
     Title       VARCHAR(30) NOT NULL UNIQUE,
-    Description TEXT        NOT NULL,
+    DESCRIPTION TEXT        NOT NULL,
     Price       INT         NOT NULL
 );
 
@@ -58,7 +83,7 @@ CREATE TABLE IF NOT EXISTS Comments
 );
 
 # insert food data
-INSERT IGNORE INTO Foods (Category, Title, Description, Price)
+INSERT IGNORE INTO Foods (Category, Title, DESCRIPTION, Price)
 VALUES ('Burger', 'Cheese Burger', 'Prepared with beef patty, cheese, burger sauce, pickles & onion', 650),
        ('Burger', 'Bacon Cheese Burger', 'Prepared with beef patty, 2 slices cheese, bacon & burger sauce', 500),
        ('Burger', 'Double Cheese Burger', 'Prepared with 2 beef patties, double cheese, burger sauce & onion', 640),
