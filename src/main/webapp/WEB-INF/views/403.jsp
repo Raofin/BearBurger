@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -31,7 +32,7 @@
 </body>
 
 <footer class="footer">
-    <p>Copyright © 2022 by <a href="https://raofin.net">Raofin</a>. All Rights Reserved.</p>
+    <p>Copyright &copy 2022 by <a href="https://raofin.net">Raofin</a>. All Rights Reserved.</p>
 </footer>
 
 </html>

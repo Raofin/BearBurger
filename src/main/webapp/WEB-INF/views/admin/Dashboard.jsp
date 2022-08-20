@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 <c:import url="/templates/AdminHeader.jsp"/>
 
 <div class="admin-container" id="welcome">
@@ -6,10 +7,10 @@
     <div class="admin-items">
         <img class="admin-logo" src="<c:url value="/assets/img/admin-logo.svg"/>" alt="logo">
         <div class="admin-buttons">
-            <div><button onmousedown="location.href='/admin/manageUser'">Manage User</button></div>
-            <div><button onmousedown="location.href='/admin/addUser'">Add User</button></div>
-            <div><button onmousedown="location.href='/admin/addFood'">Add Foods</button></div>
-            <div><button onmousedown="location.href=''">Purchase Log</button></div>
+            <div><a href="${pageContext.request.contextPath}/admin/manageUser"><button>Manage User</button></a></div>
+            <div><a href="${pageContext.request.contextPath}/admin/addUser"><button>Add User</button></a></div>
+            <div><a href="${pageContext.request.contextPath}/admin/addFood"><button>Add Foods</button></a></div>
+            <div><a href=""><button>Purchase Log</button></a></div>
         </div>
     </div>
 </div>
