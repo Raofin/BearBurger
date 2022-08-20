@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:import url="/templates/Header.jsp"/>
+<c:import url="/templates/AdminHeader.jsp"/>
 
     <div class="add-user-form">
         <form id="register-form" method="POST">

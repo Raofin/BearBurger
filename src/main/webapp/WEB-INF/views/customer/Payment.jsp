@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:import url="/templates/Header.jsp"/>
+<c:import url="/templates/CustomerHeader.jsp"/>
 
 <div class="form-container" id="payment-form">
     <form class="" method="POST">
