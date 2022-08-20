@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+    <link rel="icon" type="image/png" href="<c:url value="/assets/img/logo.svg"/>"/>
     <link href="<c:url value="/assets/css/style.css"/>" rel="stylesheet" type="text/css">
     <title>Bear Burger</title>
 </head>
