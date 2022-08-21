@@ -19,17 +19,17 @@
         <ul class="nav-links">
 
             <sec:authorize access="isAnonymous()">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/">Search Foods</a></li>
+                <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+                <li><a href="${pageContext.request.contextPath}/">Search Foods</a></li>
                 <li><a href="<c:url value="/login"/>">Log In</a></li>
-                <li><a href="/register">Register</a></li>
+                <li><a href="${pageContext.request.contextPath}/register">Register</a></li>
             </sec:authorize>
 
             <sec:authorize access="hasAuthority('ADMIN')">
                 <li><a href="/admin/admin/dashboard">Dashboard</a></li>
-                <li><a href="/admin/manageUser">Manage User</a></li>
-                <li><a href="/admin/addUser">Add User</a></li>
-                <li><a href="/admin/addFood">Add Foods</a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/manageUser">Manage User</a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/addUser">Add User</a></li>
+                <li><a href="${pageContext.request.contextPath}/admin/addFood">Add Foods</a></li>
                 <li><a href="<c:url value="/logout"/>">Log Out</a></li>
                 <li class="username"><a href="">
                     <sec:authentication property="principal.username"/></a></li>

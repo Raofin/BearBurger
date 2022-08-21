@@ -5,15 +5,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-@Transactional
-@EnableTransactionManagement
 public class FoodDaoImpl implements FoodDao
 {
     private final SessionFactory sessionFactory;
@@ -25,7 +21,7 @@ public class FoodDaoImpl implements FoodDao
     @Override
     public List<Food> fetchAllFoods() {
         Session session = this.sessionFactory.getCurrentSession();
-        Query<Food> foodQuery = session.createQuery("FROM Food", Food.class);
+        Query<Food> foodQuery = session.createQuery("from Food", Food.class);
         List<Food> foods = foodQuery.getResultList();
         return foods == null ? new ArrayList<Food>() : foods;
     }

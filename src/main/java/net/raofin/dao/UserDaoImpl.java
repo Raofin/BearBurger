@@ -25,9 +25,14 @@ public class UserDaoImpl implements UserDao
     @Override
     public List<User> fetchAllUsers() {
         Session session = this.sessionFactory.getCurrentSession();
-        Query<User> userQuery = session.createQuery("FROM User", User.class);
+        Query<User> userQuery = session.createQuery("from User", User.class);
         List<User> users = userQuery.getResultList();
         return users == null ? new ArrayList<User>() : users;
+
+//        Session session = this.sessionFactory.getCurrentSession();
+//        Query<User> userQuery = session.createQuery("FROM User", User.class);
+//        List<User> users = userQuery.getResultList();
+//        return users == null ? new ArrayList<User>() : users;
     }
 
     @Override
