@@ -14,10 +14,6 @@ public class UserRoles
     @Column(name = "role")
     private String role = "CUSTOMER";
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userID", nullable = false)
-    public User user;
-
     public int getRoleID() {
         return roleID;
     }
@@ -34,20 +30,11 @@ public class UserRoles
         this.role = role;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String toString() {
         return "UserRole{" +
                 "roleID=" + roleID +
                 ", role='" + role + '\'' +
-                ", user=" + user +
                 '}';
     }
 }

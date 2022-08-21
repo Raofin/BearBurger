@@ -2,8 +2,7 @@ package net.raofin.model;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -38,8 +37,9 @@ public class User
     @Column(name = "regDate")
     private Date regDate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private Set<UserRoles> userRoles = new HashSet<UserRoles>(0);
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "UserID")
+    private List<UserRoles> userRoles;
 
     public int getUserID() {
         return userID;
@@ -113,11 +113,11 @@ public class User
         this.regDate = regDate;
     }
 
-    public Set<UserRoles> getUserRoles() {
+    public List<UserRoles> getUserRoles() {
         return userRoles;
     }
 
-    public void setUserRoles(Set<UserRoles> userRoles) {
+    public void setUserRoles(List<UserRoles> userRoles) {
         this.userRoles = userRoles;
     }
 
