@@ -11,8 +11,18 @@ public class UserRoles
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int roleID;
 
+    @Column(name = "userID")
+    private int userID;
+
     @Column(name = "role")
-    private String role = "CUSTOMER";
+    private String role;
+
+    public UserRoles() { }
+
+    public UserRoles(int userID) {
+        this.userID = userID;
+        this.role = "CUSTOMER";
+    }
 
     public int getRoleID() {
         return roleID;
@@ -20,6 +30,14 @@ public class UserRoles
 
     public void setRoleID(int roleID) {
         this.roleID = roleID;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getRole() {
@@ -32,8 +50,9 @@ public class UserRoles
 
     @Override
     public String toString() {
-        return "UserRole{" +
+        return "UserRoles{" +
                 "roleID=" + roleID +
+                ", userID=" + userID +
                 ", role='" + role + '\'' +
                 '}';
     }

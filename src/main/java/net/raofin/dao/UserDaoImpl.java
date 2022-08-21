@@ -1,11 +1,11 @@
 package net.raofin.dao;
 
 import net.raofin.model.User;
+import net.raofin.model.UserRoles;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -13,7 +13,6 @@ import java.util.List;
 
 @Repository
 @Transactional
-@EnableTransactionManagement
 public class UserDaoImpl implements UserDao
 {
     private final SessionFactory sessionFactory;
@@ -25,20 +24,16 @@ public class UserDaoImpl implements UserDao
     @Override
     public List<User> fetchAllUsers() {
         Session session = this.sessionFactory.getCurrentSession();
-        Query<User> userQuery = session.createQuery("from User", User.class);
+        Query<User> userQuery = session.createQuery("FROM User", User.class);
         List<User> users = userQuery.getResultList();
         return users == null ? new ArrayList<User>() : users;
-
-//        Session session = this.sessionFactory.getCurrentSession();
-//        Query<User> userQuery = session.createQuery("FROM User", User.class);
-//        List<User> users = userQuery.getResultList();
-//        return users == null ? new ArrayList<User>() : users;
     }
 
     @Override
     public void registerUser(User user) {
         Session session = this.sessionFactory.getCurrentSession();
         session.save(user);
+        session.save(new UserRoles(user.getUserID()));
     }
 
     @Override

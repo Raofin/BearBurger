@@ -1,6 +1,9 @@
 package net.raofin.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
@@ -13,26 +16,41 @@ public class User
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userID;
 
-    @Column(name = "username", nullable = false)
+    @NotNull
+    @Size(min = 4, max = 15)
+    @Column(name = "username")
     private String username;
 
-    @Column(name = "email", nullable = false)
+    @Email
+    @NotNull
+    @Size(min = 6, max = 15)
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "password", nullable = false)
+    @NotNull
+    @Size(min = 6, max = 30)
+    @Column(name = "password")
     private String password;
 
-    @Column(name = "phoneNumber", nullable = false)
+    @NotNull
+    @Size(min = 6, max = 15)
+    @Transient
+    private String cPassword;
+
+    @NotNull
+    @Size(min = 11, max = 15)
+    @Column(name = "phoneNumber")
     private String phoneNumber;
 
-    @Column(name = "gender", nullable = false)
+    @NotNull
+    @Column(name = "gender")
     private String gender;
 
     @Column(name = "spent")
     private String spent;
 
-    @Column(name = "enabled", nullable = false)
-    private boolean isEnabled;
+    @Column(name = "enabled")
+    private boolean isEnabled = true;
 
     @Column(name = "regDate")
     private Date regDate;
@@ -63,6 +81,14 @@ public class User
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getcPassword() {
+        return cPassword;
+    }
+
+    public void setcPassword(String cPassword) {
+        this.cPassword = cPassword;
     }
 
     public String getEmail() {
