@@ -2,9 +2,13 @@ package net.raofin.service;
 
 import net.raofin.dao.FoodDao;
 import net.raofin.model.Food;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+@Transactional
 public class FoodServiceImpl implements FoodService
 {
     private final FoodDao foodDao;

@@ -4,10 +4,12 @@ import net.raofin.model.Food;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class FoodDaoImpl implements FoodDao
 {
     private final SessionFactory sessionFactory;
