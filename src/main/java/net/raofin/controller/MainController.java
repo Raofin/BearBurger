@@ -1,22 +1,28 @@
 package net.raofin.controller;
 
-import net.raofin.dao.FoodDao;
 import net.raofin.dao.UserDao;
 import net.raofin.model.User;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.Objects;
 
 @Controller
 public class MainController
 {
     private final UserDao userDao;
 
-    private final FoodDao foodDao;
-
-    public MainController(UserDao userDao, FoodDao foodDao) {
+    public MainController(UserDao userDao) {
         this.userDao = userDao;
-        this.foodDao = foodDao;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder webDataBinder) {
+        webDataBinder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 
     @GetMapping("/")
@@ -29,21 +35,18 @@ public class MainController
         return "Login";
     }
 
-    @GetMapping("/register")
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String showRegisterPage(@ModelAttribute("user") User user) {
         return "Register";
     }
 
     @RequestMapping("/register-action")
-    public String register(@ModelAttribute("user") User user, BindingResult bindingResult) {
-        System.out.println(foodDao.fetchAllFoods());
-        if (bindingResult.hasErrors()) {
-            System.out.println(bindingResult);
-            System.out.println(bindingResult.hasErrors());
-            return "register";
-        }
-//        userDao.registerUser(user);
-        System.out.println(user);
+    public String register(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors() || !Objects.equals(user.getPassword(), user.getcPassword()))
+            return "redirect:/register?error";
+
+        userDao.registerUser(user);
 
         return "redirect:/register";
     }

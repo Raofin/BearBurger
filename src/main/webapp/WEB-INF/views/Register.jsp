@@ -21,10 +21,13 @@
                 </div>
                 <div>
                     <label class="form-label" for="password">Password</label>
-                    <div class="show-password">
-                        <span id="password-view">Show</span>
-                    </div>
+                    <div class="show-password"><span id="password-view">Show</span></div>
                     <form:input autocomplete="off" class="form-input-box" id="password" path="password"
+                                placeholder="Enter your password here" type="password"/>
+                </div>
+                <div>
+                    <label class="form-label" for="cPassword">Confirm Password</label>
+                    <form:input autocomplete="off" class="form-input-box" id="cPassword" path="cPassword"
                                 placeholder="Enter your password here" type="password"/>
                 </div>
                 <div>
@@ -46,7 +49,11 @@
 
         <div class="bottom">
             <div class="center-text">
-                <p id="prompt-message"></p>
+                <p id="prompt-message">
+                    <% if (request.getParameter("error") != null)
+                        out.print("<p class=\"error-message\">Please fill out all the fields properly.</p>");
+                    %>
+                </p>
             </div>
             <div class="center">
                 <input id="form-submit" type="submit" class="button" value="Register">
