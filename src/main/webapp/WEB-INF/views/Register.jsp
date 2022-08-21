@@ -1,47 +1,43 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isELIgnored="false" %>
 <c:import url="/templates/CustomerHeader.jsp"/>
 
 <div class="form-container">
-    <form:form id="register-form" method="POST">
+    <form:form id="register-form" action="register-action" method="POST" modelAttribute="user">
         <h2 class="login-form-title">Create an Account</h2>
 
         <fieldset>
             <div>
                 <div>
                     <label class="form-label" for="username">Username</label>
-                    <input autofocus class="form-input-box" id="username"
-                           name="username" placeholder="Enter your username here" type="text">
+                    <form:input class="form-input-box" id="username"
+                                name="username" placeholder="Enter your username here" path="username"/>
                 </div>
                 <div>
                     <label class="form-label" for="email">Email</label>
-                    <input class="form-input-box" id="email" name="email"
-                           placeholder="Enter your email here" type="text">
+                    <form:input class="form-input-box" id="email" name="email"
+                                placeholder="Enter your email here" path="email"/>
                 </div>
                 <div>
                     <label class="form-label" for="password">Password</label>
                     <div class="show-password">
                         <span id="password-view">Show</span>
                     </div>
-                    <input autocomplete="off" class="form-input-box" id="password" name="password"
-                           placeholder="Enter your password here" type="password">
-                </div>
-                <div>
-                    <label class="form-label" for="cPassword">Confirm Password</label>
-                    <input autocomplete="off" class="form-input-box" id="cPassword" name="cPassword"
-                           placeholder="Rewrite the password here" type="password">
+                    <form:input autocomplete="off" class="form-input-box" id="password" path="password"
+                                placeholder="Enter your password here" type="password"/>
                 </div>
                 <div>
                     <label class="form-label" for="phone">Phone Number</label>
-                    <input class="form-input-box" id="phone" name="phone"
-                           placeholder="Enter your phone number here" type="text">
+                    <form:input class="form-input-box" id="phone" path="phoneNumber"
+                                placeholder="Enter your phone number here" type="text"/>
                 </div>
                 <div>
                     <label>Gender</label>
                     <div class="radio-button" id="radio-button-box">
-                        <input id="male" name="gender" type="radio" value="Male">
+                        <form:radiobutton id="male" path="gender" value="Male"/>
                         <label class="radio-label" for="male">Male</label>
-                        <input id="female" name="gender" type="radio" value="Female">
+                        <form:radiobutton id="female" path="gender" value="Female"/>
                         <label class="radio-label" for="female">Female</label>
                     </div>
                 </div>

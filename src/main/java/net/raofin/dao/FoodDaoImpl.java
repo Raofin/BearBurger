@@ -5,11 +5,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@Transactional
+@EnableTransactionManagement
 public class FoodDaoImpl implements FoodDao
 {
     private final SessionFactory sessionFactory;
@@ -21,7 +25,7 @@ public class FoodDaoImpl implements FoodDao
     @Override
     public List<Food> fetchAllFoods() {
         Session session = this.sessionFactory.getCurrentSession();
-        Query<Food> foodQuery = session.createQuery("FROM Foods", Food.class);
+        Query<Food> foodQuery = session.createQuery("FROM Food", Food.class);
         List<Food> foods = foodQuery.getResultList();
         return foods == null ? new ArrayList<Food>() : foods;
     }
@@ -35,14 +39,14 @@ public class FoodDaoImpl implements FoodDao
     @Override
     public Food fetchFoodByID(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Query<Food> foodQuery = session.createQuery("FROM Foods WHERE FoodID = " + id, Food.class);
+        Query<Food> foodQuery = session.createQuery("FROM Food WHERE FoodID = " + id, Food.class);
         return foodQuery.getSingleResult();
     }
 
     @Override
     public Food fetchFoodByTitle(String title) {
         Session session = this.sessionFactory.getCurrentSession();
-        Query<Food> foodQuery = session.createQuery("FROM Foods WHERE Title = :title", Food.class);
+        Query<Food> foodQuery = session.createQuery("FROM Food WHERE Title = :title", Food.class);
         foodQuery.setParameter("title", title);
         return foodQuery.getSingleResult();
     }
@@ -50,7 +54,7 @@ public class FoodDaoImpl implements FoodDao
     @Override
     public List<Food> fetchFoodByCategory(String category) {
         Session session = this.sessionFactory.getCurrentSession();
-        Query<Food> foodQuery = session.createQuery("FROM Foods WHERE Category = :category", Food.class);
+        Query<Food> foodQuery = session.createQuery("FROM Food WHERE Category = :category", Food.class);
         foodQuery.setParameter("category", category);
         return foodQuery.getResultList();
     }
@@ -70,7 +74,7 @@ public class FoodDaoImpl implements FoodDao
     @Override
     public List<Food> searchFoodByTitle(String title) {
         Session session = sessionFactory.getCurrentSession();
-        Query<Food> foodQuery = session.createQuery("FROM Foods WHERE Title LIKE '%:title%'", Food.class);
+        Query<Food> foodQuery = session.createQuery("FROM Food WHERE Title LIKE '%:title%'", Food.class);
         foodQuery.setParameter("title", title);
         return foodQuery.getResultList();
     }

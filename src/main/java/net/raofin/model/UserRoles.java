@@ -12,7 +12,7 @@ public class UserRoles
     private int roleID;
 
     @Column(name = "role")
-    private String role;
+    private String role = "CUSTOMER";
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userID", nullable = false)
