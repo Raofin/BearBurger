@@ -22,8 +22,8 @@ public class AppSecurityConfig
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                    .antMatchers("/admin/**").hasAuthority("ADMIN")
-                    .antMatchers("/customer/**").hasAuthority("CUSTOMER")
+                    .antMatchers("/dashboard", "/manage-user", "/addUser", "/addFood", "/api/**").hasAuthority("ADMIN")
+                    .antMatchers("/profile", "/profile-modify","/payment", "/api/**").hasAuthority("CUSTOMER")
                     .antMatchers("/").permitAll()
                 .and()
                     .formLogin()

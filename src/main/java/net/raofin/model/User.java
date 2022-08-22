@@ -4,8 +4,10 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 @Table(name = "users")
@@ -133,6 +135,12 @@ public class User
 
     public Date getRegDate() {
         return regDate;
+    }
+
+    public String getRegDateFormatted() {
+        String pattern = "E, dd MMM yyyy hh:mm aa"; //	Sun, 21 Aug 2022 11:34 PM
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("Asia/Dhaka"));
+        return simpleDateFormat.format(regDate);
     }
 
     public void setRegDate(Date regDate) {

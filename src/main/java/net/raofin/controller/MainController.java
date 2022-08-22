@@ -30,12 +30,22 @@ public class MainController
         return "index";
     }
 
-    @GetMapping("/login")
+    @RequestMapping(value = "/home", method = {RequestMethod.GET, RequestMethod.POST})
+    public String showHomePage() {
+        return "Home";
+    }
+
+    @RequestMapping(value = "/search-foods", method = {RequestMethod.GET, RequestMethod.POST})
+    public String showSearchFoodsPage() {
+        return "SearchFoods";
+    }
+
+    @RequestMapping("/login")
     public String showLoginPage() {
         return "Login";
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = {RequestMethod.GET, RequestMethod.POST})
     public String showRegisterPage(@ModelAttribute("user") User user) {
         return "Register";
     }
@@ -49,11 +59,6 @@ public class MainController
         userDao.registerUser(user);
 
         return "redirect:/register";
-    }
-
-    @RequestMapping(value = "/home", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showHomePage() {
-        return "Home";
     }
 
     @GetMapping("/403")
