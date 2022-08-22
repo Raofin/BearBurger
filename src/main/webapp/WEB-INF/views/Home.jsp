@@ -8,16 +8,16 @@
     <form method="post">
         <h2 class="category-title" id="category-title">
             Category:
-            <label onclick="fetch('Burger')" id="Burger">Burger</label>
-            <label onclick="fetch('Pizza')" id="Pizza">Pizza</label>
-            <label onclick="fetch('Drinks')" id="Drinks">Drinks</label>
-            <label onclick="fetch('Coffee')" id="Coffee">Coffee</label>
-            <label onclick="fetch('Desert')" id="Desert">Desert</label>
-            <label onclick="fetch('Sides')" id="Sides">Sides</label>
+            <label onclick="fetchFoods('Burger')" id="Burger">Burger</label>
+            <label onclick="fetchFoods('Pizza')" id="Pizza">Pizza</label>
+            <label onclick="fetchFoods('Drinks')" id="Drinks">Drinks</label>
+            <label onclick="fetchFoods('Coffee')" id="Coffee">Coffee</label>
+            <label onclick="fetchFoods('Desert')" id="Desert">Desert</label>
+            <label onclick="fetchFoods('Sides')" id="Sides">Sides</label>
         </h2>
     </form>
     <table id="foods-table"></table>
 </div>
 
-<%--<script src="../../public/js/Home.js"></script>--%>
+<script src="${pageContext.request.contextPath}/assets/js/Home.js"></script>
 <c:import url="/templates/Footer.jsp"/>
