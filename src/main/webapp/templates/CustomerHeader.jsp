@@ -19,22 +19,22 @@
     <ul class="nav-links">
 
       <sec:authorize access="isAnonymous()">
-        <li><a href="/home">Home</a></li>
-        <li><a href="/">Search Foods</a></li>
+        <li><a href="./home">Home</a></li>
+        <li><a href="./search-foods">Search Foods</a></li>
         <li><a href="<c:url value="/login"/>">Log In</a></li>
-        <li><a href="/register">Register</a></li>
+        <li><a href="./register">Register</a></li>
       </sec:authorize>
 
       <sec:authorize access="hasAuthority('CUSTOMER')">
-        <li><a href="">Home</a></li>
-        <li><a href="">Search Foods</a></li>
-        <li><a href="">View Profile</a></li>
+        <li><a href="./home">Home</a></li>
+        <li><a href="./search-foods">Search Foods</a></li>
+        <li><a href="./profile">View Profile</a></li>
         <li><a href="<c:url value="/logout"/>">Log Out</a></li>
-        <li class='username'><a href="">
+        <li class="username"><a href="./profile">
           <sec:authentication property="principal.username"/></a></li>
       </sec:authorize>
 
-      <li><a class="project-details" href="">Project Details</a></li>
+<%--      <li><a class="project-details" href="">Project Details</a></li>--%>
     </ul>
   </nav>
 </header>
