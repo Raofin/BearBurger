@@ -6,34 +6,34 @@
     <form class="form-user-profile" method="post">
         <h1>User Profile</h1>
         <center>
-            <table>
+            <table class="profile-table">
                 <tr>
                     <td>Username:</td>
-                    <td><?php echo $_SESSION['username'] ?></td>
+                    <td>${user.username}</td>
                 </tr>
                 <tr>
                     <td>Email:</td>
-                    <td><?php echo $_SESSION['email'] ?></td>
+                    <td>${user.email}</td>
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td><?php echo $_SESSION['password'] ?></td>
+                    <td>${user.password}</td>
                 </tr>
                 <tr>
                     <td>Phone:</td>
-                    <td><?php echo $_SESSION['phone'] ?></td>
+                    <td>${user.phoneNumber}</td>
                 </tr>
                 <tr>
                     <td>Gender:</td>
-                    <td><?php echo $_SESSION['gender'] ?></td>
+                    <td>${user.gender}</td>
                 </tr>
                 <tr>
                     <td>Spent:</td>
-                    <td><?php echo $_SESSION['spent'] ?> tk</td>
+                    <td>${user.spent} tk</td>
                 </tr>
                 <tr>
                     <td>Joined:</td>
-                    <td><?php echo date('F j, Y', strtotime($_SESSION['joined'])) ?></td>
+                    <td>${user.regDateFormatted}</td>
                 </tr>
             </table>
         </center>

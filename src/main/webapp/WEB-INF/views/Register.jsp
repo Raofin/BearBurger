@@ -16,7 +16,7 @@
                 </div>
                 <div>
                     <label class="form-label" for="email">Email</label>
-                    <form:input class="form-input-box" id="email" name="email"
+                    <form:input class="form-input-box" id="email"
                                 placeholder="Enter your email here" path="email"/>
                 </div>
                 <div>
@@ -33,7 +33,7 @@
                 <div>
                     <label class="form-label" for="phone">Phone Number</label>
                     <form:input class="form-input-box" id="phone" path="phoneNumber"
-                                placeholder="Enter your phone number here" type="text"/>
+                                placeholder="Enter your phone number here"/>
                 </div>
                 <div>
                     <label>Gender</label>

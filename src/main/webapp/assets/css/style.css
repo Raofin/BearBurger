@@ -947,3 +947,7 @@ input[type='radio'].form-input-error {
 table#foods-table {
     text-align: center;
 }
+
+table.profile-table {
+    color: white;
+}
