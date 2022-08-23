@@ -1,6 +1,7 @@
 package net.raofin.controller;
 
 import net.raofin.model.Food;
+import net.raofin.model.User;
 import net.raofin.service.FoodService;
 import net.raofin.service.UserService;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -9,6 +10,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.Objects;
 
 @Controller
 //@RequestMapping("/admin")
@@ -43,24 +47,21 @@ public class AdminController
     }
 
     @RequestMapping(value = "/add-food", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showAddFoodPage() {
+    public String showAddFoodPage(@ModelAttribute("food") Food food) {
         return "admin/AddFood";
     }
 
-    @RequestMapping(value = "saveFood", method = {RequestMethod.GET, RequestMethod.POST})
-    public String newFood(@Validated @ModelAttribute Food food, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "admin/AddFood";
+    @PostMapping("/savefood-action")
+    public String register(@Valid @ModelAttribute(value = "food") Food food, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()){
+            return "redirect:/add-food";
         }
-
-        food = setupFoodForm();
-        foodService.addFood(food);
-        return "redirect:/admin/Dashboard";
+        else{
+            foodService.addFood(food);
+            return "redirect:/dashboard";
+        }
     }
 
-    @Validated
-    @ModelAttribute
-    public Food setupFoodForm() {
-        return new Food();
-    }
+
 }
