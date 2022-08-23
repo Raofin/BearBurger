@@ -65,6 +65,6 @@
     </form:form>
 </div>
 
-<%--<script src="../../public/js/Logic.js"></script>--%>
-<%--<script src="../../public/js/RegistrationValidate.js"></script>--%>
+<script src="<c:url value="/assets/js/Logic.js"/>"></script>
+<script src="<c:url value="/assets/js/RegistrationValidate.js"/>"></script>
 <c:import url="/templates/Footer.jsp"/>

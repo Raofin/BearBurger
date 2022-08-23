@@ -51,5 +51,5 @@
     </form:form>
 </div>
 
-<%--<script src="<c:url value="/assets/js/.js"/>"></script>--%>
+<%--<script src="<c:url value="/assets/js/ModifyValidate.js"/>"></script>--%>
 <c:import url="/templates/Footer.jsp"/>

@@ -1,31 +1,15 @@
 $('#update-form').validate({
     submitHandler: form => {
         $.ajax({
-            url: '../controllers/ModifyValidate.php',
+            // url: '../controllers/ModifyValidate.php',
             method: "POST",
             data: $('#update-form').serialize(),
             cache: false,
             processData: false,
-            success: data => {
-                if (data === 'Success')
-                    $(location).prop('href', 'Profile.php');
-                else {
-                    $('#message')
-                        .html(data)
-                        .addClass('error-message');
-                    $('#username, #email')
-                        .addClass('form-input-error');
-                }
-            }
+            success: document.getElementById('#update-form').submit()
         })
     },
     rules: {
-        username: {
-            required: true,
-            minlength: 4,
-            maxlength: 15,
-            normalizer: value => removeWhitespaces(value, '#username')
-        },
         email: {
             required: true,
             emailRegex: true,
@@ -36,14 +20,14 @@ $('#update-form').validate({
         password: {
             required: true,
             minlength: 6,
-            maxlength: 15,
+            maxlength: 30,
             normalizer: value => removeWhitespaces(value, '#password')
         },
-        phone: {
+        phoneNumber: {
             required: true,
             phoneRegex: true,
             minlength: 11,
-            maxlength: 15,
+            maxlength: 30,
             normalizer: value => removeWhitespaces(value, '#phone'),
         },
     },
@@ -60,7 +44,7 @@ $('#update-form').validate({
         password: {
             required: "Please provide a password",
             minlength: "Must be at least 6 characters long",
-            maxlength: "Must be no more than 15 characters long"
+            maxlength: "Must be no more than 30 characters long"
         },
     },
     errorClass: "form-input-error warning-message"

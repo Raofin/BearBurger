@@ -1,25 +1,13 @@
 $('#register-form').validate({
     submitHandler: form => {
         $.ajax({
-            url: '../controllers/RegistrationValidate.php',
+            url: 'register-action',
             method: "POST",
             data: $('#register-form').serialize(),
             cache: false,
             processData: false,
-            success: data => {
-                if (data === 'Success') {
-                    $('#prompt-message')
-                        .text('Registration Successful')
-                        .addClass('success');
-                    $('#register-form').trigger('reset');
-                } else {
-                    $('#prompt-message')
-                        .html(data)
-                        .addClass('error-message');
-                    $('#username, #email')
-                        .addClass('form-input-error');
-                }
-            }
+            success: document.getElementById('#register-form').submit()
+
         })
     },
     rules: {
@@ -40,13 +28,13 @@ $('#register-form').validate({
         password: {
             required: true,
             minlength: 6,
-            maxlength: 15,
+            maxlength: 30,
             normalizer: value => removeWhitespaces(value, '#password')
         },
         cPassword: {
             required: true,
             minlength: 6,
-            maxlength: 15,
+            maxlength: 30,
             equalTo: '#password',
             normalizer: value => removeWhitespaces(value, '#cPassword')
         },
@@ -54,7 +42,7 @@ $('#register-form').validate({
             required: true,
             phoneRegex: true,
             minlength: 11,
-            maxlength: 15,
+            maxlength: 20,
             normalizer: value => removeWhitespaces(value, '#phone'),
         },
         gender: {
@@ -74,7 +62,7 @@ $('#register-form').validate({
         password: {
             required: "Please provide a password",
             minlength: "Your password must be at least 6 characters long",
-            maxlength: "Your password must be no more than 15 characters long"
+            maxlength: "Your password must be no more than 30 characters long"
         },
         cPassword: {
             required: "Please provide a password",
