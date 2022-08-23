@@ -59,7 +59,7 @@
                 <input id="form-submit" type="submit" class="button" value="Register">
             </div>
             <div class="center-text bottom-text">
-                Already have an account? <a href="Login.jsp">Login</a>
+                Already have an account? <a href="./login">Login</a>
             </div>
         </div>
     </form:form>

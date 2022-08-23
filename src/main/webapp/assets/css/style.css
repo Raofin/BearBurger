@@ -536,7 +536,8 @@ input[type='radio'].form-input-error {
 
 .payment-description {
     font-size: 20px;
-    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 .payment-price {

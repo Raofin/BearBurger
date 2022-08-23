@@ -40,7 +40,7 @@ public class AdminController
     }
 
     @RequestMapping(value = "/add-user", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showAddUserPage() {
+    public String showAddUserPage(@ModelAttribute(value = "user") User user) {
         return "admin/AddUser";
     }
 

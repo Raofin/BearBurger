@@ -21,10 +21,10 @@
                 <input id="password" name="password" autocomplete="on" class="form-input-box"
                        placeholder="Enter your password here" type="password">
             </div>
-            <div class="remember-me">
+            <%--<div class="remember-me">
                 <input id="remember" name="remember" type="checkbox"/>
                 <label for="remember">Remember Me</label>
-            </div>
+            </div>--%>
         </fieldset>
 
         <div class="bottom">
@@ -39,7 +39,7 @@
                 <input class="button" id="form-submit" type="submit" value="Login">
             </div>
             <div class="center-text bottom-text">
-                New here? <a href="Register.jsp">Create an Account</a>
+                New here? <a href="./register">Create an Account</a>
             </div>
         </div>
     </form:form>
