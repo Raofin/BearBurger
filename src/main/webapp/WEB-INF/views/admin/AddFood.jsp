@@ -4,9 +4,7 @@
 <c:import url="/templates/AdminHeader.jsp"/>
 
 <div class="add-user-form">
-
-
-    <form:form id="register-form" method="POST" action="${pageContext.request.contextPath}/admin/saveFood" modelAttribute="food">
+    <form:form id="register-form" method="POST" action="add-food-action" modelAttribute="food">
         <h2 class="admin-form-title">Add Foods</h2>
         <fieldset>
             <div>
@@ -43,7 +41,16 @@
 
         <div class="admin-form-bottom">
             <div class="center-text">
-                <p id="prompt-message"></p>
+                <p id="prompt-message">
+                    <%
+                        if (request.getParameter("error") != null) {
+                            out.print("<p class=\"error-message\">Please fill out all the fields properly.</p>");
+                        }
+                        if (request.getParameter("added") != null) {
+                            out.print("<p class=\"success\">New food added.</p>");
+                        }
+                    %>
+                </p>
             </div>
             <div class="center">
                 <input id="form-submit" type="submit" class="button" value="Add Food">

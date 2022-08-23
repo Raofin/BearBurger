@@ -1,18 +1,15 @@
 package net.raofin.controller;
 
 import net.raofin.model.Food;
-import net.raofin.model.User;
 import net.raofin.service.FoodService;
 import net.raofin.service.UserService;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Objects;
 
 @Controller
 //@RequestMapping("/admin")
@@ -51,17 +48,14 @@ public class AdminController
         return "admin/AddFood";
     }
 
-    @PostMapping("/savefood-action")
+    @PostMapping("/add-food-action")
     public String register(@Valid @ModelAttribute(value = "food") Food food, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()){
-            return "redirect:/add-food";
+            return "redirect:/add-food?error";
         }
-        else{
-            foodService.addFood(food);
-            return "redirect:/dashboard";
-        }
+
+        foodService.addFood(food);
+        return "redirect:/add-food?added";
     }
-
-
 }
