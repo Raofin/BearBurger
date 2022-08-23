@@ -48,4 +48,9 @@ public class UserApi
     void enableUser(@PathVariable int id) {
         userDao.enableUser(id);
     }
+
+    @GetMapping("/makeAdmin/{id}")
+    void makeAdmin(@PathVariable int id) {
+        userDao.makeAdmin(id);
+    }
 }

@@ -24,5 +24,9 @@ public interface UserDao
 
     void enableUser(int id);
 
+    void makeAdmin(int id);
+
+    void makePayment(int id);
+
     List<User> searchUserByEmail(String email);
 }

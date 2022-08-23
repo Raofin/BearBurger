@@ -1,14 +1,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page isELIgnored="false" %>
 <c:import url="/templates/CustomerHeader.jsp"/>
 
 <div class="form-container" id="payment-form">
-    <form class="" method="POST">
+    <form:form action="payment-action" class="" method="POST">
         <div>
-            <h1 class="payment-form-title"></h1>
-            <p class="payment-description"></p>
+            <h1 class="payment-form-title">${food.title}</h1>
+            <p class="payment-description">${food.description}</p>
             <p class="payment-price">
-                Price: <span id="price" class="white-back-text"></span>
+                Price: <span id="price" class="white-back-text">${food.price}tk</span>
             </p>
         </div>
 
@@ -26,7 +28,8 @@
                 <tr>
                     <td>Name</td>
                     <td>
-                        <input autofocus id="name" name="name" placeholder="Enter your name" type="text">
+                        <input autofocus id="name" name="name" placeholder="Enter your name" type="text"
+                               value="<sec:authentication property="principal.username"/>">
                     </td>
                 </tr>
                 <tr>
@@ -59,7 +62,7 @@
                 <input class="button" id="pay" type="submit" value="Pay">
             </div>
         </div>
-    </form>
+    </form:form>
 </div>
 
 <script src="<c:url value="/assets/js/Payment.js"/>"></script>

@@ -84,8 +84,18 @@ public class UserServiceImpl implements UserService
     @Override
     public void enableUser(int id) {
         userDao.enableUser(id);
-
     }
+
+    @Override
+    public void makeAdmin(int id) {
+        userDao.makeAdmin(id);
+    }
+
+    @Override
+    public void makePayment(int id) {
+        userDao.makePayment(id);
+    }
+
 
     @Override
     public List<User> searchUserByEmail(String email) {

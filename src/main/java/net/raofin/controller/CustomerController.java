@@ -1,17 +1,14 @@
 package net.raofin.controller;
 
-import net.raofin.dao.UserDao;
 import net.raofin.model.User;
+import net.raofin.service.FoodService;
 import net.raofin.service.UserService;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -21,8 +18,11 @@ import java.security.Principal;
 public class CustomerController
 {
     public final UserService userService;
-    public CustomerController(UserService userService) {
+    public final FoodService foodService;
+
+    public CustomerController(UserService userService, FoodService foodService) {
         this.userService = userService;
+        this.foodService = foodService;
     }
 
     @InitBinder
@@ -47,7 +47,7 @@ public class CustomerController
     }
 
     @RequestMapping("/profile-modify-action")
-    public String register(@Valid @ModelAttribute("user") User updatedUser, BindingResult bindingResult, Principal principal) {
+    public String profileModifyAction(@Valid @ModelAttribute("user") User updatedUser, BindingResult bindingResult, Principal principal) {
 
         if (bindingResult.hasFieldErrors("email") || bindingResult.hasFieldErrors("password")
                 || bindingResult.hasFieldErrors("phoneNumber")) {
@@ -65,8 +65,16 @@ public class CustomerController
         return "redirect:/profile?updated";
     }
 
-    @RequestMapping(value = "/payment", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showPaymentPage() {
+    @RequestMapping(value = "/payment/{foodId}", method = {RequestMethod.GET, RequestMethod.POST})
+    public String showPaymentPage(@PathVariable int foodId, Model model) {
+
+        model.addAttribute("food", foodService.fetchFoodByID(foodId));
         return "customer/Payment";
+    }
+
+    @RequestMapping(value = "/payment-action", method = {RequestMethod.GET, RequestMethod.POST})
+    public String paymentAction() {
+
+        return "redirect:/home";
     }
 }

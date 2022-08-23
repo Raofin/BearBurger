@@ -24,6 +24,11 @@ public class UserRoles
         this.role = "CUSTOMER";
     }
 
+    public UserRoles(int userID, String role) {
+        this.userID = userID;
+        this.role = role;
+    }
+
     public int getRoleID() {
         return roleID;
     }

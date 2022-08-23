@@ -97,6 +97,21 @@ public class UserDaoImpl implements UserDao
     }
 
     @Override
+    public void makeAdmin(int id) {
+
+        User user = fetchUserById(id);
+        List<UserRoles> userRoles = new ArrayList<>();
+        userRoles.add(new UserRoles(id, "ADMIN"));
+        user.setUserRoles(userRoles);
+        sessionFactory.getCurrentSession().update(user);
+    }
+
+    @Override
+    public void makePayment(int id) {
+
+    }
+
+    @Override
     public List<User> searchUserByEmail(String email) {
         Session session = sessionFactory.getCurrentSession();
         Query<User> userQuery = session.createQuery("FROM User WHERE Email LIKE '%:email%'", User.class);

@@ -32,7 +32,7 @@ dollarId.addEventListener('click',
 poundId.addEventListener('click',
     function (event) {
         event.preventDefault();
-        priceId.innerText = '£' + (price * 0.0089).toFixed(2);
+        priceId.innerText = "£" + (price * 0.0089).toFixed(2);
 
         takaId.classList.remove('white-back-text');
         dollarId.classList.remove('white-back-text');
@@ -44,7 +44,7 @@ form.addEventListener('submit', function (event) {
     event.preventDefault();
 
     if (paid) {
-        location.href = '../../application/views/Home.php';
+        location.href = '../home';
         return;
     }
 
@@ -66,7 +66,7 @@ form.addEventListener('submit', function (event) {
     else cvv.classList.remove('form-input-error');
 
     if (name.value !== '' && cardNumber.value !== '' && expDate.value !== '' && cvv.value !== '') {
-        pay();
+        // pay();
         document.getElementById('pay').value = 'Go Back';
         paid = true;
         messageDiv.innerHTML = '';
@@ -80,6 +80,6 @@ form.addEventListener('submit', function (event) {
 
 function pay() {
     const xhr = new XMLHttpRequest();
-    xhr.open("GET", "../models/Payment.php?price=" + price);
+    xhr.open("GET", "./payment-action");
     xhr.send();
 }
