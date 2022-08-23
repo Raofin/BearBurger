@@ -7,8 +7,6 @@ function fetchAllUsers() {
             let user = '';
 
             $.each(data, (key, value) => {
-                console.log(value);
-                console.log(value['enabled']);
                 user +=
                     '<tr>' +
                     '    <td>' + value['userID'] + '</td> ' +
