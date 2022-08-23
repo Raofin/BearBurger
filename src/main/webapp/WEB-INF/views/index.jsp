@@ -27,7 +27,7 @@
     <div class="welcome-message">
         <h1 class="welcome-title">Eat and Order<br>Do It Easy</h1>
         <p class="margin-bottom">Choose your favourite foods and get it to taste the amazing taste, enjoy it with your family or friends.</p>
-        <a class="button" href="<c:url value="/login"/>">Get Started</a>
+        <a class="button" href="./home">Get Started</a>
     </div>
 </div>
 
