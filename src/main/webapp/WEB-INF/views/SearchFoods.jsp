@@ -9,11 +9,11 @@
         <form action="" method="post">
             <input class="search-input-box" id="search-box"
                    placeholder="Type anything to search"
-                   spellcheck="false" type="text"><br><br>
+                   spellcheck="false" type="text" onkeyup="searchFood(document.getElementById('search-box').value)" ><br><br>
         </form>
         <table id="foods-table"></table>
     </div>
 </center>
 
-<%--<script src="<c:url value="/assets/js/.js"/>"></script>--%>
+<script src="${pageContext.request.contextPath}/assets/js/Search.js"></script>
 <c:import url="/templates/Footer.jsp"/>

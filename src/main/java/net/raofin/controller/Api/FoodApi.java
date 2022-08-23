@@ -2,10 +2,9 @@ package net.raofin.controller.Api;
 
 import net.raofin.dao.FoodDao;
 import net.raofin.model.Food;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import net.raofin.service.FoodService;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,19 +12,25 @@ import java.util.List;
 @RequestMapping("/api")
 public class FoodApi
 {
-    private final FoodDao foodDao;
+    //private final FoodDao foodDao;
+    private final FoodService foodService;
 
-    public FoodApi(FoodDao foodDao) {
-        this.foodDao = foodDao;
+    public FoodApi(FoodService foodService) {
+        this.foodService = foodService;
     }
 
     @GetMapping("/fetchFoods/{category}")
     List<Food> fetchFoodsByCategory(@PathVariable String category) {
-        return foodDao.fetchFoodByCategory(category);
+        return foodService.fetchFoodByCategory(category);
     }
 
     @GetMapping("/fetchAllFoods")
     List<Food> allFoods() {
-        return foodDao.fetchAllFoods();
+        return foodService.fetchAllFoods();
+    }
+
+    @GetMapping("/searchFoods")
+    List<Food> searchFoods(@RequestParam("name") String name){
+        return foodService.searchFoodByTitle(name);
     }
 }

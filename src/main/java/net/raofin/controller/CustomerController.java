@@ -21,11 +21,8 @@ import java.security.Principal;
 public class CustomerController
 {
     public final UserService userService;
-    private final UserDao userDao;
-
-    public CustomerController(UserService userService, UserDao userDao) {
+    public CustomerController(UserService userService) {
         this.userService = userService;
-        this.userDao = userDao;
     }
 
     @InitBinder
@@ -62,7 +59,8 @@ public class CustomerController
         user.setPassword(updatedUser.getPassword());
         user.setPhoneNumber(updatedUser.getPhoneNumber());
 
-        userDao.updateUser(user);
+        userService.updateUser(user);
+        //userDao.updateUser(user);
 
         return "redirect:/profile?updated";
     }
