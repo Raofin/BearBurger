@@ -18,7 +18,7 @@ public interface FoodService
 
     void updateFood(Food food);
 
-    void deleteFoodByTitle(String title);
+    void deleteFoodById(int id);
 
     List<Food> searchFoodByTitle(String title);
 }

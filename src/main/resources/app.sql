@@ -82,7 +82,10 @@ CREATE TABLE IF NOT EXISTS Comments
     PostedBy  VARCHAR(30) NOT NULL,
     Comment   TEXT        NOT NULL,
     PostDate  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT FoodID_FK FOREIGN KEY (FoodID) REFERENCES Foods (FoodID)
+    CONSTRAINT FoodID_FK
+        FOREIGN KEY (FoodID)
+            REFERENCES Foods (FoodID)
+            ON DELETE CASCADE
 );
 
 # insert food data

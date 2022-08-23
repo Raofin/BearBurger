@@ -1,9 +1,7 @@
 package net.raofin.controller.Api;
 
-import net.raofin.dao.FoodDao;
 import net.raofin.model.Food;
 import net.raofin.service.FoodService;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +10,6 @@ import java.util.List;
 @RequestMapping("/api")
 public class FoodApi
 {
-    //private final FoodDao foodDao;
     private final FoodService foodService;
 
     public FoodApi(FoodService foodService) {
@@ -30,7 +27,12 @@ public class FoodApi
     }
 
     @GetMapping("/searchFoods")
-    List<Food> searchFoods(@RequestParam("name") String name){
+    List<Food> searchFoods(@RequestParam("name") String name) {
         return foodService.searchFoodByTitle(name);
+    }
+
+    @GetMapping("/delete-food/{id}")
+    void deleteFood(@PathVariable String id) {
+        foodService.deleteFoodById(Integer.parseInt(id));
     }
 }

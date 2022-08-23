@@ -43,6 +43,11 @@ public class AdminController
         return "admin/AddUser";
     }
 
+    @RequestMapping(value = "/manage-food", method = {RequestMethod.GET, RequestMethod.POST})
+    public String showManageFoodPage() {
+        return "admin/ManageFood";
+    }
+
     @RequestMapping(value = "/add-food", method = {RequestMethod.GET, RequestMethod.POST})
     public String showAddFoodPage(@ModelAttribute("food") Food food) {
         return "admin/AddFood";
@@ -51,7 +56,7 @@ public class AdminController
     @PostMapping("/add-food-action")
     public String register(@Valid @ModelAttribute(value = "food") Food food, BindingResult bindingResult) {
 
-        if (bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "redirect:/add-food?error";
         }
 

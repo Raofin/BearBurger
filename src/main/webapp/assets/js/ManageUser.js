@@ -15,8 +15,8 @@ function fetchAllUsers() {
                     '    <td>' + value['spent'] + '</td> ' +
                     '    <td> ';
                 user += value['enabled'] === true
-                    ? '        <a  id="user' + value['userID'] + '" class="green-text" onclick="' + 'disableUser(' + value['userID'] + ')">Disable</a> '
-                    : '        <a  id="user' + value['userID'] + '" class="red-text" onclick="' + 'enableUser(' + value['userID'] + ')">Enable</a> ';
+                    ? '        <a  id="user' + value['userID'] + '" class="red-text" onclick="' + 'disableUser(' + value['userID'] + ')">Disable</a> '
+                    : '        <a  id="user' + value['userID'] + '" class="green-text" onclick="' + 'enableUser(' + value['userID'] + ')">Enable</a> ';
                 user +=
                     '    </td>' +
                     '</tr>';
@@ -51,11 +51,11 @@ function changeText(id) {
 
     if (element.innerText === 'Enable') {
         element.innerText = 'Disable';
-        element.classList.remove('red-text');
-        element.classList.add('green-text');
+        element.classList.remove('green-text');
+        element.classList.add('red-text');
     } else {
         element.innerText = 'Enable';
-        element.classList.remove('green-text');
-        element.classList.add('red-text')
+        element.classList.remove('red-text');
+        element.classList.add('green-text')
     }
 }

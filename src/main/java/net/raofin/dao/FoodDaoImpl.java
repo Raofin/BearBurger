@@ -64,8 +64,8 @@ public class FoodDaoImpl implements FoodDao
     }
 
     @Override
-    public void deleteFoodByTitle(String title) {
-        Food food = fetchFoodByTitle(title);
+    public void deleteFoodById(int id) {
+        Food food = fetchFoodByID(id);
         sessionFactory.getCurrentSession().delete(food);
     }
 

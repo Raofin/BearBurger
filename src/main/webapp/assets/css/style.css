@@ -76,12 +76,12 @@ a.white-back-text {
     font-weight: bold;
 }
 
-.red-text,
+.green-text,
 .success {
     color: rgb(5, 211, 5);
 }
 
-.green-text,
+.red-text,
 .error-message {
     color: tomato;
 }
@@ -931,14 +931,13 @@ input[type='radio'].form-input-error {
     background: rgb(26, 25, 25);
 }
 
-.manage-user-container a:first-child {
+/*.manage-user-container a:first-child {
     padding-right: 20px;
-}
+}*/
 
 .manage-user-container button {
     margin-bottom: 0;
 }
-
 
 .food-box p, .food-box h2 {
     color: white;
