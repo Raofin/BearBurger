@@ -60,7 +60,6 @@ public class CustomerController
         user.setPhoneNumber(updatedUser.getPhoneNumber());
 
         userService.updateUser(user);
-        //userDao.updateUser(user);
 
         return "redirect:/profile?updated";
     }

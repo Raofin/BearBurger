@@ -1,6 +1,7 @@
 package net.raofin.controller;
 
 import net.raofin.model.Food;
+import net.raofin.model.User;
 import net.raofin.service.FoodService;
 import net.raofin.service.UserService;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -41,6 +42,17 @@ public class AdminController
     @RequestMapping(value = "/add-user", method = {RequestMethod.GET, RequestMethod.POST})
     public String showAddUserPage() {
         return "admin/AddUser";
+    }
+
+    @PostMapping("/add-user-action")
+    public String saveUser(@Valid @ModelAttribute(value = "user") User user, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "redirect:/add-user?error";
+        }
+
+        userService.registerUser(user);
+        return "redirect:/add-user?added";
     }
 
     @RequestMapping(value = "/manage-food", method = {RequestMethod.GET, RequestMethod.POST})

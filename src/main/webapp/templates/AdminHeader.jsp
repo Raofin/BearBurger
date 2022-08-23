@@ -15,7 +15,7 @@
 <body>
 
 <header>
-    <a class="logo" href="/dashboard"><img src="<c:url value="/assets/img/nav-logo.svg"/>" alt="logo"></a>
+    <a class="logo" href="./dashboard"><img src="<c:url value="/assets/img/nav-logo.svg"/>" alt="logo"></a>
     <nav>
         <ul class="nav-links">
 
@@ -27,12 +27,13 @@
             </sec:authorize>
 
             <sec:authorize access="hasAuthority('ADMIN')">
+                <li><a href="./home">Home</a></li>
                 <li><a href="./dashboard">Dashboard</a></li>
                 <li><a href="./manage-user">Manage User</a></li>
                 <li><a href="./add-user">Add User</a></li>
                 <li><a href="./add-food">Add Foods</a></li>
                 <li><a href="<c:url value="/logout"/>">Log Out</a></li>
-<%--                <li class="username"><sec:authentication property="principal.username"/></li>--%>
+                <li class="username"><sec:authentication property="principal.username"/></li>
             </sec:authorize>
 
 <%--            <li><a class="project-details" href="">Project Details</a></li>--%>

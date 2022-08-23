@@ -1,6 +1,5 @@
 package net.raofin.controller;
 
-import net.raofin.dao.UserDao;
 import net.raofin.model.User;
 import net.raofin.service.UserService;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -15,11 +14,9 @@ import java.util.Objects;
 @Controller
 public class MainController
 {
-    private final UserDao userDao;
     private final UserService userService;
 
-    public MainController(UserDao userDao, UserService userService) {
-        this.userDao = userDao;
+    public MainController(UserService userService) {
         this.userService = userService;
     }
 
