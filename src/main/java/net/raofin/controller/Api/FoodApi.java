@@ -1,4 +1,4 @@
-package net.raofin.controller;
+package net.raofin.controller.Api;
 
 import net.raofin.dao.FoodDao;
 import net.raofin.model.Food;

@@ -70,8 +70,8 @@ public class UserDaoImpl implements UserDao
     }
 
     @Override
-    public void deleteUser(String email) {
-        User user = fetchUserByEmail(email);
+    public void deleteUser(String username) {
+        User user = fetchUserByUsername(username);
         sessionFactory.getCurrentSession().delete(user);
     }
 

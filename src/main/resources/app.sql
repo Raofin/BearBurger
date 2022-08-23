@@ -26,7 +26,10 @@ CREATE TABLE IF NOT EXISTS Roles
     RoleID INT AUTO_INCREMENT PRIMARY KEY,
     UserID INT         NOT NULL,
     Role   VARCHAR(10) NOT NULL,
-    CONSTRAINT Role_FK FOREIGN KEY (UserID) REFERENCES Users (UserID)
+    CONSTRAINT Role_FK
+        FOREIGN KEY (UserID)
+            REFERENCES Users (UserID)
+            ON DELETE CASCADE
 );
 
 # insert user data
