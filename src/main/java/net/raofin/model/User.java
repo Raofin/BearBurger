@@ -7,7 +7,6 @@ import javax.validation.constraints.Size;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 @Entity
 @Table(name = "users")
@@ -25,7 +24,7 @@ public class User
 
     @Email
     @NotNull
-    @Size(min = 6, max = 15)
+    @Size(min = 6, max = 30)
     @Column(name = "email")
     private String email;
 
@@ -34,13 +33,12 @@ public class User
     @Column(name = "password")
     private String password;
 
-    @NotNull
-    @Size(min = 6, max = 15)
+    @Size(min = 6, max = 30)
     @Transient
     private String cPassword;
 
     @NotNull
-    @Size(min = 11, max = 15)
+    @Size(min = 11, max = 20)
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
@@ -138,8 +136,8 @@ public class User
     }
 
     public String getRegDateFormatted() {
-        String pattern = "E, dd MMM yyyy hh:mm aa"; //	Sun, 21 Aug 2022 11:34 PM
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("Asia/Dhaka"));
+        String pattern = "E, dd MMM yyyy"; // Sun, 21 Aug 2022 11:34 PM
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern/*, new Locale("Asia/Dhaka")*/);
         return simpleDateFormat.format(regDate);
     }
 

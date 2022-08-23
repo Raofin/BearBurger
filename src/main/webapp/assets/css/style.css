@@ -491,7 +491,7 @@ input[type='radio'].form-input-error {
     font-size: 15px;
     width: 100%;
     height: 25px;
-    padding: 2px;
+    padding: 2px 5px;
     border: none;
     border-radius: 5px;
     box-shadow: rgba(99, 99, 99, 0.4) 0 2px 8px 0;
@@ -950,4 +950,10 @@ table#foods-table {
 
 table.profile-table {
     color: white;
+    font-size: 20px;
+}
+
+input#confirm-button {
+    color: red;
+    font-weight: bold;
 }

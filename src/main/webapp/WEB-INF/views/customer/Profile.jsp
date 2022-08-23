@@ -38,9 +38,20 @@
             </table>
         </center>
         <div class="center-text">
-            <p id="message"></p>
+            <p id="message" style="margin: 0;">
+                <%
+                    if (request.getParameter("error") != null) {
+                        out.print("<p class=\"error-message\">Please fill out all the fields properly.</p>");
+                    }
+                    if (request.getParameter("updated") != null) {
+                        out.print("<p class=\"success\">Your details has been successfully updated.</p>");
+                    }
+                %>
+            </p>
         </div>
-        <input type="submit" value="Modify Details" class="button" style="margin: 0;">
+        <div>
+            <a href="./profile-modify" class="button">Modify</a>
+        </div>
     </form>
 </div>
 

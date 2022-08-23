@@ -4,50 +4,50 @@
 <c:import url="/templates/CustomerHeader.jsp"/>
 
 <div class="center">
-    <form:form class="form-user-profile" id="update-form" method="post">
+    <form:form action="profile-modify-action" class="form-user-profile" id="update-form" method="post" modelAttribute="user">
         <h1>User Profile</h1>
         <center>
-            <table>
+            <table class="profile-table">
                 <tr>
                     <td>Username:</td>
-                    <td><form:input type="text" id="username" path="username"
-                               value="<?php echo $_SESSION['username'] ?>"></td>
+                    <td>${user.username}</td>
                 </tr>
                 <tr>
                     <td>Email:</td>
-                    <td><form:input type="text" id="email" name="email" value="<?php echo $_SESSION['email'] ?>"></td>
+                    <td><form:input type="text" path="email"/></td>
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td><form:input type="password" id="password" name="password"
-                               value="<?php echo $_SESSION['password'] ?>"></td>
+                    <td><form:input type="password" path="password"/></td>
                 </tr>
                 <tr>
                     <td>Phone:</td>
-                    <td><form:input type="text" id="phone" name="phone" value="<?php echo $_SESSION['phone'] ?>"></td>
+                    <td><form:input type="text" path="phoneNumber"/></td>
                 </tr>
                 <tr>
                     <td>Gender:</td>
-                    <td><?php echo $_SESSION['gender'] ?></td>
+                    <td>${user.gender}</td>
                 </tr>
                 <tr>
                     <td>Spent:</td>
-                    <td><?php echo $_SESSION['spent'] ?> tk</td>
+                    <td>${user.spent} tk</td>
                 </tr>
                 <tr>
                     <td>Joined:</td>
-                    <td><?php echo date('F j, Y', strtotime($_SESSION['joined'])) ?></td>
+                    <td>${user.regDateFormatted}</td>
                 </tr>
             </table>
         </center>
         <div>
             <div class="center-text">
-                <p id="message"></p>
+                <p id="message">
+                    <% if (request.getParameter("error") != null)
+                        out.print("<p class=\"error-message\">Please fill out all the fields properly.</p>");
+                    %>
+                </p>
             </div>
-            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') update() ?>
-            <input type="submit" value="Update" class="button" style="margin: 0;">
+            <input class="button" id="confirm-button" type="submit" value="Confirm">
         </div>
-
     </form:form>
 </div>
 
