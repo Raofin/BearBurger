@@ -58,7 +58,7 @@ public class MainController
 
         userService.registerUser(user);
 
-        return "redirect:/login";
+        return "redirect:/login?regSuccess";
     }
 
     @GetMapping("/403")

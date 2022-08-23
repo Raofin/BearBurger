@@ -38,18 +38,19 @@ VALUES ('Raofin', 'hello@raofin.net', 'Asdfgh', '+8801234567890', 'male', 6801, 
        ('Sazzad', 'sazzad96@gmail.com', 'sazzaz123', '+1263343299123', 'male', 9252, TRUE),
        ('Authoi', 'authoi123@gmail.com', 'authoi999', '+2369543156441', 'female', 8056, TRUE),
        ('Bill Gates', 'billgates@outlook.com', 'billgates68457', '+6963343233159', 'male', 9960, TRUE),
-       ('Elon Musk', 'elonmusk@yahoo.com', 'elon123', '+9668508170248', 'male', 7856, TRUE),
+       ('Elon Musk', 'elonmusk@yahoo.com', 'elon123', '+9668508170248', 'male', 7856, FALSE),
        ('Jack Ma', 'jackma@gmail.com', 'jackma144', '+1667698473784', 'male', 4567, TRUE),
        ('Steve Jobs', 'stevejobs@icloud.com', 'steve1213', '+1527475095845', 'male', 421, TRUE),
-       ('Jeff Bezos', 'jeffbezos@gmail.com', 'jeffbe1334', '+8966295324845', 'male', 2152, TRUE),
+       ('Jeff Bezos', 'jeffbezos@gmail.com', 'jeffbe1334', '+8966295324845', 'male', 2152, FALSE),
        ('Mark Zuckerberg', 'markzuckerberg@live.com', 'markz131', '+2657146731697', 'male', 3972, TRUE),
-       ('Sundar Pichai', 'sundarpichai@gmail.com', 'sundarp296', '+9815680737969', 'male', 1546, TRUE),
+       ('Sundar Pichai', 'sundarpichai@gmail.com', 'sundarp296', '+9815680737969', 'male', 1546, FALSE),
        ('1111', '1111@1111.com', '1111', '+4795131456789', 'male', 0, TRUE),
        ('admin', 'admin@email.com', 'admin', '+6478912356147', 'male', 0, TRUE);
 
 # insert user data
 INSERT IGNORE INTO Roles (UserID, Role)
 VALUES (1, 'CUSTOMER'),
+       (1, 'ADMIN'),
        (2, 'CUSTOMER'),
        (3, 'CUSTOMER'),
        (4, 'CUSTOMER'),

@@ -52,7 +52,7 @@
                             out.print("<p class=\"error-message\">Please fill out all the fields properly.</p>");
                         }
                         if (request.getParameter("added") != null) {
-                            out.print("<p class=\"success\">New food added.</p>");
+                            out.print("<p class=\"success\">New user added!</p>");
                         }
                     %>
                 </p>

@@ -9,9 +9,9 @@
 
         <fieldset>
             <div>
-                <label for="username">Username or Email</label>
+                <label for="username">Username</label>
                 <input autofocus class="form-input-box" id="username" name="username"
-                       placeholder="Enter your username or email here" type="text">
+                       placeholder="Enter your username here" type="text">
             </div>
             <div>
                 <label for="password">Password</label>
@@ -21,17 +21,23 @@
                 <input id="password" name="password" autocomplete="on" class="form-input-box"
                        placeholder="Enter your password here" type="password">
             </div>
-            <%--<div class="remember-me">
-                <input id="remember" name="remember" type="checkbox"/>
-                <label for="remember">Remember Me</label>
-            </div>--%>
+                <%--<div class="remember-me">
+                    <input id="remember" name="remember" type="checkbox"/>
+                    <label for="remember">Remember Me</label>
+                </div>--%>
         </fieldset>
 
         <div class="bottom">
             <div class="center-text">
                 <p id="prompt-message">
-                    <% if (request.getParameter("error") != null)
-                        out.print("<p class=\"error-message\">Invalid username or password.</p>");
+                    <%
+                        if (request.getParameter("error") != null) {
+                            out.print("<p class=\"error-message\">Invalid username or password.</p>");
+                        }
+
+                        if (request.getParameter("regSuccess") != null) {
+                            out.print("<p class=\"success\">Registration successful.</p>");
+                        }
                     %>
                 </p>
             </div>

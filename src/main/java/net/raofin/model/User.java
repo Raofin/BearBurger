@@ -47,7 +47,7 @@ public class User
     private String gender;
 
     @Column(name = "spent")
-    private String spent;
+    private String spent = "0";
 
     @Column(name = "enabled")
     private boolean isEnabled = true;
