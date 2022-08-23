@@ -77,7 +77,20 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
+    public void disableUser(int id) {
+        userDao.disableUser(id);
+    }
+
+    @Override
+    public void enableUser(int id) {
+        userDao.enableUser(id);
+
+    }
+
+    @Override
     public List<User> searchUserByEmail(String email) {
         return userDao.searchUserByEmail(email);
     }
+
+
 }

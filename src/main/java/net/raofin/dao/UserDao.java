@@ -20,5 +20,9 @@ public interface UserDao
 
     void deleteUser(String username);
 
+    void disableUser(int id);
+
+    void enableUser(int id);
+
     List<User> searchUserByEmail(String email);
 }

@@ -48,8 +48,13 @@ public class UserDaoImpl implements UserDao
         Session session = this.sessionFactory.getCurrentSession();
         Query<User> userQuery = session.createQuery("FROM User WHERE Username = :username", User.class);
         userQuery.setParameter("username", username);
+
         try {
-            return userQuery.getSingleResult();
+            if (userQuery.getSingleResult().isEnabled())
+                return userQuery.getSingleResult();
+
+            else return null;
+
         } catch (Exception e) {
             return null;
         }
@@ -73,6 +78,22 @@ public class UserDaoImpl implements UserDao
     public void deleteUser(String username) {
         User user = fetchUserByUsername(username);
         sessionFactory.getCurrentSession().delete(user);
+    }
+
+    @Override
+    public void disableUser(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        User user = fetchUserById(id);
+        user.setEnabled(false);
+        session.update(user);
+    }
+
+    @Override
+    public void enableUser(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        User user = fetchUserById(id);
+        user.setEnabled(true);
+        session.update(user);
     }
 
     @Override

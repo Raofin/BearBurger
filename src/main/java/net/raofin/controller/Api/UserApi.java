@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/admin")
 public class UserApi
 {
     private final UserDao userDao;
@@ -31,12 +31,21 @@ public class UserApi
 
     @GetMapping("/fetchUserById/{id}")
     User fetchUserById(@PathVariable String id) {
-        System.out.println(userDao.fetchUserById(Integer.parseInt(id)));
         return userDao.fetchUserById(Integer.parseInt(id));
     }
 
     @GetMapping("/deleteUserByUsername/{username}")
     void deleteUserByUsername(@PathVariable String username) {
         userDao.deleteUser(username);
+    }
+
+    @GetMapping("/disableUser/{id}")
+    void disableUser(@PathVariable int id) {
+        userDao.disableUser(id);
+    }
+
+    @GetMapping("/enableUser/{id}")
+    void enableUser(@PathVariable int id) {
+        userDao.enableUser(id);
     }
 }

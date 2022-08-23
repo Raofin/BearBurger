@@ -7,19 +7,25 @@ import java.util.List;
 
 public interface UserService extends UserDetailsService
 {
-    public List<User> fetchAllUsers();
+    List<User> fetchAllUsers();
 
-    public void registerUser(User user);
+    void registerUser(User user);
 
-    public User fetchUserById(int id);
+    User fetchUserById(int id);
 
-    public User fetchUserByUsername(String username);
+    User fetchUserByUsername(String username);
 
-    public User fetchUserByEmail(String email);
+    User fetchUserByEmail(String email);
 
-    public void updateUser(User user);
+    void updateUser(User user);
 
-    public void deleteUser(String email);
+    void deleteUser(String email);
 
-    public List<User> searchUserByEmail(String email);
+    void disableUser(int id);
+
+    void enableUser(int id);
+
+    List<User> searchUserByEmail(String email);
+
+
 }
