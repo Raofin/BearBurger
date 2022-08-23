@@ -76,10 +76,12 @@ a.white-back-text {
     font-weight: bold;
 }
 
+.red-text,
 .success {
     color: rgb(5, 211, 5);
 }
 
+.green-text,
 .error-message {
     color: tomato;
 }
@@ -910,6 +912,10 @@ input[type='radio'].form-input-error {
     box-shadow: rgb(0 0 0 / 90%) 0 0 5px;
 }
 
+.table-wrapper a {
+    cursor: pointer;
+}
+
 .manage-user-container table {
     overflow: hidden;
     width: 100%;
@@ -934,7 +940,6 @@ input[type='radio'].form-input-error {
 }
 
 
-
 .food-box p, .food-box h2 {
     color: white;
     text-align: center;
@@ -957,3 +962,4 @@ input#confirm-button {
     color: red;
     font-weight: bold;
 }
+
