@@ -4,7 +4,7 @@
 
 <center>
     <div class="food-container">
-        <h1 style="text-align: center">Order Your Favourite Foods!</h1>
+        <h1 style="text-align: center">Search Your Favourite Foods!</h1>
 
         <form action="" method="post">
             <input class="search-input-box" id="search-box"

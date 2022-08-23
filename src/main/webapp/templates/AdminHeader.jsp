@@ -28,15 +28,16 @@
 
             <sec:authorize access="hasAuthority('ADMIN')">
                 <li><a href="./home">Home</a></li>
-                <li><a href="./dashboard">Dashboard</a></li>
+                <li><a href="./dashboard">Admin Panel</a></li>
                 <li><a href="./manage-user">Manage User</a></li>
                 <li><a href="./add-user">Add User</a></li>
                 <li><a href="./add-food">Add Foods</a></li>
                 <li><a href="<c:url value="/logout"/>">Log Out</a></li>
-                <li class="username"><sec:authentication property="principal.username"/></li>
+                <li class="username"><a href="./profile">
+                    <sec:authentication property="principal.username"/></a></li>
             </sec:authorize>
 
-<%--            <li><a class="project-details" href="">Project Details</a></li>--%>
+            <%--            <li><a class="project-details" href="">Project Details</a></li>--%>
         </ul>
     </nav>
 </header>

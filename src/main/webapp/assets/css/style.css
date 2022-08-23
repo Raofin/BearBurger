@@ -520,6 +520,7 @@ input[type='radio'].form-input-error {
     margin-top: 20px;
     padding: 10px;
     border-radius: 5px;
+    text-align: center;
 }
 
 /*======================= Payment ======================*/
@@ -758,32 +759,30 @@ input[type='radio'].form-input-error {
     margin: 0 auto 140px auto;
     padding: 50px;
     transform: translate(-50%, -50%);
-
-
     text-align: center;
     border-radius: 10px;
-    background-color: rgba(41, 40, 40, 0.50);
-    box-shadow: rgba(0, 0, 0, 0.9) 0 5px 15px;
-    filter: drop-shadow(0px 3px 3px black);
+    /*background-color: rgba(41, 40, 40, 0.50);*/
+    /*box-shadow: rgba(0, 0, 0, 0.9) 0 5px 15px;*/
+    /*filter: drop-shadow(0px 3px 3px black);*/
 }
 
 .admin-items {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    width: 500px;
 }
 
 .admin-title {
-
-    font-size: 30px;
-    font-weight: 800;
+    font-size: 40px;
+    font-weight: 900;
     width: 300px;
-    margin: 0 auto 20px;
+    margin: 0 auto ;
     padding: 10px;
-    color: rgb(255, 255, 255);
+    color: white;
     border-radius: 12px;
-    background-color: #252525;
-
+    /*padding-bottom: 5px;*/
+    filter: drop-shadow(5px 3px 5px black);
+    -webkit-filter: drop-shadow(5px 3px 5px black);
 }
 
 .username a {
@@ -797,6 +796,28 @@ input[type='radio'].form-input-error {
 .admin-logo {
     position: relative;
     width: 200px;
+    margin-right: 30px;
+}
+
+.admin-form-title {
+    font-size: 32px;
+    font-weight: 900;
+    text-align: center;
+    filter: drop-shadow(5px 3px 5px black);
+    -webkit-filter: drop-shadow(5px 3px 5px black);
+}
+
+.username a {
+    font-weight: 800;
+    padding: 5px 10px;
+    color: rgb(0, 0, 0);
+    border-radius: 12px;
+    background-color: #fff;
+}
+
+.admin-logo {
+    position: relative;
+    width: 250px;
     margin-right: 30px;
 }
 
