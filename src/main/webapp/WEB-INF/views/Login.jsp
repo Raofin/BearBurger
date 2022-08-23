@@ -29,7 +29,11 @@
 
         <div class="bottom">
             <div class="center-text">
-                <p id="prompt-message"></p>
+                <p id="prompt-message">
+                    <% if (request.getParameter("error") != null)
+                        out.print("<p class=\"error-message\">Invalid username or password.</p>");
+                    %>
+                </p>
             </div>
             <div class="center">
                 <input class="button" id="form-submit" type="submit" value="Login">

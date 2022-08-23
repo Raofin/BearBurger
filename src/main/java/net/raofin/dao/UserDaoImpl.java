@@ -48,7 +48,11 @@ public class UserDaoImpl implements UserDao
         Session session = this.sessionFactory.getCurrentSession();
         Query<User> userQuery = session.createQuery("FROM User WHERE Username = :username", User.class);
         userQuery.setParameter("username", username);
-        return userQuery.getSingleResult();
+        try {
+            return userQuery.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @Override

@@ -22,19 +22,22 @@ public class AppSecurityConfig
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                    .antMatchers("/dashboard", "/manage-user", "/addUser", "/addFood", "/api/**").hasAuthority("ADMIN")
-                    .antMatchers("/profile", "/profile-modify","/payment", "/api/**").hasAuthority("CUSTOMER")
+                    .antMatchers("/dashboard", "/manage-user", "/addUser", "/addFood").hasAuthority("ADMIN")
+                    .antMatchers("/profile", "/profile-modify","/payment").hasAuthority("CUSTOMER")
                     .antMatchers("/").permitAll()
-                .and()
-                    .formLogin()
+                    .and()
+                .formLogin()
                     .loginPage("/login")
+                    .usernameParameter("username")
+                    .passwordParameter("password")
                     .defaultSuccessUrl("/home")
-                .and()
-                    .logout()
+                    .failureUrl("/login?error")
+                    .and()
+                .logout()
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                     .logoutSuccessUrl("/login")
-                .and()
-                    .exceptionHandling()
+                    .and()
+                .exceptionHandling()
                     .accessDeniedPage("/403");
 
         return httpSecurity.build();
