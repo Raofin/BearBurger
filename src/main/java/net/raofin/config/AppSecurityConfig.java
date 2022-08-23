@@ -22,7 +22,7 @@ public class AppSecurityConfig
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                    .antMatchers("/dashboard", "/manage-user", "/addUser", "/addFood").hasAuthority("ADMIN")
+                    .antMatchers("/api/admin/**, /dashboard", "/manage-user", "/addUser", "/addFood").hasAuthority("ADMIN")
                     .antMatchers("/profile", "/profile-modify","/payment").hasAuthority("CUSTOMER")
                     .antMatchers("/").permitAll()
                     .and()

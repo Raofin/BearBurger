@@ -45,7 +45,8 @@ public class AppConfig implements WebMvcConfigurer
         sessionFactory.setPackagesToScan("net.raofin.model");
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        properties.setProperty("show_sql", "true");
+        properties.setProperty("hibernate.show_sql", "true");
+        properties.setProperty("hibernate.format_sql", "true");
         sessionFactory.setHibernateProperties(properties);
         return sessionFactory;
     }
