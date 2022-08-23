@@ -7,9 +7,9 @@
     <div class="admin-items">
         <img class="admin-logo" src="<c:url value="/assets/img/admin-logo.svg"/>" alt="logo">
         <div class="admin-buttons">
-            <div><a href="${pageContext.request.contextPath}/admin/manageUser"><button>Manage User</button></a></div>
-            <div><a href="${pageContext.request.contextPath}/admin/addUser"><button>Add User</button></a></div>
-            <div><a href="${pageContext.request.contextPath}/admin/addFood"><button>Add Foods</button></a></div>
+            <div><a href="./manage-user"><button>Manage User</button></a></div>
+            <div><a href="./add-user"><button>Add User</button></a></div>
+            <div><a href="./add-food"><button>Add Foods</button></a></div>
             <div><a href=""><button>Purchase Log</button></a></div>
         </div>
     </div>

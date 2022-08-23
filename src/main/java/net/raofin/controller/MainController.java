@@ -2,6 +2,7 @@ package net.raofin.controller;
 
 import net.raofin.dao.UserDao;
 import net.raofin.model.User;
+import net.raofin.service.UserService;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,9 +16,11 @@ import java.util.Objects;
 public class MainController
 {
     private final UserDao userDao;
+    private final UserService userService;
 
-    public MainController(UserDao userDao) {
+    public MainController(UserDao userDao, UserService userService) {
         this.userDao = userDao;
+        this.userService = userService;
     }
 
     @InitBinder
@@ -56,7 +59,7 @@ public class MainController
         if (bindingResult.hasErrors() || !Objects.equals(user.getPassword(), user.getcPassword()))
             return "redirect:/register?error";
 
-        userDao.registerUser(user);
+        userService.registerUser(user);
 
         return "redirect:/register";
     }

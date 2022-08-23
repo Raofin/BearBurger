@@ -16,7 +16,7 @@
         //         xmlHttp.send();
 
         function renderUsers() {
-            $.getJSON("http://localhost:8080/spring_web_war_exploded/rest/users",
+            $.getJSON("http://localhost:8080/spring_web_war_exploded/api/fetchAllUsers",
                 function (data) {
                     user='';
                     $.each(data,function (key,value) {
@@ -42,7 +42,6 @@
                 }
             )
         }
-        $("#usersTableid").append(users);
         function deleteRequest(email){
 
             var xmlhttp = new XMLHttpRequest();
