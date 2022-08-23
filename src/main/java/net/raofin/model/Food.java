@@ -1,6 +1,10 @@
 package net.raofin.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "foods")
@@ -11,15 +15,23 @@ public class Food
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int foodID;
 
+    @NotNull
     @Column(name = "category")
     private String category;
 
+    @NotNull
+    @Size(min = 4, max = 15)
     @Column(name = "title")
     private String title;
 
+    @NotNull
+    @Size(min = 4, max = 200)
     @Column(name = "description")
     private String description;
 
+    @NotNull
+    @Min(0)
+    @Max(2000)
     @Column(name = "price")
     private int price;
 
