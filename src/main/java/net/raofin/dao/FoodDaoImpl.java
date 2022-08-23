@@ -72,8 +72,8 @@ public class FoodDaoImpl implements FoodDao
     @Override
     public List<Food> searchFoodByTitle(String title) {
         Session session = sessionFactory.getCurrentSession();
-        Query<Food> foodQuery = session.createQuery("FROM Food WHERE Title LIKE '%:title%'", Food.class);
-        foodQuery.setParameter("title", title);
+        Query<Food> foodQuery = session.createQuery("FROM Food WHERE Title like '%" + title + "%'", Food.class);
+        //foodQuery.setParameter("title", title);
         return foodQuery.getResultList();
     }
 }

@@ -61,7 +61,7 @@ public class MainController
 
         userService.registerUser(user);
 
-        return "redirect:/register";
+        return "redirect:/login";
     }
 
     @GetMapping("/403")

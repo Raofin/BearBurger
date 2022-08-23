@@ -1,24 +1,66 @@
-const input = document.getElementById('search-box');
+//$(document).ready(() => fetchFoods('Burger'))
 
-document.addEventListener('load', searchAndFetch(''));
+function fetchFoods(category) {
+    const foodsTable = $("foods-table");
 
-input.addEventListener('input', () => searchAndFetch(input.value));
-input.addEventListener('keypress', event => {
-    if (event.key === 'Enter') event.preventDefault();
-})
+    $.ajax({
+        url: 'api/fetchFoods/' + category,
+        method: "GET",
+        success: data => {
+            let foodHtml = "";
 
-function searchAndFetch(foodTitle) {
-    const foodsTable = document.getElementById("foods-table");
-    const xhr = new XMLHttpRequest();
+            for (let i = 0; i < data.length; i++) {
+                foodHtml += "" +
+                    "<td>\n" +
+                    "    <div class=\"food-box\">\n" +
+                    "        <h2>" + data[i]['title'] + "</h2>\n" +
+                    "        <p>" + data[i]['description'] + "</p>\n" +
+                    "        <p class=\"food-price\">Price: " + data[i]['price'] + "tk</p>\n" +
+                    "        <div class='food-container-buttons'>\n" +
+                    "            <a href=\"./payment?id=\"" + data[i]['foodID'] + "\"><button type=\"button\" class=\"button\">Buy</button></a>\n" +
+                    "            <a href=\"./comments?id=\"" + data[i]['foodID'] + "\"><button type=\"button\" class=\"button\">Comment</button></a>\n" +
+                    "        </div>\n" +
+                    "    </div>\n" +
+                    "</td>";
 
-    xhr.open("GET", "../models/Foods.php?search=" + foodTitle);
-    xhr.onload = function () {
-        foodsTable.innerHTML = '';
+                document.getElementById('foods-table').innerHTML = foodHtml;
+            }
+        }
+    });
 
-        if (this.responseText === '')
-            foodsTable.innerHTML = '<h3 style="color:tomato">' +
-                'Sorry! "' + input.value + '" is not available.</h3>';
-        else foodsTable.innerHTML = this.responseText;
-    }
-    xhr.send();
+    $('label').removeClass('white-back-text');
+    $('#' + category).addClass('white-back-text');
 }
+$(document).ready(() => searchFood(''))
+function searchFood(title) {
+    const foodsTable = $("foods-table");
+
+    $.ajax({
+        url: 'api/searchFoods?name=' + title,
+        method: "GET",
+        success: data => {
+            let foodHtml = "";
+
+            for (let i = 0; i < data.length; i++) {
+                foodHtml += "" +
+                    "<td>\n" +
+                    "    <div class=\"food-box\">\n" +
+                    "        <h2>" + data[i]['title'] + "</h2>\n" +
+                    "        <p>" + data[i]['description'] + "</p>\n" +
+                    "        <p class=\"food-price\">Price: " + data[i]['price'] + "tk</p>\n" +
+                    "        <div class='food-container-buttons'>\n" +
+                    "            <a href=\"./payment?id=\"" + data[i]['foodID'] + "\"><button type=\"button\" class=\"button\">Buy</button></a>\n" +
+                    "            <a href=\"./comments?id=\"" + data[i]['foodID'] + "\"><button type=\"button\" class=\"button\">Comment</button></a>\n" +
+                    "        </div>\n" +
+                    "    </div>\n" +
+                    "</td>";
+
+                document.getElementById('foods-table').innerHTML = foodHtml;
+            }
+        }
+    });
+
+    $('label').removeClass('white-back-text');
+    $('#' + category).addClass('white-back-text');
+}
+
