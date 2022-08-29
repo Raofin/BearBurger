@@ -41,7 +41,7 @@ $('#register-form').validate({
         phone: {
             required: true,
             phoneRegex: true,
-            minlength: 11,
+            minlength: 6,
             maxlength: 20,
             normalizer: value => removeWhitespaces(value, '#phone'),
         },
@@ -67,6 +67,11 @@ $('#register-form').validate({
         cPassword: {
             required: "Please provide a password",
             equalTo: "Please enter the same password as above",
+        },
+        phone: {
+            required: "Please enter phone number",
+            minlength: "Your phone number must be at least 6 characters long",
+            maxlength: "Your phone number must be no more than 20 characters long"
         },
         gender: "Please select your gender",
     },

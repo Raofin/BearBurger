@@ -38,7 +38,7 @@ public class User
     private String cPassword;
 
     @NotNull
-    @Size(min = 11, max = 20)
+    @Size(min = 6, max = 20)
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
