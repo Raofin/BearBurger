@@ -1,6 +1,7 @@
 package net.raofin.controller.Api;
 
 import net.raofin.model.User;
+import net.raofin.service.FoodService;
 import net.raofin.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,9 +15,11 @@ import java.util.List;
 public class UserApi
 {
     private final UserService userService;
+    private final FoodService foodService;
 
-    public UserApi(UserService userService) {
+    public UserApi(UserService userService, FoodService foodService) {
         this.userService = userService;
+        this.foodService = foodService;
     }
 
     @GetMapping("/fetchAllUsers")
@@ -39,6 +42,11 @@ public class UserApi
         userService.deleteUser(username);
     }
 
+    @GetMapping("/deleteUserById/{id}")
+    void deleteUserById(@PathVariable int id) {
+        userService.deleteUserById(id);
+    }
+
     @GetMapping("/disableUser/{id}")
     void disableUser(@PathVariable int id) {
         userService.disableUser(id);
@@ -52,5 +60,10 @@ public class UserApi
     @GetMapping("/makeAdmin/{id}")
     void makeAdmin(@PathVariable int id) {
         userService.makeAdmin(id);
+    }
+
+    @GetMapping("/delete-food/{id}")
+    void deleteFood(@PathVariable String id) {
+        foodService.deleteFoodById(Integer.parseInt(id));
     }
 }

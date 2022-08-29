@@ -20,6 +20,8 @@ public interface UserDao
 
     void deleteUser(String username);
 
+    void deleteUserById(int id);
+
     void disableUser(int id);
 
     void enableUser(int id);

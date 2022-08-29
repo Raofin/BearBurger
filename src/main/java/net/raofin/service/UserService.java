@@ -19,7 +19,9 @@ public interface UserService extends UserDetailsService
 
     void updateUser(User user);
 
-    void deleteUser(String email);
+    void deleteUser(String username);
+
+    void deleteUserById(int id);
 
     void disableUser(int id);
 

@@ -30,9 +30,4 @@ public class FoodApi
     List<Food> searchFoods(@RequestParam("name") String name) {
         return foodService.searchFoodByTitle(name);
     }
-
-    @GetMapping("/delete-food/{id}")
-    void deleteFood(@PathVariable String id) {
-        foodService.deleteFoodById(Integer.parseInt(id));
-    }
 }
