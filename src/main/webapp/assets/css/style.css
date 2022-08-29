@@ -81,9 +81,13 @@ a.white-back-text {
     color: rgb(5, 211, 5);
 }
 
-.red-text,
+.tomato-text,
 .error-message {
     color: tomato;
+}
+
+.red-text {
+    color: red;
 }
 
 label.warning-message {

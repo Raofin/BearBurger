@@ -12,6 +12,7 @@
                     <th>Username</th>
                     <th>Email</th>
                     <th>Total Spent</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </table>

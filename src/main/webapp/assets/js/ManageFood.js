@@ -14,7 +14,7 @@ function fetchAllFoods() {
                     '    <td>' + value['title'] + '</td> ' +
                     '    <td>' + value['price'] + '</td> ' +
                     '    <td> ' +
-                    '        <a class="red-text" onclick="' + 'deleteFood(' + value['foodID'] + ')">Delete</a> ' +
+                    '        <a class="tomato-text" onclick="' + 'deleteFood(' + value['foodID'] + ')">Delete</a> ' +
                     '    </td>' +
                     '</tr>';
             })
@@ -27,10 +27,8 @@ function fetchAllFoods() {
 function deleteFood(id) {
 
     $.ajax({
-        url: 'api/delete-food/' + id,
+        url: 'api/admin/delete-food/' + id,
         method: "GET",
-        success: data => {
-            document.getElementById('food' + id).remove();
-        }
+        success: $('#food' + id).remove()
     });
 }
