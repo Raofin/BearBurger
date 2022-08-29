@@ -101,11 +101,8 @@ public class UserServiceImpl implements UserService
         userDao.makePayment(id);
     }
 
-
     @Override
     public List<User> searchUserByEmail(String email) {
         return userDao.searchUserByEmail(email);
     }
-
-
 }

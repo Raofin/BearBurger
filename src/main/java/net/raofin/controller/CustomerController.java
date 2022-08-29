@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.security.Principal;
 
@@ -58,22 +59,31 @@ public class CustomerController
         user.setEmail(updatedUser.getEmail());
         user.setPassword(updatedUser.getPassword());
         user.setPhoneNumber(updatedUser.getPhoneNumber());
-
         userService.updateUser(user);
 
         return "redirect:/profile?updated";
     }
 
     @RequestMapping(value = "/payment/{foodId}", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showPaymentPage(@PathVariable int foodId, Model model) {
+    public String showPaymentPage(@PathVariable int foodId, Model model, HttpSession session) {
 
         model.addAttribute("food", foodService.fetchFoodByID(foodId));
+        session.setAttribute("price", foodService.fetchFoodByID(foodId).getPrice());
         return "customer/Payment";
     }
 
-    @RequestMapping(value = "/payment-action", method = {RequestMethod.GET, RequestMethod.POST})
-    public String paymentAction() {
+    @RequestMapping(value = "/payment-action", method = RequestMethod.POST)
+    public String paymentAction(Principal principal, HttpSession session) {
 
+        User user = userService.fetchUserByUsername(principal.getName());
+        user.setSpent(user.getSpent() + Integer.parseInt((String) session.getAttribute("price")));
+        userService.updateUser(user);
+        session.removeAttribute("price");
         return "redirect:/home";
+    }
+
+    @GetMapping("/fetchUserById/{id}")
+    User fetchUserById(@PathVariable String id) {
+        return userService.fetchUserById(Integer.parseInt(id));
     }
 }

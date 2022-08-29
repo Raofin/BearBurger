@@ -36,7 +36,7 @@
 </header>
 
 <div class="form-container" id="payment-form">
-    <form:form action="payment-action" class="" method="POST">
+    <form:form action="../payment-action" class="" method="POST">
         <div>
             <h1 class="payment-form-title">${food.title}</h1>
             <p class="payment-description">${food.description}</p>

@@ -66,20 +66,14 @@ form.addEventListener('submit', function (event) {
     else cvv.classList.remove('form-input-error');
 
     if (name.value !== '' && cardNumber.value !== '' && expDate.value !== '' && cvv.value !== '') {
-        // pay();
         document.getElementById('pay').value = 'Go Back';
         paid = true;
         messageDiv.innerHTML = '';
         messageDiv.innerHTML += '<p class="success center-text center-text">Payment Successful.</p>';
         name.value = cardNumber.value = expDate.value = cvv.value = '';
+        this.submit();
     } else {
         messageDiv.innerHTML = '';
         messageDiv.innerHTML += '<p class="error-message center-text">Please fill out all the fields.</p>';
     }
 });
-
-function pay() {
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", "./payment-action");
-    xhr.send();
-}

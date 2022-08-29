@@ -104,7 +104,6 @@ public class UserDaoImpl implements UserDao
 
     @Override
     public void makeAdmin(int id) {
-
         User user = fetchUserById(id);
         List<UserRoles> userRoles = new ArrayList<>();
         userRoles.add(new UserRoles(id, "ADMIN"));

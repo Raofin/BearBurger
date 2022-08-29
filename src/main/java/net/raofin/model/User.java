@@ -29,7 +29,7 @@ public class User
     private String email;
 
     @NotNull
-    @Size(min = 6, max = 30)
+    @Size(min = 4, max = 30)
     @Column(name = "password")
     private String password;
 
@@ -47,7 +47,7 @@ public class User
     private String gender;
 
     @Column(name = "spent")
-    private String spent = "0";
+    private int spent = 0;
 
     @Column(name = "enabled")
     private boolean isEnabled = true;
@@ -115,11 +115,11 @@ public class User
         this.gender = gender;
     }
 
-    public String getSpent() {
+    public int getSpent() {
         return spent;
     }
 
-    public void setSpent(String spent) {
+    public void setSpent(int spent) {
         this.spent = spent;
     }
 
