@@ -9,10 +9,10 @@
             <h1 class="admin-title">Admin Panel</h1>
 
             <div><a href="./add-user">
-                <button>Add User</button>
+                <button>Add Users</button>
             </a></div>
             <div><a href="./manage-user">
-                <button>Manage User</button>
+                <button>Manage Users</button>
             </a></div>
             <div><a href="./add-food">
                 <button>Add Foods</button>
