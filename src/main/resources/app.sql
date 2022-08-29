@@ -1,10 +1,10 @@
-DROP DATABASE IF EXISTS bearburger_jsp;
+DROP DATABASE IF EXISTS Bearburger_Jsp;
 
 # create database
 CREATE DATABASE IF NOT EXISTS BearBurger_JSP;
 
 # select the database
-USE bearburger_jsp;
+USE Bearburger_Jsp;
 
 # create users table
 CREATE TABLE IF NOT EXISTS Users
@@ -24,12 +24,12 @@ CREATE TABLE IF NOT EXISTS Users
 CREATE TABLE IF NOT EXISTS Roles
 (
     RoleID INT AUTO_INCREMENT PRIMARY KEY,
-    UserID INT         NOT NULL,
-    Role   VARCHAR(10) NOT NULL,
-    CONSTRAINT Role_FK
-        FOREIGN KEY (UserID)
-            REFERENCES Users (UserID)
-            ON DELETE CASCADE
+    UserID INT,
+    Role   VARCHAR(10)
+    #     CONSTRAINT Role_FK
+    #         FOREIGN KEY (UserID)
+    #             REFERENCES Users (UserID)
+    #             ON DELETE CASCADE
 );
 
 # insert user data
@@ -82,11 +82,11 @@ CREATE TABLE IF NOT EXISTS Comments
     FoodID    INT         NOT NULL,
     PostedBy  VARCHAR(30) NOT NULL,
     Comment   TEXT        NOT NULL,
-    PostDate  TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT FoodID_FK
-        FOREIGN KEY (FoodID)
-            REFERENCES Foods (FoodID)
-            ON DELETE CASCADE
+    PostDate  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    #     CONSTRAINT FoodID_FK
+    #         FOREIGN KEY (FoodID)
+    #             REFERENCES Foods (FoodID)
+    #             ON DELETE CASCADE
 );
 
 # insert food data
