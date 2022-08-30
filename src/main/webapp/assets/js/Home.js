@@ -1,8 +1,6 @@
 $(document).ready(() => fetchFoods('Burger'))
 
 function fetchFoods(category) {
-    const foodsTable = $("foods-table");
-
     $.ajax({
         url: 'api/fetchFoods/' + category,
         method: "GET",
