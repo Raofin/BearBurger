@@ -72,16 +72,6 @@ public class CustomerController
         return "customer/Payment";
     }
 
-    @RequestMapping(value = "/payment-action", method = RequestMethod.POST)
-    public String paymentAction(Principal principal, HttpSession session) {
-
-        User user = userService.fetchUserByUsername(principal.getName());
-        user.setSpent(user.getSpent() + Integer.parseInt((String) session.getAttribute("price")));
-        userService.updateUser(user);
-        session.removeAttribute("price");
-        return "redirect:/home";
-    }
-
     @GetMapping("/fetchUserById/{id}")
     User fetchUserById(@PathVariable String id) {
         return userService.fetchUserById(Integer.parseInt(id));

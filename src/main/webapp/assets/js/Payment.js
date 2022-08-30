@@ -66,12 +66,18 @@ form.addEventListener('submit', function (event) {
     else cvv.classList.remove('form-input-error');
 
     if (name.value !== '' && cardNumber.value !== '' && expDate.value !== '' && cvv.value !== '') {
-        document.getElementById('pay').value = 'Go Back';
-        paid = true;
-        messageDiv.innerHTML = '';
-        messageDiv.innerHTML += '<p class="success center-text center-text">Payment Successful.</p>';
-        name.value = cardNumber.value = expDate.value = cvv.value = '';
-        this.submit();
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                document.getElementById('pay').value = 'Go Back';
+                paid = true;
+                messageDiv.innerHTML = '';
+                messageDiv.innerHTML += '<p class="success center-text center-text">Payment Successful.</p>';
+                name.value = cardNumber.value = expDate.value = cvv.value = '';
+            }
+        };
+        xhttp.open("GET", "../api/payment-action", true);
+        xhttp.send();
     } else {
         messageDiv.innerHTML = '';
         messageDiv.innerHTML += '<p class="error-message center-text">Please fill out all the fields.</p>';
