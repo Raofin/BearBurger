@@ -29,7 +29,7 @@ public class User
     private String email;
 
     @NotNull
-    @Size(min = 4, max = 30)
+    @Size(min = 4, max = 62)
     @Column(name = "password")
     private String password;
 
