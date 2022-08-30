@@ -47,9 +47,11 @@ public class AdminController
     @PostMapping("/add-user-action")
     public String saveUser(@Valid @ModelAttribute(value = "user") User user, BindingResult bindingResult) {
 
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors())
             return "redirect:/add-user?error";
-        }
+
+        if(userService.fetchUserByUsername(user.getUsername()) != null)
+            return "redirect:/add-user?duplicate";
 
         userService.registerUser(user);
         return "redirect:/add-user?added";

@@ -50,8 +50,13 @@
         <div class="bottom">
             <div class="center-text">
                 <p id="prompt-message">
-                    <% if (request.getParameter("error") != null)
-                        out.print("<p class=\"error-message\">Please fill out all the fields properly.</p>");
+                    <%
+                        if (request.getParameter("error") != null) {
+                            out.print("<p class=\"error-message\">Please fill out all the fields properly.</p>");
+                        }
+                        if (request.getParameter("duplicate") != null) {
+                            out.print("<p class=\"error-message\">Another account with that username already exists.</p>");
+                        }
                     %>
                 </p>
             </div>

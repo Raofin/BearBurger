@@ -56,6 +56,9 @@ public class MainController
         if (bindingResult.hasErrors() || !Objects.equals(user.getPassword(), user.getcPassword()))
             return "redirect:/register?error";
 
+        if(userService.fetchUserByUsername(user.getUsername()) != null)
+            return "redirect:/register?duplicate";
+
         userService.registerUser(user);
 
         return "redirect:/login?regSuccess";

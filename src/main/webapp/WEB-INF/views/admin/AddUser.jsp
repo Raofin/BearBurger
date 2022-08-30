@@ -21,9 +21,6 @@
                 </div>
                 <div>
                     <label class="form-label" for="password">Password</label>
-                    <div class="show-password">
-                        <span id="password-view">Show</span>
-                    </div>
                     <form:input autocomplete="off" class="form-input-box" id="password" name="password"
                                 placeholder="Enter your password here" type="password" path="password"/>
                 </div>
@@ -50,6 +47,9 @@
                     <%
                         if (request.getParameter("error") != null) {
                             out.print("<p class=\"error-message\">Please fill out all the fields properly.</p>");
+                        }
+                        if (request.getParameter("duplicate") != null) {
+                            out.print("<p class=\"error-message\">Another account with that username already exists.</p>");
                         }
                         if (request.getParameter("added") != null) {
                             out.print("<p class=\"success\">New user added!</p>");
