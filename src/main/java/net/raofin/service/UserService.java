@@ -29,7 +29,7 @@ public interface UserService extends UserDetailsService
 
     void makeAdmin(int id);
 
-    void makePayment(int id);
+    void removeAdmin(int id);
 
     List<User> searchUserByEmail(String email);
 

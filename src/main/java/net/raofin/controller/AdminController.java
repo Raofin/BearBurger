@@ -34,6 +34,11 @@ public class AdminController
         return "admin/Dashboard";
     }
 
+    @RequestMapping(value = "/manage-roles", method = {RequestMethod.GET, RequestMethod.POST})
+    public String showManageRolesPage() {
+        return "admin/ManageRoles";
+    }
+
     @RequestMapping(value = "/manage-user", method = {RequestMethod.GET, RequestMethod.POST})
     public String showManageUserPage() {
         return "admin/ManageUser";

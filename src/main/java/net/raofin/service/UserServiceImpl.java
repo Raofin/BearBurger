@@ -97,8 +97,8 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
-    public void makePayment(int id) {
-        userDao.makePayment(id);
+    public void removeAdmin(int id) {
+        userDao.removeAdmin(id);
     }
 
     @Override

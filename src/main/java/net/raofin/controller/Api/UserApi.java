@@ -62,6 +62,11 @@ public class UserApi
         userService.makeAdmin(id);
     }
 
+    @GetMapping("/removeAdmin/{id}")
+    void removeAdmin(@PathVariable int id) {
+        userService.removeAdmin(id);
+    }
+
     @GetMapping("/delete-food/{id}")
     void deleteFood(@PathVariable String id) {
         foodService.deleteFoodById(Integer.parseInt(id));
