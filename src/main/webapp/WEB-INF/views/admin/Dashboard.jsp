@@ -8,6 +8,9 @@
         <div class="admin-buttons">
             <h1 class="admin-title">Admin Panel</h1>
 
+            <div><a href="./manage-roles">
+                <button>Manage Roles</button>
+            </a></div>
             <div><a href="./add-user">
                 <button>Add Users</button>
             </a></div>
