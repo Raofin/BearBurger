@@ -15,8 +15,8 @@ function fetchAllUsers() {
                     '    <td>' + value['spent'] + ' tk</td> ' +
                     '    <td> ';
                 user += value['enabled'] === true
-                    ? '        <a  id="user' + value['userID'] + '" class="tomato-text" onclick="' + 'disableUser(' + value['userID'] + ')">Disable</a> '
-                    : '        <a  id="user' + value['userID'] + '" class="green-text" onclick="' + 'enableUser(' + value['userID'] + ')">Enable</a> ';
+                    ? '        <a  id="user' + value['userID'] + '" class="tomato-text" onclick="' + 'changeStatus(' + value['userID'] + ')">Disable</a> '
+                    : '        <a  id="user' + value['userID'] + '" class="green-text" onclick="' + 'changeStatus(' + value['userID'] + ')">Enable</a> ';
                 user +=
                     '    </td>' +
                     '    <td><a class="red-text" onclick="' + 'deleteUser(' + value['userID'] + ')">Delete</a></td>' +
@@ -28,6 +28,22 @@ function fetchAllUsers() {
     )
 }
 
+function changeStatus(id) {
+    let element = document.getElementById('user' + id);
+
+    if (element.innerText === 'Enable') {
+        $.get('api/admin/enableUser/' + id);
+        element.innerText = 'Disable';
+        element.classList.remove('green-text');
+        element.classList.add('tomato-text');
+    } else {
+        $.get('api/admin/disableUser/' + id);
+        element.innerText = 'Enable';
+        element.classList.remove('tomato-text');
+        element.classList.add('green-text');
+    }
+}
+
 function deleteUser(id) {
 
     $.ajax({
@@ -37,24 +53,17 @@ function deleteUser(id) {
     });
 }
 
+/*
 function disableUser(id) {
-
-    $.ajax({
-        url: 'api/admin/disableUser/' + id,
-        method: "GET",
-        success: changeText(id)
-    });
+    $.get('api/admin/disableUser/' + id);
 }
 
 function enableUser(id) {
-
-    $.ajax({
-        url: 'api/admin/enableUser/' + id,
-        method: "GET",
-        success: changeText(id)
-    });
+    $.get('api/admin/enableUser/' + id);
 }
+*/
 
+/*
 function changeText(id) {
 
     let element = document.getElementById('user' + id);
@@ -66,6 +75,6 @@ function changeText(id) {
     } else {
         element.innerText = 'Enable';
         element.classList.remove('tomato-text');
-        element.classList.add('green-text')
+        element.classList.add('green-text');
     }
-}
+}*/
