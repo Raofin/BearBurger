@@ -26,7 +26,8 @@ public class AdminController
 
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {
-        webDataBinder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        webDataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
     @RequestMapping(value = "/dashboard", method = {RequestMethod.GET, RequestMethod.POST})

@@ -37,7 +37,6 @@ public class FoodApi
         return foodService.searchFoodByTitle(name);
     }
 
-
     @GetMapping("/payment-action")
     void paymentAction(Principal principal, HttpSession session) {
 

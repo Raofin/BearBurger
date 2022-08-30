@@ -20,34 +20,12 @@ function fetchAllUsers() {
                 user += admin === true
                     ? '        <td><a  id="user' + value['userID'] + '" class="tomato-text" onclick="' + 'modifyRole(' + value['userID'] + ')">Remove Admin</a></td>'
                     : '        <td><a  id="user' + value['userID'] + '" class="green-text" onclick="' + 'modifyRole(' + value['userID'] + ')">Add Admin</a></td>'
-                // user += '    </td> ';
-                /*user += value['userRoles'].length === 2
-                    ? ', '+ titleCase(value['userRoles'][1]['role']) : '';
-                user += '    </td> ';*/
             })
 
             $('#users-table').append(user);
         }
     )
 }
-
-/*function removeAdmin(id) {
-
-    $.ajax({
-        url: 'api/admin/removeAdmin/' + id,
-        method: "GET",
-        success: changeText(id)
-    });
-}
-
-function addAdmin(id) {
-
-    $.ajax({
-        url: 'api/admin/makeAdmin/' + id,
-        method: "GET",
-        success: changeText(id)
-    });
-}*/
 
 function modifyRole(id) {
 

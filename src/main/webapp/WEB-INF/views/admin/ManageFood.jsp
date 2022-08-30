@@ -4,7 +4,7 @@
 
 <div class="manage-user-container">
     <form id="register-form" method="POST">
-        <h2 class="admin-form-title">Manage Users</h2>
+        <h2 class="admin-form-title">Manage Foods</h2>
         <div class="table-wrapper">
             <table id="foods-table">
                 <tr>

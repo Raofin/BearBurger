@@ -28,6 +28,15 @@ function fetchAllUsers() {
     )
 }
 
+function deleteUser(id) {
+
+    $.ajax({
+        url: 'api/admin/deleteUserById/' + id,
+        method: "GET",
+        success: $('#row-user-' + id).remove()
+    });
+}
+
 function changeStatus(id) {
     let element = document.getElementById('user' + id);
 
@@ -43,38 +52,3 @@ function changeStatus(id) {
         element.classList.add('green-text');
     }
 }
-
-function deleteUser(id) {
-
-    $.ajax({
-        url: 'api/admin/deleteUserById/' + id,
-        method: "GET",
-        success: $('#row-user-' + id).remove()
-    });
-}
-
-/*
-function disableUser(id) {
-    $.get('api/admin/disableUser/' + id);
-}
-
-function enableUser(id) {
-    $.get('api/admin/enableUser/' + id);
-}
-*/
-
-/*
-function changeText(id) {
-
-    let element = document.getElementById('user' + id);
-
-    if (element.innerText === 'Enable') {
-        element.innerText = 'Disable';
-        element.classList.remove('green-text');
-        element.classList.add('tomato-text');
-    } else {
-        element.innerText = 'Enable';
-        element.classList.remove('tomato-text');
-        element.classList.add('green-text');
-    }
-}*/

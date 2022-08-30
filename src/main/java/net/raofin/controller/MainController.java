@@ -22,7 +22,8 @@ public class MainController
 
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {
-        webDataBinder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        webDataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
     @GetMapping("/")

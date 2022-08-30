@@ -54,14 +54,17 @@ VALUES (1, 'CUSTOMER'),
        (2, 'CUSTOMER'),
        (3, 'CUSTOMER'),
        (4, 'CUSTOMER'),
+       (4, 'ADMIN'),
        (5, 'CUSTOMER'),
        (6, 'CUSTOMER'),
        (7, 'CUSTOMER'),
+       (7, 'ADMIN'),
        (8, 'CUSTOMER'),
        (9, 'CUSTOMER'),
        (10, 'CUSTOMER'),
        (11, 'CUSTOMER'),
        (11, 'ADMIN'),
+       (12, 'CUSTOMER'),
        (12, 'ADMIN');
 
 # create foods table

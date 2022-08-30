@@ -73,7 +73,6 @@ public class FoodDaoImpl implements FoodDao
     public List<Food> searchFoodByTitle(String title) {
         Session session = sessionFactory.getCurrentSession();
         Query<Food> foodQuery = session.createQuery("FROM Food WHERE Title like '%" + title + "%'", Food.class);
-        //foodQuery.setParameter("title", title);
         return foodQuery.getResultList();
     }
 }

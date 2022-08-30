@@ -28,7 +28,8 @@ public class CustomerController
 
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {
-        webDataBinder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        webDataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
     @RequestMapping(value = "/profile", method = {RequestMethod.GET, RequestMethod.POST})
