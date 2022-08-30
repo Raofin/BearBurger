@@ -21,10 +21,10 @@
                 <input id="password" name="password" autocomplete="on" class="form-input-box"
                        placeholder="Enter your password here" type="password">
             </div>
-                <%--<div class="remember-me">
-                    <input id="remember" name="remember" type="checkbox"/>
-                    <label for="remember">Remember Me</label>
-                </div>--%>
+            <div class="remember-me">
+                <input id="remember" name="remember-me" type="checkbox"/>
+                <label for="remember">Remember Me</label>
+            </div>
         </fieldset>
 
         <div class="bottom">
