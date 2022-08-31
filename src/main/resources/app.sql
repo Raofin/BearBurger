@@ -1,4 +1,5 @@
-DROP DATABASE IF EXISTS BearBurger_JSP;
+# drop the database if exists
+DROP SCHEMA IF EXISTS BearBurger_JSP;
 
 # create database
 CREATE DATABASE IF NOT EXISTS BearBurger_JSP;

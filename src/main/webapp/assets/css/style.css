@@ -441,6 +441,10 @@ input[type='radio'].form-input-error {
     filter: drop-shadow(1px 1px 2px tomato);
 }
 
+.radio-button input, .radio-button label {
+    cursor: pointer;
+}
+
 /*================= Profile Form ================*/
 
 .form-user-profile {

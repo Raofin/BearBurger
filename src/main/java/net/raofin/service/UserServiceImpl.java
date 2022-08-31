@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Transactional
@@ -73,22 +74,34 @@ public class UserServiceImpl implements UserService
 
     @Override
     public void updateUser(User user) {
+        if (Objects.equals(user.getUsername(), "Raofin") || Objects.equals(user.getUsername(), "admin"))
+            return;
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDao.updateUser(user);
     }
 
     @Override
     public void deleteUser(String username) {
+        if (Objects.equals(username, "Raofin") || Objects.equals(username, "admin"))
+            return;
+
         userDao.deleteUser(username);
     }
 
     @Override
     public void deleteUserById(int id) {
+        if (id == 1 || id == 12)
+            return;
+
         userDao.deleteUserById(id);
     }
 
     @Override
     public void disableUser(int id) {
+        if (id == 1 || id == 12)
+            return;
+
         userDao.disableUser(id);
     }
 
@@ -104,6 +117,9 @@ public class UserServiceImpl implements UserService
 
     @Override
     public void removeAdmin(int id) {
+        if (id == 1 || id == 12)
+            return;
+
         userDao.removeAdmin(id);
     }
 
