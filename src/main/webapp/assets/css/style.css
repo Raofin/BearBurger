@@ -233,11 +233,6 @@ footer {
     background-color: #389afd;
 }
 
-.welcome .button:active,
-.database-error .button:active {
-    background-color: #389afd;
-}
-
 /*===================== Button ====================*/
 
 .button {
@@ -261,15 +256,6 @@ footer {
     color: hsl(0, 0%, 100%);
     background-color: rgb(0, 178, 104);
     box-shadow: rgba(0, 0, 0, 0.801) 0 7px 29px 0;
-}
-
-.button:active {
-    transition: 100ms;
-    transform: translateY(10px);
-    letter-spacing: 3px;
-    color: hsl(0, 0%, 100%);
-    background-color: rgb(0, 178, 104);
-    box-shadow: black 0 0 0 0;
 }
 
 .bottom {
@@ -870,15 +856,6 @@ input[type='radio'].form-input-error {
     box-shadow: rgba(0, 0, 0, 0.801) 0 7px 29px 0;
 }
 
-.admin-buttons button:active {
-    transition: 100ms;
-    transform: translateY(10px);
-    letter-spacing: 3px;
-    color: hsl(0, 0%, 100%);
-    background-color: #1d8af5;
-    box-shadow: black 0 0 0 0;
-}
-
 .add-user-form {
     position: relative;
     display: flex;
@@ -925,8 +902,6 @@ input[type='radio'].form-input-error {
 .manage-user-container td {
     padding: 5px 0;
     border-collapse: collapse;
-
-
     text-align: center;
     color: #fff;
 }
