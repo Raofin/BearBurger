@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Objects;
 
@@ -29,6 +30,14 @@ public class MainController
     @GetMapping("/")
     public String showWelcomePage() {
         return "index";
+    }
+
+    @GetMapping("/login-success")
+    public String defaultAfterLogin(HttpServletRequest request) {
+        if (request.isUserInRole("ADMIN"))
+            return "redirect:/dashboard";
+
+        return "redirect:/home";
     }
 
     @RequestMapping(value = "/home", method = {RequestMethod.GET, RequestMethod.POST})

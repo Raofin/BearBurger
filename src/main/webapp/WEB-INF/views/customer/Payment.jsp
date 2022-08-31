@@ -60,14 +60,14 @@
                 <tr>
                     <td>Name</td>
                     <td>
-                        <input autofocus id="name" name="name" placeholder="Enter your name" type="text"
+                        <input id="name" name="name" placeholder="Enter your name" type="text"
                                value="<sec:authentication property="principal.username"/>">
                     </td>
                 </tr>
                 <tr>
                     <td>Card Number</td>
                     <td>
-                        <input id="cardNumber" name="cardNumber" placeholder="Credit card number" type="text">
+                        <input autofocus id="cardNumber" name="cardNumber" placeholder="Credit card number" type="text">
                     </td>
                 </tr>
                 <tr>

@@ -31,7 +31,7 @@ public class AppConfig implements WebMvcConfigurer
     @Bean
     public DataSource dataSource() {
         MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setDatabaseName("spring_security");
+        dataSource.setDatabaseName("BearBurger_JSP");
         dataSource.setUrl("jdbc:mysql://localhost:3306/BearBurger_JSP");
         dataSource.setUser("root");
         dataSource.setPassword("");
@@ -45,8 +45,8 @@ public class AppConfig implements WebMvcConfigurer
         sessionFactory.setPackagesToScan("net.raofin.model");
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        properties.setProperty("hibernate.show_sql", "true");
-        properties.setProperty("hibernate.format_sql", "true");
+//        properties.setProperty("hibernate.show_sql", "true");
+//        properties.setProperty("hibernate.format_sql", "true");
         sessionFactory.setHibernateProperties(properties);
         return sessionFactory;
     }

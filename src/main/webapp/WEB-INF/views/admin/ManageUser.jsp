@@ -6,19 +6,19 @@
     <form id="register-form" method="POST">
         <h2 class="admin-form-title">Manage Users</h2>
         <div class="table-wrapper">
-            <table id="users-table">
+            <table class="manage-users" id="users-table">
                 <tr>
                     <th>UserID</th>
                     <th>Username</th>
                     <th>Email</th>
                     <th>Total Spent</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    <th colspan="2">Action</th>
                 </tr>
             </table>
         </div>
     </form>
-
 </div>
+
 <script src="${pageContext.request.contextPath}/assets/js/ManageUser.js"></script>
 <c:import url="/templates/Footer.jsp"/>

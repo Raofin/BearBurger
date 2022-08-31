@@ -937,9 +937,15 @@ input[type='radio'].form-input-error {
     background: rgb(26, 25, 25);
 }
 
-/*.manage-user-container a:first-child {
+/*
+.manage-users a:first-child {
     padding-right: 20px;
-}*/
+}
+*/
+
+.delete-row {
+    padding-right: 10px;
+}
 
 .manage-user-container button {
     margin-bottom: 0;

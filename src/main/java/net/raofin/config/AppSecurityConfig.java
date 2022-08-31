@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -23,15 +22,15 @@ public class AppSecurityConfig
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                    .antMatchers("/api/admin/**", "/dashboard", "/manage-user", "/add-user", "/add-food").hasAuthority("ADMIN")
-                    .antMatchers("/profile", "/profile-modify","/payment/**").hasAnyAuthority("CUSTOMER", "ADMIN")
+                    .antMatchers("/api/admin/**", "/dashboard", "/manage-user", "/add-user", "/add-food").hasRole("ADMIN")
+                    .antMatchers("/profile", "/profile-modify","/payment/**").hasAnyRole("CUSTOMER", "ADMIN")
                     .antMatchers("/").permitAll()
                     .and()
                 .formLogin()
                     .loginPage("/login")
                     .usernameParameter("username")
                     .passwordParameter("password")
-                    .defaultSuccessUrl("/home")
+                    .defaultSuccessUrl("/login-success")
                     .failureUrl("/login?error")
                     .and()
                 .rememberMe()

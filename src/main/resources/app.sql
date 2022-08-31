@@ -11,10 +11,10 @@ USE BearBurger_JSP;
 CREATE TABLE IF NOT EXISTS Users
 (
     UserID      INT AUTO_INCREMENT PRIMARY KEY,
-    Username    VARCHAR(30) NOT NULL UNIQUE,
+    Username    VARCHAR(15) NOT NULL UNIQUE,
     Email       VARCHAR(30) NOT NULL,
     Password    VARCHAR(62) NOT NULL,
-    PhoneNumber VARCHAR(15) NOT NULL,
+    PhoneNumber VARCHAR(30) NOT NULL,
     Gender      VARCHAR(6)  NOT NULL,
     Spent       INT,
     Enabled     BOOL        NOT NULL,

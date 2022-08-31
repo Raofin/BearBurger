@@ -26,11 +26,11 @@
                 <li><a href="./register">Register</a></li>
             </sec:authorize>
 
-            <sec:authorize access="hasAuthority('ADMIN')">
+            <sec:authorize access="hasRole('ADMIN')">
                 <li><a href="./dashboard">Admin Panel</a></li>
             </sec:authorize>
 
-            <sec:authorize access="hasAnyAuthority('CUSTOMER', 'ADMIN')">
+            <sec:authorize access="hasAnyRole('CUSTOMER', 'ADMIN')">
                 <li><a href="./home">Home</a></li>
                 <li><a href="./search-foods">Search Foods</a></li>
                 <li><a href="./profile">View Profile</a></li>

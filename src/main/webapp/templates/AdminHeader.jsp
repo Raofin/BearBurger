@@ -27,7 +27,7 @@
                 <li><a href="./register">Register</a></li>
             </sec:authorize>
 
-            <sec:authorize access="hasAuthority('ADMIN')">
+            <sec:authorize access="hasRole('ADMIN')">
                 <li><a href="./home">Home</a></li>
                 <li><a href="./dashboard">Admin Panel</a></li>
                 <li><a href="./manage-roles">Manage Roles</a></li>
