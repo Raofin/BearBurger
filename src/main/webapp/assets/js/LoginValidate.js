@@ -27,3 +27,5 @@ $('#login-form').validate({
     },
     errorClass: "form-input-error warning-message"
 })
+
+$('#typing').click(() => $('#username, #password').val('admin'));

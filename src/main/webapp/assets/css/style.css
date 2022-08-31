@@ -392,6 +392,22 @@ footer {
 
 /*=============== Login and Registration ==============*/
 
+.login-form-container {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    width: 450px;
+    min-width: 420px;
+    min-height: 400px;
+    margin: 0 auto 20px auto;
+    padding: 50px;
+    color: #fff;
+    border-radius: 10px;
+    background-color: rgba(41, 40, 40, 0.74);
+    box-shadow: rgba(0, 0, 0, 0.9) 0 5px 15px;
+}
+
 .login-form-title {
     font-size: 32px;
     font-weight: 900;
@@ -943,7 +959,7 @@ input[type='radio'].form-input-error {
 }
 */
 
-.delete-row {
+.delete-col {
     padding-right: 10px;
 }
 
@@ -974,3 +990,35 @@ input#confirm-button {
     font-weight: bold;
 }
 
+
+.wrapper {
+    display: grid;
+    place-items: center;
+    color: white;
+
+}
+
+.typing-demo {
+    width: 44ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-bottom: 100px;
+    cursor: pointer;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent
+    }
+}

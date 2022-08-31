@@ -18,9 +18,7 @@ function fetchAllUsers() {
                 user += value['enabled'] === true
                     ? '        <a  id="user' + value['userID'] + '" class="tomato-text" onclick="' + 'changeStatus(' + value['userID'] + ')">Disable</a></td>'
                     : '        <a  id="user' + value['userID'] + '" class="green-text" onclick="' + 'changeStatus(' + value['userID'] + ')">Enable</a></td>';
-                user +=
-                    '    <td><a class="red-text delete-row" onclick="' + 'deleteUser(' + value['userID'] + ')">Delete</a></td>' +
-                    '</tr>';
+                user += '<td><a class="red-text delete-col" onclick="' + 'deleteUser(' + value['userID'] + ')">Delete</a></td></tr>';
             })
 
             $('#users-table').append(user);

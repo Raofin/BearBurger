@@ -3,7 +3,7 @@
 <%@ page isELIgnored="false" %>
 <c:import url="/templates/CustomerHeader.jsp"/>
 
-<div class="form-container">
+<div class="login-form-container">
     <form:form id="login-form" method="POST">
         <h2 class="login-form-title">Log In</h2>
 
@@ -49,6 +49,11 @@
             </div>
         </div>
     </form:form>
+</div>
+<div class="wrapper">
+    <div class="typing-demo" id="typing">
+        Default Admin Username & Password: "admin".
+    </div>
 </div>
 
 <script src="<c:url value="/assets/js/Logic.js"/>"></script>
