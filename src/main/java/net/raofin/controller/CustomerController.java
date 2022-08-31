@@ -78,4 +78,13 @@ public class CustomerController
     User fetchUserById(@PathVariable String id) {
         return userService.fetchUserById(Integer.parseInt(id));
     }
+
+
+
+    @RequestMapping(value = "/comments", method = {RequestMethod.GET, RequestMethod.POST})
+    public String showCommentPage(@RequestParam("foodID") int foodID, Model model, HttpSession session) {
+
+        model.addAttribute("food", foodService.fetchFoodByID(foodID));
+        return "customer/Comments";
+    }
 }

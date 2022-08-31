@@ -73,9 +73,24 @@ CREATE TABLE IF NOT EXISTS Foods
 (
     FoodID      INT AUTO_INCREMENT PRIMARY KEY,
     Category    VARCHAR(30) NOT NULL,
-    Title       VARCHAR(30) NOT NULL UNIQUE,
+    Title       VARCHAR(100) NOT NULL UNIQUE,
     Description TEXT        NOT NULL,
     Price       INT         NOT NULL
+);
+
+# create users table
+CREATE TABLE IF NOT EXISTS Comments
+(
+    CommentID INT AUTO_INCREMENT PRIMARY KEY,
+    ParentID  INT         NOT NULL,
+    FoodID    INT         NOT NULL,
+    PostedBy  VARCHAR(30) NOT NULL,
+    Comment   TEXT        NOT NULL,
+    PostDate  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP/*,
+    CONSTRAINT FoodID_FK
+        FOREIGN KEY (FoodID)
+            REFERENCES foods (FoodID)
+            ON DELETE CASCADE*/
 );
 
 # insert food data
@@ -120,3 +135,19 @@ VALUES ('Burger', 'Cheese Burger', 'Prepared with beef patty, cheese, burger sau
        ('Sides', 'Large French Fry', 'Delicious french fry in large', 110),
        ('Sides', 'Chicken Fingers', 'Chicken fried in finger sized', 130),
        ('Sides', 'Naga Drumsticks', 'You like it HOT!! Its for you', 120);
+
+# insert comment data
+INSERT IGNORE INTO Comments (CommentID, ParentID, FoodID, PostedBy, Comment, PostDate)
+VALUES (1, 0, 1, 'Raofin', 'I have to say, I enjoyed every single bite of the meal.', '2022-07-17 22:27:04'),
+       (2, 1, 1, 'Bill Gates',
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum maxime modi necessitatibus rem sed. Ad consequuntur dolorem nobis sequi tempora?',
+        '2022-07-17 22:28:28'),
+       (3, 2, 1, 'Raofin', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, unde!',
+        '2022-07-17 22:29:36'),
+       (4, 2, 1, 'Bill Gates', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.', '2022-07-17 22:30:55'),
+       (5, 0, 1, 'Elon Musk', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, sequi.',
+        '2022-07-17 22:31:48'),
+       (6, 4, 1, 'Steve Jobs', 'Lorem ipsum dolor sit amet, consectetur.', '2022-07-17 22:32:46'),
+       (7, 0, 1, 'Jeff Bezos',
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores cumque dolore, harum iure necessitatibus perferendis quasi sequi suscipit tempore? Aperiam culpa delectus ducimus inventore nam possimus praesentium provident quaerat quas, quidem quisquam, recusandae sunt suscipit totam ullam vitae, voluptatibus.',
+        '2022-07-17 22:35:34');

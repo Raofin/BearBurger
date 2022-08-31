@@ -5,6 +5,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 @Table(name = "foods")
@@ -20,12 +21,12 @@ public class Food
     private String category;
 
     @NotNull
-    @Size(min = 4, max = 15)
+    @Size(min = 4, max = 100)
     @Column(name = "title")
     private String title;
 
     @NotNull
-    @Size(min = 4, max = 200)
+    @Size(min = 4, max = 500)
     @Column(name = "description")
     private String description;
 
@@ -34,6 +35,10 @@ public class Food
     @Max(2000)
     @Column(name = "price")
     private int price;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "foodID")
+    private List<Comment> comments;
 
     public int getFoodID() {
         return foodID;
@@ -75,6 +80,14 @@ public class Food
         this.price = price;
     }
 
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
     @Override
     public String toString() {
         return "Food{" +
@@ -83,6 +96,7 @@ public class Food
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
+                ", comments=" + comments +
                 '}';
     }
 }
