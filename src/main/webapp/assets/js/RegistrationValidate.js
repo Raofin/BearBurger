@@ -1,15 +1,4 @@
 $('#register-form').validate({
-    submitHandler: form => {
-        $.ajax({
-            url: 'register-action',
-            method: "POST",
-            data: $('#register-form').serialize(),
-            cache: false,
-            processData: false,
-            success: document.getElementById('#register-form').submit()
-
-        })
-    },
     rules: {
         username: {
             required: true,

@@ -1,6 +1,7 @@
 $(document).ready(() => fetchFoods('Burger'))
 
 function fetchFoods(category) {
+
     $.ajax({
         url: 'api/fetchFoods/' + category,
         method: "GET",

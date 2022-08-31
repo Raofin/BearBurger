@@ -17,7 +17,7 @@
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td>${user.password}</td>
+                    <td>Encrypted!</td>
                 </tr>
                 <tr>
                     <td>Phone:</td>

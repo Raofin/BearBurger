@@ -29,7 +29,7 @@
             <sec:authorize access="hasAuthority('ADMIN')">
                 <li><a href="./home">Home</a></li>
                 <li><a href="./dashboard">Admin Panel</a></li>
-                <li><a href="./manage-roles">Manage Users</a></li>
+                <li><a href="./manage-roles">Manage Roles</a></li>
                 <li><a href="./manage-user">Manage Users</a></li>
                 <li><a href="./manage-food">Manage Foods</a></li>
                 <li><a href="<c:url value="/logout"/>">Log Out</a></li>

@@ -44,6 +44,7 @@ public class CustomerController
     public String showProfileModifyPage(Principal principal, Model model) {
 
         User user = userService.fetchUserByUsername(principal.getName());
+        user.setPassword("");
         model.addAttribute("user", user);
         return "customer/ProfileModify";
     }

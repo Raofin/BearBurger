@@ -1,14 +1,4 @@
 $('#update-form').validate({
-    submitHandler: form => {
-        $.ajax({
-            // url: '../controllers/ModifyValidate.php',
-            method: "POST",
-            data: $('#update-form').serialize(),
-            cache: false,
-            processData: false,
-            success: document.getElementById('#update-form').submit()
-        })
-    },
     rules: {
         email: {
             required: true,

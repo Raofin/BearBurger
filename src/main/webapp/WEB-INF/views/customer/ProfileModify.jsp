@@ -14,15 +14,15 @@
                 </tr>
                 <tr>
                     <td>Email:</td>
-                    <td><form:input type="text" path="email"/></td>
+                    <td><form:input type="text" placeholder="Enter your email here" path="email"/></td>
                 </tr>
                 <tr>
                     <td>Password:</td>
-                    <td><form:input type="password" path="password"/></td>
+                    <td><form:input type="password" placeholder="Enter a new password here" path="password"/></td>
                 </tr>
                 <tr>
                     <td>Phone:</td>
-                    <td><form:input type="text" path="phoneNumber"/></td>
+                    <td><form:input type="text" placeholder="Enter phone number here" path="phoneNumber"/></td>
                 </tr>
                 <tr>
                     <td>Gender:</td>
