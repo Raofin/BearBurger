@@ -7,6 +7,7 @@
 <html>
 <head>
     <link rel="icon" type="image/png" href="<c:url value="/assets/img/logo.svg"/>"/>
+    <link rel="preload" href="<c:url value="/assets/img/background.jpg"/>" as="image">
     <link href="<c:url value="/assets/css/style.css"/>" rel="stylesheet" type="text/css">
     <script src="<c:url value="/assets/js/jquery-3.6.0.min.js"/>"></script>
     <script src="<c:url value="/assets/js/jquery.validate.js"/>"></script>
