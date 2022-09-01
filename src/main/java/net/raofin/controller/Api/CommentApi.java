@@ -4,6 +4,7 @@ import net.raofin.model.Comment;
 import net.raofin.service.CommentService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -32,7 +33,8 @@ public class CommentApi
     }
 
     @GetMapping("/fetch-comments")
-    String fetchCommentsHTML(@RequestParam("foodID") int foodID) {
+    String fetchCommentsHTML(HttpSession session) {
+        int foodID = session.getAttribute("foodID") == null ? 1 : (int) session.getAttribute("foodID");
         return commentService.loadComments(foodID);
     }
 

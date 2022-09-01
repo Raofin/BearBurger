@@ -1,6 +1,8 @@
 package net.raofin.model;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -26,6 +28,7 @@ public class Comment
     @Column(name = "comment")
     private String comment;
 
+    @CreationTimestamp
     @Column(name = "PostDate")
     private Date PostDate;
 }

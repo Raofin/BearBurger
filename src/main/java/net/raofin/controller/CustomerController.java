@@ -41,6 +41,7 @@ public class CustomerController
 
         User user = userService.fetchUserByUsername(principal.getName());
         model.addAttribute("user", user);
+
         return "customer/Profile";
     }
 
@@ -50,6 +51,7 @@ public class CustomerController
         User user = userService.fetchUserByUsername(principal.getName());
         user.setPassword("");
         model.addAttribute("user", user);
+
         return "customer/ProfileModify";
     }
 
@@ -75,6 +77,7 @@ public class CustomerController
 
         model.addAttribute("food", foodService.fetchFoodByID(foodId));
         session.setAttribute("price", foodService.fetchFoodByID(foodId).getPrice());
+
         return "customer/Payment";
     }
 
@@ -84,21 +87,33 @@ public class CustomerController
     }
 
 
-    @RequestMapping(value = "/comments", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showCommentPage(@RequestParam("foodID") int foodID, Model model) {
+    @RequestMapping(value = "/comments/{foodID}", method = {RequestMethod.GET, RequestMethod.POST})
+    public String selectFoodID(@PathVariable("foodID") int foodID, HttpSession session) {
 
+        session.setAttribute("foodID", foodID);
+        return "redirect:/comments";
+    }
+
+    @RequestMapping(value = "/comments", method = {RequestMethod.GET, RequestMethod.POST})
+    public String showCommentPage(Model model, HttpSession session) {
+
+        int foodID = session.getAttribute("foodID") == null ? 1 : (int) session.getAttribute("foodID");
         model.addAttribute("food", foodService.fetchFoodByID(foodID));
+
         return "customer/Comments";
     }
 
     @RequestMapping(value = "/post-comments")
     public String postComments(@RequestParam("commentID") int commentID,
-                               @RequestParam("foodID") int foodID,
                                @Valid @ModelAttribute("comment") Comment comment,
-                               BindingResult bindingResult, Principal principal) {
+                               BindingResult bindingResult,
+                               Principal principal,
+                               HttpSession session) {
 
         if (bindingResult.hasFieldErrors("comment"))
             return "redirect:/comments?error";
+
+        int foodID = session.getAttribute("foodID") == null ? 1 : (int) session.getAttribute("foodID");
 
         comment.setPostedBy(principal.getName());
         comment.setFoodID(foodID);
@@ -106,6 +121,6 @@ public class CustomerController
 
         commentService.addComment(comment);
 
-        return "redirect:/comments?foodID=" + foodID + "&posted";
+        return "redirect:/comments?posted";
     }
 }

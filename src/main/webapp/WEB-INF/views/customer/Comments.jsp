@@ -4,11 +4,11 @@
 <c:import url="/templates/CustomerHeader.jsp"/>
 
 <div class="comment-container">
-    <form method="POST" id="comment-form">
+    <form:form method="POST" id="comment-form" modelAttribute="food">
         <div>
-            <h1 id="title"><?php echo $_SESSION['foodTitle'] ?></h1>
-            <p id="description"><?php echo $_SESSION['foodDescription'] ?></p>
-            <p id="food-id" hidden><?php echo $_REQUEST['id'] ?></p>
+            <h1 id="title">${food.title}</h1>
+            <p id="description">${food.description}</p>
+            <p id="food-id" hidden>${food.foodID}</p>
         </div>
 
         <div class="comment-box">
@@ -22,7 +22,7 @@
                 <input class="button" id="submit" name="submit" type="submit" value="POST">
             </div>
         </div>
-    </form>
+    </form:form>
 </div>
 
 <script src="<c:url value="/assets/js/UrlParameter.js"/>"></script>
