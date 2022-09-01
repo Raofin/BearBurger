@@ -13,4 +13,6 @@ public interface CommentService
     List<Comment> fetchCommentByParentID(int foodID, int parentID);
 
     String loadComments(int foodID);
+
+    void addComment(Comment comment);
 }

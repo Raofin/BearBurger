@@ -1,23 +1,7 @@
 $(document).ready(() => loadComments());
 
-const getUrlParameter = function getUrlParameter(sParam) {
-    let sPageURL = window.location.search.substring(1),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
-
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-        }
-    }
-    return false;
-};
-
 let foodId = getUrlParameter('foodID'); /*searchParams.get('foodID');*/
-let ajaxUrl = '../models/Comment.php?type=post&foodId=' + foodId;
+let ajaxUrl = 'post-comments?commentID=0&foodID=' + foodId;
 let isReply = false;
 let message = 'Your comment has been posted.';
 
@@ -48,14 +32,14 @@ function reply(commentId) {
     changeAjaxUrl(commentId);
 }
 
-function changeAjaxUrl(commentId = 0) {
+function changeAjaxUrl(commentID = 0) {
     if (isReply) {
-        ajaxUrl = '../models/Comment.php?type=post&foodId=' + foodId;
+        ajaxUrl = 'post-comments?commentID=0&foodID=' + foodId;
         $('#submit').prop('value', 'Post');
         message = 'Your reply has been posted.';
         isReply = false;
     } else {
-        ajaxUrl = '../models/Comment.php?type=reply&commentId=' + commentId + '&foodId=' + foodId;
+        ajaxUrl = 'post-comments?&commentID=' + commentID + '&foodID=' + foodId;
         $('#submit').prop('value', 'Reply');
         message = 'Your comment has been posted.';
         isReply = true;
@@ -66,7 +50,7 @@ $('#comment-form').validate({
     submitHandler: form => {
         $.ajax({
             url: ajaxUrl,
-            method: "POST",
+            method: "GET",
             data: $('#comment-form').serialize(),
             cache: false,
             processData: false,

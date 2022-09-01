@@ -25,5 +25,6 @@
     </form>
 </div>
 
+<script src="<c:url value="/assets/js/UrlParameter.js"/>"></script>
 <script src="<c:url value="/assets/js/Comments.js"/>"></script>
 <c:import url="/templates/Footer.jsp"/>

@@ -65,6 +65,11 @@ public class CommentServiceImpl implements CommentService
         return replyString.toString();
     }
 
+    @Override
+    public void addComment(Comment comment) {
+        commentDao.addComment(comment);
+    }
+
     private String commentHTML(Comment comment, int parentID, int marginLeft) {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM dd, yyyy");

@@ -44,4 +44,10 @@ public class CommentDaoImpl implements CommentDao
         commentQuery.setParameter("parentID", parentID);
         return commentQuery.getResultList();
     }
+
+    @Override
+    public void addComment(Comment comment) {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.save(comment);
+    }
 }

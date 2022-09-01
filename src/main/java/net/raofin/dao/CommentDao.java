@@ -11,4 +11,6 @@ public interface CommentDao
     List<Comment> fetchCommentByFoodID(int foodID);
 
     List<Comment> fetchCommentByParentID(int foodID, int parentID);
+
+    void addComment(Comment comment);
 }

@@ -1,6 +1,8 @@
 package net.raofin.controller;
 
+import net.raofin.model.Comment;
 import net.raofin.model.User;
+import net.raofin.service.CommentService;
 import net.raofin.service.FoodService;
 import net.raofin.service.UserService;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -20,10 +22,12 @@ public class CustomerController
 {
     public final UserService userService;
     public final FoodService foodService;
+    private final CommentService commentService;
 
-    public CustomerController(UserService userService, FoodService foodService) {
+    public CustomerController(UserService userService, FoodService foodService, CommentService commentService) {
         this.userService = userService;
         this.foodService = foodService;
+        this.commentService = commentService;
     }
 
     @InitBinder
@@ -80,11 +84,28 @@ public class CustomerController
     }
 
 
-
     @RequestMapping(value = "/comments", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showCommentPage(@RequestParam("foodID") int foodID, Model model, HttpSession session) {
+    public String showCommentPage(@RequestParam("foodID") int foodID, Model model) {
 
         model.addAttribute("food", foodService.fetchFoodByID(foodID));
         return "customer/Comments";
+    }
+
+    @RequestMapping(value = "/post-comments")
+    public String postComments(@RequestParam("commentID") int commentID,
+                               @RequestParam("foodID") int foodID,
+                               @Valid @ModelAttribute("comment") Comment comment,
+                               BindingResult bindingResult, Principal principal) {
+
+        if (bindingResult.hasFieldErrors("comment"))
+            return "redirect:/comments?error";
+
+        comment.setPostedBy(principal.getName());
+        comment.setFoodID(foodID);
+        comment.setParentID(commentID);
+
+        commentService.addComment(comment);
+
+        return "redirect:/comments?foodID=" + foodID + "&posted";
     }
 }

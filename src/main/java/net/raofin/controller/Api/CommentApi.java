@@ -32,7 +32,12 @@ public class CommentApi
     }
 
     @GetMapping("/fetch-comments")
-    String fetchCommentHTML(@RequestParam("foodID") int foodID) {
+    String fetchCommentsHTML(@RequestParam("foodID") int foodID) {
         return commentService.loadComments(foodID);
     }
+
+    /*@GetMapping("/post-comments")
+    String postComments(@RequestParam("foodID") int foodID) {
+        return commentService.loadComments(foodID);
+    }*/
 }
