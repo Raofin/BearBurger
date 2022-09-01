@@ -15,5 +15,6 @@
     </div>
 </center>
 
-<script src="${pageContext.request.contextPath}/assets/js/Search.js"></script>
+<script src="<c:url value="/assets/js/FoodBox.js"/>"></script>
+<script src="<c:url value="/assets/js/Search.js"/>"></script>
 <c:import url="/templates/Footer.jsp"/>

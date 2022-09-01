@@ -52,7 +52,7 @@
 </div>
 <div class="wrapper">
     <div class="typing-demo" id="typing">
-        Default Admin Username & Password: "admin".
+        Default Admin Username & Password: "admin"
     </div>
 </div>
 

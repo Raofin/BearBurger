@@ -37,9 +37,4 @@ public class CommentApi
         int foodID = session.getAttribute("foodID") == null ? 1 : (int) session.getAttribute("foodID");
         return commentService.loadComments(foodID);
     }
-
-    /*@GetMapping("/post-comments")
-    String postComments(@RequestParam("foodID") int foodID) {
-        return commentService.loadComments(foodID);
-    }*/
 }

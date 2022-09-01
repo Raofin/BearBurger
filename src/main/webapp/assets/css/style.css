@@ -1003,7 +1003,7 @@ input#confirm-button {
     animation: typing 2s steps(22), blink .5s step-end infinite alternate;
     white-space: nowrap;
     overflow: hidden;
-    border-right: 3px solid;
+    /*border-right: 3px solid;*/
     font-family: monospace;
     font-size: 20px;
     padding-left: 10px;
