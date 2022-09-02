@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -46,10 +45,11 @@ public class CommentServiceImpl implements CommentService
             commentsString.append(loadReplies(foodID, comment.getCommentID(), 0));
         }
 
-        return commentsString.toString();
+        return commentsString.toString()
+                .replaceAll("\\r\\n","<br>"); // handle new lines
     }
 
-    private String loadReplies(int foodID, int parentID, int marginLeft) {
+    private StringBuilder loadReplies(int foodID, int parentID, int marginLeft) {
 
         StringBuilder replyString = new StringBuilder();
 
@@ -62,7 +62,7 @@ public class CommentServiceImpl implements CommentService
             replyString.append(loadReplies(foodID, comment.getCommentID(), marginLeft));
         }
 
-        return replyString.toString();
+        return replyString;
     }
 
     @Override
