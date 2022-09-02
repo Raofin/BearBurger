@@ -1,5 +1,7 @@
 package net.raofin.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -7,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "foods")
 public class Food
@@ -31,72 +34,10 @@ public class Food
     private String description;
 
     @NotNull
-    @Min(0)
-    @Max(2000)
     @Column(name = "price")
     private int price;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "foodID")
     private List<Comment> comments;
-
-    public int getFoodID() {
-        return foodID;
-    }
-
-    public void setFoodID(int foodID) {
-        this.foodID = foodID;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
-    @Override
-    public String toString() {
-        return "Food{" +
-                "foodID=" + foodID +
-                ", category='" + category + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", comments=" + comments +
-                '}';
-    }
 }

@@ -27,6 +27,7 @@ public class UserDaoImpl implements UserDao
         Session session = this.sessionFactory.getCurrentSession();
         Query<User> userQuery = session.createQuery("FROM User", User.class);
         List<User> users = userQuery.getResultList();
+
         return users == null ? new ArrayList<User>() : users;
     }
 
@@ -43,6 +44,7 @@ public class UserDaoImpl implements UserDao
 
         Session session = this.sessionFactory.getCurrentSession();
         Query<User> userQuery = session.createQuery("FROM User WHERE UserID = " + id, User.class);
+
         return userQuery.getSingleResult();
     }
 
@@ -70,6 +72,7 @@ public class UserDaoImpl implements UserDao
         Session session = this.sessionFactory.getCurrentSession();
         Query<User> userQuery = session.createQuery("FROM User WHERE Email = :email", User.class);
         userQuery.setParameter("email", email);
+
         return userQuery.getSingleResult();
     }
 
@@ -137,6 +140,7 @@ public class UserDaoImpl implements UserDao
         Session session = sessionFactory.getCurrentSession();
         Query<User> userQuery = session.createQuery("FROM User WHERE Email LIKE '%:email%'", User.class);
         userQuery.setParameter("email", email);
+
         return userQuery.getResultList();
     }
 }

@@ -60,6 +60,7 @@ public class AdminController
             return "redirect:/add-user?duplicate";
 
         userService.registerUser(user);
+
         return "redirect:/add-user?added";
     }
 
@@ -81,6 +82,7 @@ public class AdminController
         }
 
         foodService.addFood(food);
+
         return "redirect:/add-food?added";
     }
 }

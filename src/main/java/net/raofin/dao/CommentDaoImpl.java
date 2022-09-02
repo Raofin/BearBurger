@@ -22,26 +22,32 @@ public class CommentDaoImpl implements CommentDao
 
     @Override
     public List<Comment> fetchAllComment() {
+
         Session session = this.sessionFactory.getCurrentSession();
         Query<Comment> commentQuery = session.createQuery("FROM Comment", Comment.class);
         List<Comment> comments = commentQuery.getResultList();
+
         return comments == null ? new ArrayList<Comment>() : comments;
     }
 
     @Override
     public List<Comment> fetchCommentByFoodID(int foodID) {
+
         Session session = this.sessionFactory.getCurrentSession();
         Query<Comment> commentQuery = session.createQuery("FROM Comment WHERE FoodID = :foodID", Comment.class);
         commentQuery.setParameter("foodID", foodID);
+
         return commentQuery.getResultList();
     }
 
     @Override
     public List<Comment> fetchCommentByParentID(int foodID, int parentID) {
+
         Session session = this.sessionFactory.getCurrentSession();
         Query<Comment> commentQuery = session.createQuery("FROM Comment WHERE FoodID = :foodID AND ParentID = :parentID", Comment.class);
         commentQuery.setParameter("foodID", foodID);
         commentQuery.setParameter("parentID", parentID);
+
         return commentQuery.getResultList();
     }
 

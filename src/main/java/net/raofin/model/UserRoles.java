@@ -1,7 +1,10 @@
 package net.raofin.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "roles")
 public class UserRoles
@@ -27,38 +30,5 @@ public class UserRoles
     public UserRoles(int userID, String role) {
         this.userID = userID;
         this.role = role;
-    }
-
-    public int getRoleID() {
-        return roleID;
-    }
-
-    public void setRoleID(int roleID) {
-        this.roleID = roleID;
-    }
-
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    @Override
-    public String toString() {
-        return "UserRoles{" +
-                "roleID=" + roleID +
-                ", userID=" + userID +
-                ", role='" + role + '\'' +
-                '}';
     }
 }
