@@ -1,43 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
+<c:import url="/templates/CustomerHeader.jsp"/>
 
-<html>
-<head>
-    <link rel="icon" type="image/png" href="<c:url value="/assets/img/logo.svg"/>"/>
-    <link rel="preload" href="<c:url value="/assets/img/background.jpg"/>" as="image">
-    <link href="<c:url value="/assets/css/style.css"/>" rel="stylesheet" type="text/css">
-    <script src="<c:url value="/assets/js/jquery-3.6.0.min.js"/>"></script>
-    <script src="<c:url value="/assets/js/jquery.validate.js"/>"></script>
-    <title>Bear Burger</title>
-</head>
-<body>
-
-<header>
-    <a class="logo" href="../home"><img src="<c:url value="/assets/img/nav-logo.svg"/>" alt="logo"></a>
-    <nav>
-        <ul class="nav-links">
-
-            <sec:authorize access="hasAuthority('ADMIN')">
-                <li><a href="../dashboard">Admin Panel</a></li>
-            </sec:authorize>
-
-            <sec:authorize access="hasAnyAuthority('CUSTOMER', 'ADMIN')">
-                <li><a href="../home">Home</a></li>
-                <li><a href="../search-foods">Search Foods</a></li>
-                <li><a href="../profile">View Profile</a></li>
-                <li><a href="<c:url value="/logout"/>">Log Out</a></li>
-                <li class="username"><a href="../profile">
-                    <sec:authentication property="principal.username"/></a></li>
-            </sec:authorize>
-        </ul>
-    </nav>
-</header>
-
-<div class="form-container" id="payment-form">
-    <form:form action="../api/payment-action" class="" method="POST">
+<div class="form-container">
+    <form:form action="api/payment-action" id="payment-form" method="GET">
         <div>
             <h1 class="payment-form-title">${food.title}</h1>
             <p class="payment-description">${food.description}</p>
@@ -58,38 +26,28 @@
             <h2 class="payment-title">Payment</h2>
             <table class="payment-table">
                 <tr>
-                    <td>Name</td>
-                    <td>
-                        <input id="name" name="name" placeholder="Enter your name" type="text"
+                    <td><label for="name">Name</label></td>
+                    <td><input id="name" name="name" placeholder="Enter your name" type="text"
                                value="<sec:authentication property="principal.username"/>">
                     </td>
                 </tr>
                 <tr>
-                    <td>Card Number</td>
-                    <td>
-                        <input autofocus id="cardNumber" name="cardNumber" placeholder="Credit card number" type="text">
-                    </td>
+                    <td><label for="card-number">Card Number</label></td>
+                    <td><input autofocus id="card-number" name="cardNumber" placeholder="0000 0000 0000 0000" type="text"></td>
                 </tr>
                 <tr>
-                    <td>Exp Date</td>
-                    <td>
-                        <input id="expDate" name="expDate" placeholder="Enter expiration date" type="text">
-                    </td>
+                    <td><label for="exp-date">Exp Date</label></td>
+                    <td><input id="exp-date" maxlength="10" name="expDate" placeholder="MM/YY" type="text"></td>
                 </tr>
                 <tr>
-                    <td>Code CVV</td>
-                    <td>
-                        <input autocomplete="off" id="cvv" name="cvv" placeholder="Enter your code cvv"
-                               type="password">
-                    </td>
+                    <td><label for="cvv">Code CVV</label></td>
+                    <td><input id="cvv" name="cvv" placeholder="***" type="password"></td>
                 </tr>
             </table>
         </div>
 
         <div>
-            <div class="center-text">
-                <p id="message"></p>
-            </div>
+            <div class="center-text"><p id="message"></p></div>
             <div class="center">
                 <input class="button" id="pay" type="submit" value="Pay">
             </div>

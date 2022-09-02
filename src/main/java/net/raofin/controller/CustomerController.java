@@ -72,8 +72,8 @@ public class CustomerController
         return "redirect:/profile?updated";
     }
 
-    @RequestMapping(value = "/payment/{foodId}", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showPaymentPage(@PathVariable int foodId, Model model, HttpSession session) {
+    @RequestMapping(value = "/payment", method = {RequestMethod.GET, RequestMethod.POST})
+    public String showPaymentPage(@RequestParam("foodId") int foodId, Model model, HttpSession session) {
 
         model.addAttribute("food", foodService.fetchFoodByID(foodId));
         session.setAttribute("price", foodService.fetchFoodByID(foodId).getPrice());
