@@ -11,28 +11,28 @@
             <div>
                 <div>
                     <label class="form-label" for="username">Username</label>
-                    <form:input class="form-input-box" id="username"
+                    <form:input class="form-input-box" id="username" maxlength="15"
                                 name="username" placeholder="Enter your username here" path="username"/>
                 </div>
                 <div>
                     <label class="form-label" for="email">Email</label>
-                    <form:input class="form-input-box" id="email"
+                    <form:input class="form-input-box" id="email" maxlength="30"
                                 placeholder="Enter your email here" path="email"/>
                 </div>
                 <div>
                     <label class="form-label" for="password">Password</label>
                     <div class="show-password"><span id="password-view">Show</span></div>
-                    <form:input autocomplete="off" class="form-input-box" id="password" path="password"
+                    <form:input autocomplete="off" class="form-input-box" id="password" path="password" maxlength="30"
                                 placeholder="Enter your password here" type="password"/>
                 </div>
                 <div>
                     <label class="form-label" for="cPassword">Confirm Password</label>
-                    <form:input autocomplete="off" class="form-input-box" id="cPassword" path="cPassword"
+                    <form:input autocomplete="off" class="form-input-box" id="cPassword" path="cPassword" maxlength="30"
                                 placeholder="Enter your password here" type="password"/>
                 </div>
                 <div>
                     <label class="form-label" for="phone">Phone Number</label>
-                    <form:input class="form-input-box" id="phone" path="phoneNumber"
+                    <form:input class="form-input-box" id="phone" path="phoneNumber" maxlength="14"
                                 placeholder="Enter your phone number here"/>
                 </div>
                 <div>

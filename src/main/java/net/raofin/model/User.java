@@ -1,5 +1,8 @@
 package net.raofin.model;
 
+import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -8,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "users")
 public class User
@@ -33,12 +37,12 @@ public class User
     @Column(name = "password")
     private String password;
 
-    @Size(min = 6, max = 30)
     @Transient
+    @Size(min = 6, max = 30)
     private String cPassword;
 
     @NotNull
-    @Size(min = 6, max = 20)
+    @Size(min = 6, max = 14)
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
@@ -52,6 +56,7 @@ public class User
     @Column(name = "enabled")
     private boolean isEnabled = true;
 
+    @CreationTimestamp
     @Column(name = "regDate")
     private Date regDate;
 
@@ -59,112 +64,13 @@ public class User
     @JoinColumn(name = "UserID")
     private List<UserRoles> userRoles;
 
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getcPassword() {
-        return cPassword;
-    }
-
-    public void setcPassword(String cPassword) {
-        this.cPassword = cPassword;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public int getSpent() {
-        return spent;
-    }
-
-    public void setSpent(int spent) {
-        this.spent = spent;
-    }
-
-    public boolean isEnabled() {
-        return isEnabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        isEnabled = enabled;
-    }
-
-    public Date getRegDate() {
-        return regDate;
-    }
-
     public String getRegDateFormatted() {
         String pattern = "E, dd MMM yyyy"; // Sun, 21 Aug 2022 11:34 PM
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern/*, new Locale("Asia/Dhaka")*/);
         return simpleDateFormat.format(regDate);
     }
 
-    public void setRegDate(Date regDate) {
-        this.regDate = regDate;
-    }
-
-    public List<UserRoles> getUserRoles() {
-        return userRoles;
-    }
-
-    public void setUserRoles(List<UserRoles> userRoles) {
-        this.userRoles = userRoles;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userID=" + userID +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", gender='" + gender + '\'' +
-                ", spent='" + spent + '\'' +
-                ", isEnabled=" + isEnabled +
-                ", regDate=" + regDate +
-                ", userRole=" + userRoles +
-                '}';
+    public String getcPassword() {
+        return cPassword;
     }
 }
