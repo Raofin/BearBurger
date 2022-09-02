@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS Users
     Username    VARCHAR(15) NOT NULL UNIQUE,
     Email       VARCHAR(30) NOT NULL,
     Password    VARCHAR(62) NOT NULL,
-    PhoneNumber VARCHAR(30) NOT NULL,
+    PhoneNumber VARCHAR(14) NOT NULL,
     Gender      VARCHAR(6)  NOT NULL,
     Spent       INT,
     Enabled     BOOL        NOT NULL,
@@ -26,11 +26,11 @@ CREATE TABLE IF NOT EXISTS Roles
 (
     RoleID INT AUTO_INCREMENT PRIMARY KEY,
     UserID INT,
-    Role   VARCHAR(10)
-    #     CONSTRAINT Role_FK
-    #         FOREIGN KEY (UserID)
-    #             REFERENCES Users (UserID)
-    #             ON DELETE CASCADE
+    Role   VARCHAR(10)/*,
+        CONSTRAINT Role_FK
+            FOREIGN KEY (UserID)
+                REFERENCES Users (UserID)
+                ON DELETE CASCADE*/
 );
 
 # insert user data
