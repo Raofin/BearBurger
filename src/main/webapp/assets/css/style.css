@@ -899,6 +899,11 @@ input[type='radio'].form-input-error {
     box-shadow: rgba(0, 0, 0, 0.9) 0 5px 15px;
 }
 
+#admin-prompt {
+    padding: 30px 20px 20px 20px;
+    text-align: center;
+}
+
 .food-description {
     font-family: 'Inter', sans-serif;
     width: 100%;

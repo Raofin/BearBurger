@@ -50,20 +50,6 @@ public class AdminController
         return "admin/AddUser";
     }
 
-    @PostMapping("/add-user-action")
-    public String saveUser(@Valid @ModelAttribute(value = "user") User user, BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors())
-            return "redirect:/add-user?error";
-
-        if(userService.fetchUserByUsername(user.getUsername()) != null)
-            return "redirect:/add-user?duplicate";
-
-        userService.registerUser(user);
-
-        return "redirect:/add-user?added";
-    }
-
     @RequestMapping(value = "/manage-food", method = {RequestMethod.GET, RequestMethod.POST})
     public String showManageFoodPage() {
         return "admin/ManageFood";
@@ -72,17 +58,5 @@ public class AdminController
     @RequestMapping(value = "/add-food", method = {RequestMethod.GET, RequestMethod.POST})
     public String showAddFoodPage(@ModelAttribute("food") Food food) {
         return "admin/AddFood";
-    }
-
-    @PostMapping("/add-food-action")
-    public String register(@Valid @ModelAttribute(value = "food") Food food, BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            return "redirect:/add-food?error";
-        }
-
-        foodService.addFood(food);
-
-        return "redirect:/add-food?added";
     }
 }

@@ -4,8 +4,8 @@
 <c:import url="/templates/AdminHeader.jsp"/>
 
 <div class="add-user-form">
-    <form:form id="add-user-form" method="POST" action="add-user-action" modelAttribute="user" >
-        <h2 class="login-form-title">Add User</h2>
+    <form:form id="add-user-form" method="POST" modelAttribute="user">
+        <h2 class="admin-form-title">Add User</h2>
         <fieldset>
             <div>
                 <div>
@@ -39,26 +39,9 @@
                 </div>
             </div>
         </fieldset>
-
-        <div class="bottom">
-            <div class="center-text">
-                <p id="prompt-message">
-                    <%
-                        if (request.getParameter("error") != null) {
-                            out.print("<p class=\"error-message\">Please fill out all the fields properly.</p>");
-                        }
-                        if (request.getParameter("duplicate") != null) {
-                            out.print("<p class=\"error-message\">Another account with that username already exists.</p>");
-                        }
-                        if (request.getParameter("added") != null) {
-                            out.print("<p class=\"success\">New user added!</p>");
-                        }
-                    %>
-                </p>
-            </div>
-            <div class="center">
-                <input id="form-submit" type="submit" class="button" value="Add User">
-            </div>
+        <p id="admin-prompt"></p>
+        <div class="center">
+            <input id="form-submit" type="submit" class="button" value="Add User">
         </div>
     </form:form>
 </div>

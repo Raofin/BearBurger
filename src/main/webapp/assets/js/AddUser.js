@@ -1,4 +1,23 @@
 $('#add-user-form').validate({
+    submitHandler: form => {
+        $.ajax({
+            url: 'api/admin/add-user-action',
+            method: "POST",
+            data: $('#add-user-form').serialize(),
+            success: data => {
+                let message = document.getElementById('admin-prompt');
+
+                if (data === 'error')
+                    message.innerHTML = '<p class="tomato-text">Please fill out all the fields properly.</p>'
+                else if (data === 'duplicate')
+                    message.innerHTML = '<p class="tomato-text">Another account with that username already exists.</p>'
+                else {
+                    message.innerHTML = '<p class="green-text">New user added!</p>'
+                    $('#add-user-form').trigger("reset");
+                }
+            }
+        })
+    },
     rules: {
         username: {
             required: true,

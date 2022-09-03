@@ -23,12 +23,12 @@
                 </div>
                 <div>
                     <label class="form-label" for="food-name">Food Name</label>
-                    <form:input class="form-input-box" id="food-name" name="food-name" maxlength="30"
+                    <form:input class="form-input-box" id="food-name" maxlength="30"
                                 placeholder="Enter food name here" type="text" path="title"/>
                 </div>
                 <div>
                     <label class="form-label" for="price">Price</label>
-                    <form:input class="form-input-box" id="price" name="price" maxlength="5"
+                    <form:input class="form-input-box" id="price" maxlength="5"
                                 placeholder="Enter price here" type="text" path="price"/>
                 </div>
                 <div>
@@ -38,25 +38,13 @@
                 </div>
             </div>
         </fieldset>
-        <div class="admin-form-bottom">
-            <div class="center-text">
-                <p id="prompt-message">
-                    <%
-                        if (request.getParameter("error") != null) {
-                            out.print("<p class=\"error-message\">Please fill out all the fields properly.</p>");
-                        }
-                        if (request.getParameter("added") != null) {
-                            out.print("<p class=\"success\">New food added!</p>");
-                        }
-                    %>
-                </p>
-            </div>
-            <div class="center">
-                <input id="form-submit" type="submit" class="button" value="Add Food">
-            </div>
+        <p id="admin-prompt"></p>
+        <div class="center">
+            <input id="form-submit" type="submit" class="button" value="Add Food">
         </div>
     </form:form>
 </div>
 
+<script src="<c:url value="/assets/js/Logic.js"/>"></script>
 <script src="<c:url value="/assets/js/AddFood.js"/>"></script>
 <c:import url="/templates/Footer.jsp"/>

@@ -1,13 +1,13 @@
 package net.raofin.controller.Api;
 
+import net.raofin.model.Food;
 import net.raofin.model.User;
 import net.raofin.service.FoodService;
 import net.raofin.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -70,5 +70,30 @@ public class UserApi
     @GetMapping("/delete-food/{id}")
     void deleteFood(@PathVariable String id) {
         foodService.deleteFoodById(Integer.parseInt(id));
+    }
+
+    @PostMapping("/add-user-action")
+    String saveUser(@Valid @ModelAttribute(value = "user") User user, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors())
+            return "error";
+
+        if (userService.fetchUserByUsername(user.getUsername()) != null)
+            return "duplicate";
+
+        userService.registerUser(user);
+
+        return "added";
+    }
+
+    @PostMapping("/add-food-action")
+    public String register(@Valid @ModelAttribute(value = "food") Food food, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors())
+            return "error";
+
+        foodService.addFood(food);
+
+        return "added";
     }
 }

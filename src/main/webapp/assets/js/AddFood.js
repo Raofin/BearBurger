@@ -3,8 +3,25 @@ $(document).ready(() => $('#price').val(''));
 $('#price').keypress(e => !String.fromCharCode(e.which).match(/\D/g));
 
 $('#add-food-form').validate({
+    submitHandler: form => {
+        $.ajax({
+            url: 'api/admin/add-food-action',
+            method: "POST",
+            data: $('#add-food-form').serialize(),
+            success: data => {
+                let message = document.getElementById('admin-prompt');
+
+                if (data === 'error')
+                    message.innerHTML = '<p class="tomato-text">Please fill out all the fields properly.</p>'
+                else {
+                    message.innerHTML = '<p class="green-text">New food added!</p>'
+                    $('#add-food-form').trigger("reset");
+                }
+            }
+        })
+    },
     rules: {
-        "food-name": {
+        title: {
             required: true,
             minlength: 5,
             maxlength: 30,
@@ -21,7 +38,7 @@ $('#add-food-form').validate({
         }
     },
     messages: {
-        "food-name": {
+        title: {
             required: "Please enter a food title",
             minlength: "Food title must consist of at least 5 characters",
             maxlength: "Food title must be no more than 30 characters long"
