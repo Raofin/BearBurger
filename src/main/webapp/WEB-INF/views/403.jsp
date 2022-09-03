@@ -26,8 +26,9 @@
 <div class="welcome" id="welcome">
     <img alt="logo" class="welcome-logo" src="<c:url value="/assets/img/logo.svg"/>">
     <div class="welcome-message">
-        <h1 class="welcome-title">Access Denied!</h1>
-        <h3 class="welcome-title">You don't have the permission to access this page.</h3>
+        <span class="error-number">403</span>
+        <span class="error-page-title">Forbidden</span>
+        <span>You don't have the permission to access this page.</span>
     </div>
 </div>
 

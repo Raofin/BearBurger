@@ -228,8 +228,7 @@ footer {
     padding-bottom: 20px;
 }
 
-.welcome .button:hover,
-.database-error .button:hover {
+.welcome .button:hover {
     background-color: #389afd;
 }
 
@@ -320,6 +319,38 @@ footer {
     padding-right: 60px;
     cursor: pointer;
     color: #292828;
+}
+
+.wrapper {
+    display: grid;
+    place-items: center;
+    color: white;
+
+}
+
+.typing-demo {
+    width: 44ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    /*border-right: 3px solid;*/
+    font-family: monospace;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-bottom: 100px;
+    cursor: pointer;
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent
+    }
 }
 
 /*======================= Home ======================*/
@@ -517,7 +548,6 @@ input[type='radio'].form-input-error {
     margin-bottom: 20px;
 }
 
-
 .radio-label {
     padding-right: 20px;
     color: black;
@@ -527,7 +557,7 @@ input[type='radio'].form-input-error {
     font-family: 'Inter', sans-serif;
     font-size: 17px;
     width: 75%;
-    margin-top: 20px;
+    margin: 20px 0;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
@@ -537,7 +567,6 @@ input[type='radio'].form-input-error {
 .not-found {
     color: tomato;
     font-size: 20px;
-    margin-top: 20px;
 }
 
 /*======================= Payment ======================*/
@@ -752,21 +781,6 @@ input[type='radio'].form-input-error {
     color: #a18c6d;
 }
 
-/*======================= Error Page ======================*/
-
-#database-error {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-}
-
-#database-error h1 {
-    padding: 15px;
-}
-
 /*======================= Admin ======================*/
 
 .admin-container {
@@ -778,9 +792,6 @@ input[type='radio'].form-input-error {
     transform: translate(-50%, -50%);
     text-align: center;
     border-radius: 10px;
-    /*background-color: rgba(41, 40, 40, 0.50);*/
-    /*box-shadow: rgba(0, 0, 0, 0.9) 0 5px 15px;*/
-    /*filter: drop-shadow(0px 3px 3px black);*/
 }
 
 .admin-items {
@@ -1002,35 +1013,32 @@ input#confirm-button {
     font-weight: bold;
 }
 
+/*======================= Error Page ======================*/
 
-.wrapper {
-    display: grid;
-    place-items: center;
+/*
+#database-error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
     color: white;
-
 }
 
-.typing-demo {
-    width: 44ch;
-    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
-    white-space: nowrap;
-    overflow: hidden;
-    /*border-right: 3px solid;*/
-    font-family: monospace;
-    font-size: 20px;
-    padding-left: 10px;
-    margin-bottom: 100px;
-    cursor: pointer;
+#database-error h1 {
+    padding: 15px;
+}*/
+
+
+.error-number {
+    font-size: 150px;
+    font-weight: bold;
+    color: tomato;
 }
 
-@keyframes typing {
-    from {
-        width: 0
-    }
-}
-
-@keyframes blink {
-    50% {
-        border-color: transparent
-    }
+.error-page-title {
+    font-size: 40px;
+    font-weight: bold;
+    padding-bottom: 5px;
+    display: block;
 }
