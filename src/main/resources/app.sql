@@ -117,7 +117,7 @@ VALUES ('Burger', 'Cheese Burger', 'Prepared with beef patty, cheese, burger sau
        ('Pasta', 'BBQ Grill Chicken Pasta', 'Topped with grilled chicken, bbq sauce & mozzarella cheese', 340),
        ('Pasta', 'Seafood Pasta', 'Topped with seafood & mushroom', 350),
        ('Pasta', 'American Mac & Cheese', 'Topped with macarony & mozzarella cheese', 560),
-       ('Drinks', 'Lemonade', 'taste of fresh lemon and freshness', 110),
+       ('Drinks', 'Lemonade', 'Taste of fresh lemon and freshness', 110),
        ('Drinks', 'Iced lemon Tea', 'Lemon tea but with chilled ice', 200),
        ('Drinks', 'Lemon lassi', 'Taste of lassi with tanginess of lemon', 170),
        ('Drinks', 'Milk Shake', 'Taste of heavy cream and milk', 140),
@@ -134,7 +134,7 @@ VALUES ('Burger', 'Cheese Burger', 'Prepared with beef patty, cheese, burger sau
        ('Sides', 'Medium French Fry', 'Delicious french fry in medium', 90),
        ('Sides', 'Large French Fry', 'Delicious french fry in large', 110),
        ('Sides', 'Chicken Fingers', 'Chicken fried in finger sized', 130),
-       ('Sides', 'Naga Drumsticks', 'You like it HOT!! Its for you', 120);
+       ('Sides', 'Naga Drumsticks', 'Soft spicy chicken with crunchy outer', 120);
 
 # insert comment data
 INSERT IGNORE INTO Comments (CommentID, ParentID, FoodID, PostedBy, Comment, PostDate)
