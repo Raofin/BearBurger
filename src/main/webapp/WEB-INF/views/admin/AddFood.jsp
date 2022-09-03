@@ -4,7 +4,7 @@
 <c:import url="/templates/AdminHeader.jsp"/>
 
 <div class="add-user-form">
-    <form:form id="register-form" method="POST" action="add-food-action" modelAttribute="food">
+    <form:form id="add-food-form" method="POST" action="add-food-action" modelAttribute="food">
         <h2 class="admin-form-title">Add Foods</h2>
         <fieldset>
             <div>
@@ -23,12 +23,12 @@
                 </div>
                 <div>
                     <label class="form-label" for="food-name">Food Name</label>
-                    <form:input class="form-input-box" id="food-name" name="food-name"
+                    <form:input class="form-input-box" id="food-name" name="food-name" maxlength="30"
                                 placeholder="Enter food name here" type="text" path="title"/>
                 </div>
                 <div>
                     <label class="form-label" for="price">Price</label>
-                    <form:input class="form-input-box" id="price" name="price"
+                    <form:input class="form-input-box" id="price" name="price" maxlength="5"
                                 placeholder="Enter price here" type="text" path="price"/>
                 </div>
                 <div>
@@ -38,7 +38,6 @@
                 </div>
             </div>
         </fieldset>
-
         <div class="admin-form-bottom">
             <div class="center-text">
                 <p id="prompt-message">
@@ -59,5 +58,5 @@
     </form:form>
 </div>
 
-<%--<script src="<c:url value="/assets/js/.js"/>"></script>--%>
+<script src="<c:url value="/assets/js/AddFood.js"/>"></script>
 <c:import url="/templates/Footer.jsp"/>

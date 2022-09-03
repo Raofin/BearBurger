@@ -13,7 +13,6 @@
                 Price: <span id="price" class="white-back-text">${food.price}tk</span>
             </p>
         </div>
-
         <div class="currency-text">
             <h3 class="">Pay with:
                 <a id="taka" class="white-back-text">Taka</a>
@@ -21,7 +20,6 @@
                 <a id="pound">Pound</a>
             </h3>
         </div>
-
         <div>
             <h2 class="payment-title">Payment</h2>
             <table class="payment-table">
@@ -37,15 +35,14 @@
                 </tr>
                 <tr>
                     <td><label for="exp-date">Exp Date</label></td>
-                    <td><input id="exp-date" maxlength="10" name="expDate" placeholder="MM/YY" type="text"></td>
+                    <td><input id="exp-date" maxlength="5" name="expDate" placeholder="MM/YY" type="text" ></td>
                 </tr>
                 <tr>
                     <td><label for="cvv">Code CVV</label></td>
-                    <td><input id="cvv" name="cvv" placeholder="***" type="password"></td>
+                    <td><input id="cvv" maxlength="3" name="cvv" placeholder="***" type="password"></td>
                 </tr>
             </table>
         </div>
-
         <div>
             <div class="center-text"><p id="message"></p></div>
             <div class="center">

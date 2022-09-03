@@ -1,9 +1,22 @@
-$(document).ready(() => searchFood(''))
+let search = $('#search-input');
 
-function searchFood(title) {
+$(document).ready(() => searchFood());
+
+search.keyup(() => searchFood());
+
+function searchFood() {
     $.ajax({
-        url: 'api/searchFoods?name=' + title,
+        url: 'api/searchFoods?name=' + search.val(),
         method: "GET",
-        success: data => writeFoodHtml(data)
+        success: data => {
+
+            if (data.length === 0) {
+
+                document.getElementById('foods-table').innerHTML = "<p class='not-found'>" + search.val() + " not available!</p>";
+                return;
+            }
+
+            writeFoodHtml(data);
+        }
     });
 }

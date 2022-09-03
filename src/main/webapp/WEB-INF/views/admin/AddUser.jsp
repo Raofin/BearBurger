@@ -4,9 +4,8 @@
 <c:import url="/templates/AdminHeader.jsp"/>
 
 <div class="add-user-form">
-    <form:form id="register-form" method="POST" action="add-user-action" modelAttribute="user" >
+    <form:form id="add-user-form" method="POST" action="add-user-action" modelAttribute="user" >
         <h2 class="login-form-title">Add User</h2>
-
         <fieldset>
             <div>
                 <div>
@@ -26,7 +25,7 @@
                 </div>
                 <div>
                     <label class="form-label" for="phone">Phone Number</label>
-                    <form:input class="form-input-box" id="phone" name="phone"
+                    <form:input class="form-input-box" id="phone" name="phoneNumber"
                                 placeholder="Enter your phone number here" type="text" path="phoneNumber"/>
                 </div>
                 <div>
@@ -64,5 +63,6 @@
     </form:form>
 </div>
 
-<%--<script src="<c:url value="/assets/js/.js"/>"></script>--%>
+<script src="<c:url value="/assets/js/Logic.js"/>"></script>
+<script src="<c:url value="/assets/js/AddUser.js"/>"></script>
 <c:import url="/templates/Footer.jsp"/>

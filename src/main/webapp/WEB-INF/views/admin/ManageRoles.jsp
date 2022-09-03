@@ -19,5 +19,7 @@
     </form>
 
 </div>
-<script src="${pageContext.request.contextPath}/assets/js/ManageRoles.js"></script>
+
+<script src="<c:url value="/assets/js/Logic.js"/>"></script>
+<script src="<c:url value="/assets/js/ManageRoles.js"/>"></script>
 <c:import url="/templates/Footer.jsp"/>

@@ -10,7 +10,7 @@
             <p id="description">${food.description}</p>
         </div>
         <div class="comment-box">
-            <h2>Comments</h2>
+            <h2><label for="comment">Comments</label></h2>
             <div id="all-comments" hidden></div>
             <div>
                 <div id="replying-to"></div>
@@ -29,6 +29,5 @@
     </form:form>
 </div>
 
-<script src="<c:url value="/assets/js/UrlParameter.js"/>"></script>
 <script src="<c:url value="/assets/js/Comments.js"/>"></script>
 <c:import url="/templates/Footer.jsp"/>

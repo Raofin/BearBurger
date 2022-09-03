@@ -531,6 +531,13 @@ input[type='radio'].form-input-error {
     padding: 10px;
     border-radius: 5px;
     text-align: center;
+    align-self: center;
+}
+
+.not-found {
+    color: tomato;
+    font-size: 20px;
+    margin-top: 20px;
 }
 
 /*======================= Payment ======================*/

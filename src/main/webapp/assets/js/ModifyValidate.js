@@ -16,25 +16,25 @@ $('#update-form').validate({
         phoneNumber: {
             required: true,
             phoneRegex: true,
-            minlength: 11,
-            maxlength: 30,
+            minlength: 6,
+            maxlength: 14,
             normalizer: value => removeWhitespaces(value, '#phone'),
         },
     },
     messages: {
-        username: {
-            required: "Please enter a username",
-            minlength: "Must consist of at least 4 characters",
-            maxlength: "Must be no more than 15 characters long"
-        },
         email: {
             required: "Please enter email address",
-            maxlength: "Must be no more than 30 characters long"
+            maxlength: "Your email must be no more than 30 characters long"
         },
         password: {
             required: "Please provide a password",
+            minlength: "Password must be at least 6 characters long",
+            maxlength: "Password must be no more than 30 characters long"
+        },
+        phoneNumber: {
+            required: "Please enter phone number",
             minlength: "Must be at least 6 characters long",
-            maxlength: "Must be no more than 30 characters long"
+            maxlength: "Must be no more than 14 characters long"
         },
     },
     errorClass: "form-input-error warning-message"

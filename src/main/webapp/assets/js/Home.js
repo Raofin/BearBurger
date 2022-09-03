@@ -5,7 +5,15 @@ function fetchFoods(category) {
     $.ajax({
         url: 'api/fetchFoods/' + category,
         method: "GET",
-        success: data => writeFoodHtml(data)
+        success: data => {
+
+            if (data.length === 0) {
+                document.getElementById('foods-table').innerHTML = "<p class='not-found'>No foods available in this category.</p>";
+                return;
+            }
+
+            writeFoodHtml(data);
+        }
     });
 
     $('label').removeClass('white-back-text');

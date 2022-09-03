@@ -20,5 +20,5 @@
     </form>
 </div>
 
-<script src="${pageContext.request.contextPath}/assets/js/ManageUser.js"></script>
+<script src="<c:url value="/assets/js/ManageUser.js"/>"></script>
 <c:import url="/templates/Footer.jsp"/>

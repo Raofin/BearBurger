@@ -95,8 +95,9 @@ $("#card-number").on("keydown", function (e) {
     this.selectionEnd = cursor;
 });
 
+$('#exp-date, #cvv').keypress(e => !String.fromCharCode(e.which).match(/\D/g));
+
 $("#exp-date").on("keydown", e => {
-    $("#exp-date").attr('maxlength', 5);
     e.target.value = e.target.value
         .replace(/^([1-9]\/|[2-9])$/g, '0$1/')
         .replace(/^(0[1-9]|1[0-2])$/g, '$1/')
@@ -105,11 +106,6 @@ $("#exp-date").on("keydown", e => {
         .replace(/^([0]+)\/|[0]+$/g, '0')
         .replace(/[^\d\/]|^[\/]*$/g, '')
         .replace(/\/\//g, '/');
-})
-
-$("#cvv").on("keyup", e => {
-    $('#cvv').attr('maxlength', 3);
-    e.target.value = e.target.value.replace(/\D+/g, '');
 })
 
 // Currency click events

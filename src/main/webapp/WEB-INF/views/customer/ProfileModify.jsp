@@ -6,38 +6,39 @@
 <div class="center">
     <form:form action="profile-modify-action" class="form-user-profile" id="update-form" method="post" modelAttribute="user">
         <h1>User Profile</h1>
-        <center>
-            <table class="profile-table">
-                <tr>
-                    <td>Username:</td>
-                    <td>${user.username}</td>
-                </tr>
-                <tr>
-                    <td>Email:</td>
-                    <td><form:input type="text" placeholder="Enter your email here" path="email"/></td>
-                </tr>
-                <tr>
-                    <td>Password:</td>
-                    <td><form:input type="password" placeholder="Enter a new password here" path="password"/></td>
-                </tr>
-                <tr>
-                    <td>Phone:</td>
-                    <td><form:input type="text" placeholder="Enter phone number here" path="phoneNumber"/></td>
-                </tr>
-                <tr>
-                    <td>Gender:</td>
-                    <td>${user.gender}</td>
-                </tr>
-                <tr>
-                    <td>Spent:</td>
-                    <td>${user.spent} tk</td>
-                </tr>
-                <tr>
-                    <td>Joined:</td>
-                    <td>${user.regDateFormatted}</td>
-                </tr>
-            </table>
-        </center>
+        <table class="profile-table">
+            <tr>
+                <td>Username:</td>
+                <td>${user.username}</td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><form:input id="email" name="email" path="email" maxlength="30"
+                                placeholder="Enter your email here" type="text"/></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><form:input id="password" name="password" path="password" maxlength="30"
+                                placeholder="Enter a new password here" type="password"/></td>
+            </tr>
+            <tr>
+                <td><label for="phoneNumber">Phone:</label></td>
+                <td><form:input id="phoneNumber" name="phoneNumber" path="phoneNumber" maxlength="14"
+                                placeholder="Enter phone number here" type="text"/></td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>${user.gender}</td>
+            </tr>
+            <tr>
+                <td>Spent:</td>
+                <td>${user.spent} tk</td>
+            </tr>
+            <tr>
+                <td>Joined:</td>
+                <td>${user.regDateFormatted}</td>
+            </tr>
+        </table>
         <div>
             <div class="center-text">
                 <p id="message">
@@ -51,5 +52,6 @@
     </form:form>
 </div>
 
-<%--<script src="<c:url value="/assets/js/ModifyValidate.js"/>"></script>--%>
+<script src="<c:url value="/assets/js/Logic.js"/>"></script>
+<script src="<c:url value="/assets/js/ModifyValidate.js"/>"></script>
 <c:import url="/templates/Footer.jsp"/>

@@ -19,5 +19,5 @@
     </form>
 </div>
 
-<script src="${pageContext.request.contextPath}/assets/js/ManageFood.js"></script>
+<script src="<c:url value="/assets/js/ManageFood.js"/>"></script>
 <c:import url="/templates/Footer.jsp"/>
