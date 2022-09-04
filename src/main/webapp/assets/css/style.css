@@ -7,6 +7,13 @@
     url('../fonts/Inter-Regular.woff?v=3.19') format('woff');
 }
 
+@font-face {
+    font-family: 'Inter-Bold';
+    font-display: swap;
+    src: url('../fonts/Inter-Bold.woff2?v=3.19') format('woff2'),
+    url('../fonts/Inter-Bold.woff?v=3.19') format('woff');
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -25,6 +32,10 @@ input,
 button {
     font-family: 'Inter', sans-serif;
     outline: none;
+}
+
+h1, h2, h3, h4, b {
+    font-family: 'Inter-Bold', sans-serif;
 }
 
 form a {
@@ -716,71 +727,6 @@ input[type='radio'].form-input-error {
     background-color: #002e5e;
 }
 
-/*================ Project Details Page ===============*/
-
-#project-details.form-container {
-    width: 600px;
-    min-width: 500px;
-    padding-bottom: 175px;
-}
-
-.features {
-    margin: 100px;
-    padding: 30px;
-}
-
-.project-details-img {
-    padding-bottom: 10px;
-}
-
-.project-details {
-    text-align: justify;
-}
-
-.project-link {
-    font-weight: bold;
-    flex-direction: column;
-    padding-bottom: 10px;
-    text-align: center;
-}
-
-.raofin {
-    position: absolute;
-    top: 86%;
-    left: 50%;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-    width: 380px;
-    padding: 10px 20px;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-    background-color: rgb(0, 0, 0);
-    box-shadow: rgba(0, 0, 0, 0.9) 0 5px 15px;
-}
-
-.raofin img {
-    height: 80px;
-    padding-right: 10px;
-    border-radius: 50%;
-    filter: drop-shadow(0px 0 5px #a18c6d);
-}
-
-.raofin p {
-    padding: 5px;
-}
-
-#project-details a {
-    cursor: pointer;
-    text-decoration: none;
-    color: #1d8af5;
-}
-
-#project-details a:hover {
-    color: #a18c6d;
-}
-
 /*======================= Admin ======================*/
 
 .admin-container {
@@ -1041,4 +987,92 @@ input#confirm-button {
     font-weight: bold;
     padding-bottom: 5px;
     display: block;
+}
+
+/*================ Project Details Page ===============*/
+
+#project-details.form-container {
+    width: 600px;
+    min-width: 550px;
+}
+
+.features {
+    margin: 100px;
+    padding: 30px;
+}
+
+.project-details-img {
+    padding-bottom: 10px;
+}
+
+.project-details {
+    text-align: justify;
+}
+
+.project-link {
+    font-weight: bold;
+    flex-direction: column;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.raofin {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    flex-direction: row;
+    justify-content: center;
+    width: 430px;
+    margin-top: 25px;
+    padding: 20px 20px;
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0);
+    box-shadow: rgba(0, 0, 0, 0.9) 0 5px 15px;
+}
+
+.raofin img {
+    height: 100px;
+    padding-right: 10px;
+    border-radius: 50%;
+    filter: drop-shadow(0px 0 5px #a18c6d);
+    cursor: progress;
+}
+
+.raofin p {
+    padding: 5px;
+}
+
+.raofin p:first-child {
+    font-family: 'Inter-Bold', sans-serif;
+    font-size: 23px;
+}
+
+#project-details a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #1d8af5;
+}
+
+#project-details a:hover {
+    color: #a18c6d;
+}
+
+.project-details h2 {
+    margin: 25px 0 5px 0;
+}
+
+.project-details h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 10px 0 -5px 0;
+}
+
+.project-details h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: normal;
+    margin-top: 8px;
+}
+
+.project-details ul {
+    margin: 5px 0 0 30px;
 }
