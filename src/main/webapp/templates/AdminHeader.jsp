@@ -30,15 +30,13 @@
             <sec:authorize access="hasRole('ADMIN')">
                 <li><a href="./home">Home</a></li>
                 <li><a href="./dashboard">Admin Panel</a></li>
-                <li><a href="./manage-roles">Manage Roles</a></li>
-                <li><a href="./manage-user">Manage Users</a></li>
-                <li><a href="./manage-food">Manage Foods</a></li>
+                <li><a href="./profile">View Profile</a></li>
                 <li><a href="<c:url value="/logout"/>">Log Out</a></li>
                 <li class="username"><a href="./profile">
                     <sec:authentication property="principal.username"/></a></li>
             </sec:authorize>
 
-            <%--            <li><a class="project-details" href="">Project Details</a></li>--%>
+            <li><a class="project-details" href="./project-details">Project Details</a></li>
         </ul>
     </nav>
 </header>

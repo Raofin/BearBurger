@@ -18,7 +18,7 @@
     <a class="logo" href=""><img src="<c:url value="/assets/img/nav-logo.svg"/>" alt="logo"></a>
     <nav>
         <ul class="nav-links">
-            <li><a href="">Project Details</a></li>
+            <li><a href="./project-details">Project Details</a></li>
         </ul>
     </nav>
 </header>

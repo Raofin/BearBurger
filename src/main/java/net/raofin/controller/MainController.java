@@ -78,4 +78,9 @@ public class MainController
     public String showDeniedPage() {
         return "403";
     }
+
+    @GetMapping("/project-details")
+    public String showDetailsPage() {
+        return "ProjectDetails";
+    }
 }

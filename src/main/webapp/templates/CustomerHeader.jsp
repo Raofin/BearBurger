@@ -39,7 +39,7 @@
                     <sec:authentication property="principal.username"/></a></li>
             </sec:authorize>
 
-            <%--      <li><a class="project-details" href="">Project Details</a></li>--%>
+            <li><a class="project-details" href="./project-details">Project Details</a></li>
         </ul>
     </nav>
 </header>
