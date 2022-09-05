@@ -1,11 +1,11 @@
-# drop the database if exists
-DROP SCHEMA IF EXISTS BearBurger_JSP;
+# drop BearBurger if exists
+DROP SCHEMA IF EXISTS BearBurger;
 
 # create database
-CREATE DATABASE IF NOT EXISTS BearBurger_JSP;
+CREATE DATABASE IF NOT EXISTS BearBurger;
 
 # select the database
-USE BearBurger_JSP;
+USE BearBurger;
 
 # create users table
 CREATE TABLE IF NOT EXISTS Users
@@ -36,8 +36,6 @@ CREATE TABLE IF NOT EXISTS Roles
 # insert user data
 INSERT IGNORE INTO Users (Username, Email, Password, PhoneNumber, Gender, Spent, Enabled)
 VALUES ('Raofin', 'hello@raofin.net', '$2a$10$l1xCEl5Vns6NbmzeiRPWpuy7nWB9ikSI/A6z8SipFQoOKL8HojO.m', '+8801234567890', 'Male', 6801, TRUE),
-       ('Sazzad', 'sazzad96@gmail.com', '$2a$10$BZ1Ai3VlwUamZg6c9zC8B.hlJzcXJGP512aAxtg2OAt2DT0tSjtPq', '+1263343299123', 'Male', 9252, TRUE),
-       ('Authoi', 'authoi123@gmail.com', '$2a$10$dJGfQ0UJ/TFL7qutdyax8ejxoXJEWsRUDKXxL48dIkVNW9N5rYsRe', '+2369543156441', 'Female', 8056, TRUE),
        ('Bill Gates', 'billgates@outlook.com', '$2a$10$06Q7zDE.jtKiBsOFOCCileeVHhCaVPi8JMx6zaWWcj3E/JXdi17xy', '+6963343233159', 'Male', 9960, TRUE),
        ('Elon Musk', 'elonmusk@yahoo.com', '$2a$10$nwkSfj5g0.BZ8kJFIx99jOk9uIcMC.i9S2NRCrmyuR94CmlcezLqW', '+9668508170248', 'Male', 7856, FALSE),
        ('Jack Ma', 'jackma@gmail.com', '$2a$10$P9cJSj0euTBDp2kiBLzedep7LPjeon4G6pUFOrvy5P7xu9dKaMyUu', '+1667698473784', 'Male', 4567, TRUE),
@@ -53,20 +51,18 @@ INSERT IGNORE INTO Roles (UserID, Role)
 VALUES (1, 'CUSTOMER'),
        (1, 'ADMIN'),
        (2, 'CUSTOMER'),
+       (2, 'ADMIN'),
        (3, 'CUSTOMER'),
        (4, 'CUSTOMER'),
-       (4, 'ADMIN'),
        (5, 'CUSTOMER'),
+       (5, 'ADMIN'),
        (6, 'CUSTOMER'),
        (7, 'CUSTOMER'),
-       (7, 'ADMIN'),
        (8, 'CUSTOMER'),
        (9, 'CUSTOMER'),
+       (9, 'ADMIN'),
        (10, 'CUSTOMER'),
-       (11, 'CUSTOMER'),
-       (11, 'ADMIN'),
-       (12, 'CUSTOMER'),
-       (12, 'ADMIN');
+       (10, 'ADMIN');
 
 # create foods table
 CREATE TABLE IF NOT EXISTS Foods

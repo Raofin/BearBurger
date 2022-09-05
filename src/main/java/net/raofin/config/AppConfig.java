@@ -31,8 +31,8 @@ public class AppConfig implements WebMvcConfigurer
     @Bean
     public DataSource dataSource() {
         MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setDatabaseName("BearBurger_JSP");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/BearBurger_JSP");
+        dataSource.setDatabaseName("BearBurger");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/BearBurger");
         dataSource.setUser("root");
         dataSource.setPassword("");
         return dataSource;
