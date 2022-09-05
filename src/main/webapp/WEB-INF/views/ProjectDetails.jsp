@@ -47,7 +47,8 @@
                 <li>Registration</li>
                 <li>Profile view and modify</li>
                 <li>Browse and search foods</li>
-                <li>Purchase with credit card</li>
+                <li>Purchase foods</li>
+                <li>Payment with credit card</li>
                 <li>Post comments and replies on each food</li>
             </ul>
             <h3>Administrator:</h3>

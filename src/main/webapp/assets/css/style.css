@@ -9,6 +9,8 @@
 
 @font-face {
     font-family: 'Inter-Bold';
+    font-style: normal;
+    font-weight: bold;
     font-display: swap;
     src: url('../fonts/Inter-Bold.woff2?v=3.19') format('woff2'),
     url('../fonts/Inter-Bold.woff?v=3.19') format('woff');
@@ -960,21 +962,6 @@ input#confirm-button {
 }
 
 /*======================= Error Page ======================*/
-
-/*
-#database-error {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-}
-
-#database-error h1 {
-    padding: 15px;
-}*/
-
 
 .error-number {
     font-size: 150px;
