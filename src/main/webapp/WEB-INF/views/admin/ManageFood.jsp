@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
-<c:import url="/templates/AdminHeader.jsp"/>
+<c:import url="/resources/templates/AdminHeader.jsp"/>
 
 <div class="manage-user-container">
     <form id="register-form" method="POST">
@@ -19,5 +19,5 @@
     </form>
 </div>
 
-<script src="<c:url value="/assets/js/ManageFood.js"/>"></script>
-<c:import url="/templates/Footer.jsp"/>
+<script src="<c:url value="/resources/static/js/ManageFood.js"/>"></script>
+<c:import url="/resources/templates/Footer.jsp"/>

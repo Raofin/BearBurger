@@ -2,7 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page isELIgnored="false" %>
-<c:import url="/templates/CustomerHeader.jsp"/>
+<c:import url="/resources/templates/CustomerHeader.jsp"/>
 
 <div class="form-container">
     <form:form action="api/payment-action" id="payment-form" method="GET">
@@ -52,5 +52,5 @@
     </form:form>
 </div>
 
-<script src="<c:url value="/assets/js/Payment.js"/>"></script>
-<c:import url="/templates/Footer.jsp"/>
+<script src="<c:url value="/resources/static/js/Payment.js"/>"></script>
+<c:import url="/resources/templates/Footer.jsp"/>

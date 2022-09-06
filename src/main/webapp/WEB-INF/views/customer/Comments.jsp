@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page isELIgnored="false" %>
-<c:import url="/templates/CustomerHeader.jsp"/>
+<c:import url="/resources/templates/CustomerHeader.jsp"/>
 
 <div class="comment-container">
     <form:form method="POST" id="comment-form" modelAttribute="food">
@@ -29,5 +29,5 @@
     </form:form>
 </div>
 
-<script src="<c:url value="/assets/js/Comments.js"/>"></script>
-<c:import url="/templates/Footer.jsp"/>
+<script src="<c:url value="/resources/static/js/Comments.js"/>"></script>
+<c:import url="/resources/templates/Footer.jsp"/>

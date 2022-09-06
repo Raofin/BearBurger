@@ -24,14 +24,13 @@ import java.util.Properties;
 public class AppConfig implements WebMvcConfigurer
 {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/assets/**")
-                .addResourceLocations("assets/");
+        registry.addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/");
     }
 
     @Bean
     public DataSource dataSource() {
         MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setDatabaseName("BearBurger");
         dataSource.setUrl("jdbc:mysql://localhost:3306/BearBurger");
         dataSource.setUser("root");
         dataSource.setPassword("");

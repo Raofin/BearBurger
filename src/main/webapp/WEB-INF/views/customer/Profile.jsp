@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
-<c:import url="/templates/CustomerHeader.jsp"/>
+<c:import url="/resources/templates/CustomerHeader.jsp"/>
 
 <div class="center">
     <form class="form-user-profile" method="post">
@@ -53,4 +53,4 @@
     </form>
 </div>
 
-<c:import url="/templates/Footer.jsp"/>
+<c:import url="/resources/templates/Footer.jsp"/>

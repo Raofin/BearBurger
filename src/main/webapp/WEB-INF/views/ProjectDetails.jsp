@@ -6,16 +6,16 @@
 <html lang="en">
 
 <head>
-    <link rel="icon" type="image/png" href="<c:url value="/assets/img/logo.svg"/>"/>
-    <link rel="preload" href="<c:url value="/assets/img/background.jpg"/>" as="image">
-    <link href="<c:url value="/assets/css/style.css"/>" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="<c:url value="/resources/static/img/logo.svg"/>"/>
+    <link rel="preload" href="<c:url value="/resources/static/img/background.jpg"/>" as="image">
+    <link href="<c:url value="/resources/static/css/style.css"/>" rel="stylesheet" type="text/css">
     <title>Bear Burger</title>
 </head>
 
 <body>
 
 <header>
-    <a class="logo" href="./home"><img src="<c:url value="/assets/img/nav-logo.svg"/>" alt="logo"></a>
+    <a class="logo" href="./home"><img src="<c:url value="/resources/static/img/nav-logo.svg"/>" alt="logo"></a>
     <nav>
         <ul class="nav-links">
             <li><a href="./home">Home</a></li>
@@ -28,7 +28,7 @@
 <div class="center">
     <div class="form-container" id="project-details">
         <div class="project-details-img center">
-            <img class="logo" src="<c:url value="/assets/img/nav-logo.svg"/>" alt="logo">
+            <img class="logo" src="<c:url value="/resources/static/img/nav-logo.svg"/>" alt="logo">
         </div>
         <div class="project-link">
             <a href="https://github.com/Raofin/BearBurger">github.com/Raofin/BearBurger</a>
@@ -70,7 +70,7 @@
             </ul>
         </div>
         <div class="raofin">
-            <img src="<c:url value="/assets/img/me.jpg"/>" alt="raofin">
+            <img src="<c:url value="/resources/static/img/me.jpg"/>" alt="raofin">
             <div>
                 <p>Developed By <a href="https://raofin.net">Raofin</a></p>
                 <p>Email: <a href="mailto:hello@raofin.net">hello@raofin.net</a></p>

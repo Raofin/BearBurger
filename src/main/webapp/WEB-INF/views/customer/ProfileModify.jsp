@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page isELIgnored="false" %>
-<c:import url="/templates/CustomerHeader.jsp"/>
+<c:import url="/resources/templates/CustomerHeader.jsp"/>
 
 <div class="center">
     <form:form action="profile-modify-action" class="form-user-profile" id="update-form" method="post" modelAttribute="user">
@@ -52,6 +52,6 @@
     </form:form>
 </div>
 
-<script src="<c:url value="/assets/js/Logic.js"/>"></script>
-<script src="<c:url value="/assets/js/ModifyValidate.js"/>"></script>
-<c:import url="/templates/Footer.jsp"/>
+<script src="<c:url value="/resources/static/js/Logic.js"/>"></script>
+<script src="<c:url value="/resources/static/js/ModifyValidate.js"/>"></script>
+<c:import url="/resources/templates/Footer.jsp"/>

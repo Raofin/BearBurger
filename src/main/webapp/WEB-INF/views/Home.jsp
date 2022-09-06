@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
-<c:import url="/templates/CustomerHeader.jsp"/>
+<c:import url="/resources/templates/CustomerHeader.jsp"/>
 
 <div class="food-container">
     <h1>Order Your Favourite Foods!</h1>
@@ -16,6 +16,6 @@
     <table id="foods-table"></table>
 </div>
 
-<script src="<c:url value="/assets/js/FoodBox.js"/>"></script>
-<script src="<c:url value="/assets/js/Home.js"/>"></script>
-<c:import url="/templates/Footer.jsp"/>
+<script src="<c:url value="/resources/static/js/FoodBox.js"/>"></script>
+<script src="<c:url value="/resources/static/js/Home.js"/>"></script>
+<c:import url="/resources/templates/Footer.jsp"/>
