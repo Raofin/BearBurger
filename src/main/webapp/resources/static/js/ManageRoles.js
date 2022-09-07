@@ -2,7 +2,7 @@ $(document).ready(() => fetchAllUsers())
 
 function fetchAllUsers() {
 
-    $.getJSON("api/admin/fetchAllUsers",
+    $.getJSON("api/v1/admin/fetch-all-users",
         data => {
             let user = '';
             console.log(data);
@@ -33,13 +33,13 @@ function modifyRole(id) {
     let roleElement = document.getElementById('role' + id);
 
     if (actionElement.innerText === 'Remove Admin') {
-        $.get('api/admin/removeAdmin/' + id);
+        $.get('api/v1/admin/remove-admin/' + id);
         actionElement.innerText = 'Add Admin';
         actionElement.classList.remove('tomato-text');
         actionElement.classList.add('green-text');
         roleElement.innerHTML = 'Customer';
     } else {
-        $.get('api/admin/makeAdmin/' + id);
+        $.get('api/v1/admin/make-admin/' + id);
         actionElement.innerText = 'Remove Admin';
         actionElement.classList.remove('green-text');
         actionElement.classList.add('tomato-text');

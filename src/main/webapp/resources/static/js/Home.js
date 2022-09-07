@@ -3,7 +3,7 @@ $(document).ready(() => fetchFoods('Burger'))
 function fetchFoods(category) {
 
     $.ajax({
-        url: 'api/fetchFoods/' + category,
+        url: 'api/v1/fetch-foods-by-category/' + category,
         method: "GET",
         success: data => {
 

@@ -1,4 +1,4 @@
-package net.raofin.controller.Api;
+package net.raofin.controller;
 
 import net.raofin.model.Comment;
 import net.raofin.service.CommentService;
@@ -8,12 +8,12 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
-public class CommentApi
+@RequestMapping("/api/v1")
+public class CommentController
 {
     private final CommentService commentService;
 
-    public CommentApi(CommentService commentService) {
+    public CommentController(CommentService commentService) {
         this.commentService = commentService;
     }
 
@@ -22,12 +22,12 @@ public class CommentApi
         return commentService.fetchAllComment();
     }
 
-    @GetMapping("/fetch-comments-foodId")
+    @GetMapping("/fetch-comments-food-id")
     List<Comment> fetchCommentByFoodID(@RequestParam("foodID") int foodID) {
         return commentService.fetchCommentByFoodID(foodID);
     }
 
-    @GetMapping("/fetch-comments-parentId")
+    @GetMapping("/fetch-comments-parent-id")
     List<Comment> fetchCommentsByParentID(@RequestParam("foodID") int foodID, @RequestParam("parentID") int parentID) {
         return commentService.fetchCommentByParentID(foodID, parentID);
     }

@@ -2,7 +2,7 @@ $(document).ready(() => fetchAllUsers())
 
 function fetchAllUsers() {
 
-    $.getJSON("api/admin/fetchAllUsers",
+    $.getJSON("api/v1/admin/fetch-all-users",
         data => {
             let user = '';
 
@@ -29,7 +29,7 @@ function fetchAllUsers() {
 function deleteUser(id) {
 
     $.ajax({
-        url: 'api/admin/deleteUserById/' + id,
+        url: 'api/v1/admin/delete-user-by-id/' + id,
         method: "GET",
         success: $('#row-user-' + id).remove()
     });
@@ -40,13 +40,13 @@ function changeStatus(id) {
     let statusElement = document.getElementById('status-user-' + id);
 
     if (actionElement.innerText === 'Enable') {
-        $.get('api/admin/enableUser/' + id);
+        $.get('api/v1/admin/enable-user/' + id);
         actionElement.innerText = 'Disable';
         actionElement.classList.remove('green-text');
         actionElement.classList.add('tomato-text');
         statusElement.innerText = 'Enabled';
     } else {
-        $.get('api/admin/disableUser/' + id);
+        $.get('api/v1/admin/disable-user/' + id);
         actionElement.innerText = 'Enable';
         actionElement.classList.remove('tomato-text');
         actionElement.classList.add('green-text');

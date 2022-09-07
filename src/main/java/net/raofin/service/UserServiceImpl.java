@@ -91,7 +91,7 @@ public class UserServiceImpl implements UserService
 
     @Override
     public void deleteUserById(int id) {
-        if (id == 1 || id == 12)
+        if (id == 1 || id == 10)
             return;
 
         userDao.deleteUserById(id);
@@ -99,7 +99,7 @@ public class UserServiceImpl implements UserService
 
     @Override
     public void disableUser(int id) {
-        if (id == 1 || id == 12)
+        if (id == 1 || id == 10)
             return;
 
         userDao.disableUser(id);
@@ -117,7 +117,7 @@ public class UserServiceImpl implements UserService
 
     @Override
     public void removeAdmin(int id) {
-        if (id == 1 || id == 12)
+        if (id == 1 || id == 10)
             return;
 
         userDao.removeAdmin(id);

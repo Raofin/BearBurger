@@ -2,7 +2,7 @@ $(document).ready(() => fetchAllFoods())
 
 function fetchAllFoods() {
 
-    $.getJSON("api/fetchAllFoods",
+    $.getJSON("api/v1/fetch-all-foods",
         data => {
             let foods = '';
 
@@ -27,7 +27,7 @@ function fetchAllFoods() {
 function deleteFood(id) {
 
     $.ajax({
-        url: 'api/admin/delete-food/' + id,
+        url: 'api/v1/admin/delete-food/' + id,
         method: "GET",
         success: $('#food' + id).remove()
     });

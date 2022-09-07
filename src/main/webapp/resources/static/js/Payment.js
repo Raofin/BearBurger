@@ -14,7 +14,7 @@ $('#payment-form').validate({
         }
 
         $.ajax({
-            url: 'api/payment-action',
+            url: 'api/v1/payment-action',
             method: "GET",
             success: data => {
                 payButton.value = 'Go Back';

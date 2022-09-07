@@ -39,7 +39,7 @@ $('#comment-form').validate({
 
 function loadComments() {
     $.ajax({
-        url: 'api/fetch-comments',
+        url: 'api/v1/fetch-comments',
         method: "GET",
         success: data => $('#all-comments').html(data).show()
     })

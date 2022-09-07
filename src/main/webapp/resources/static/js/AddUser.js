@@ -1,7 +1,7 @@
 $('#add-user-form').validate({
     submitHandler: form => {
         $.ajax({
-            url: 'api/admin/add-user-action',
+            url: 'api/v1/admin/add-user-action',
             method: "POST",
             data: $('#add-user-form').serialize(),
             success: data => {

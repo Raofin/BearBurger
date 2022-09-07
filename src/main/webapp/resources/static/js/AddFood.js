@@ -5,7 +5,7 @@ $('#price').keypress(e => !String.fromCharCode(e.which).match(/\D/g));
 $('#add-food-form').validate({
     submitHandler: form => {
         $.ajax({
-            url: 'api/admin/add-food-action',
+            url: 'api/v1/admin/add-food-action',
             method: "POST",
             data: $('#add-food-form').serialize(),
             success: data => {

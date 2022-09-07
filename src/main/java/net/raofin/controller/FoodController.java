@@ -1,4 +1,4 @@
-package net.raofin.controller.Api;
+package net.raofin.controller;
 
 import net.raofin.model.Food;
 import net.raofin.model.User;
@@ -11,28 +11,28 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
-public class FoodApi
+@RequestMapping("/api/v1")
+public class FoodController
 {
     private final FoodService foodService;
     private final UserService userService;
 
-    public FoodApi(FoodService foodService, UserService userService) {
+    public FoodController(FoodService foodService, UserService userService) {
         this.foodService = foodService;
         this.userService = userService;
     }
 
-    @GetMapping("/fetchFoods/{category}")
-    List<Food> fetchFoodsByCategory(@PathVariable String category) {
-        return foodService.fetchFoodByCategory(category);
-    }
-
-    @GetMapping("/fetchAllFoods")
+    @GetMapping("/fetch-all-foods")
     List<Food> allFoods() {
         return foodService.fetchAllFoods();
     }
 
-    @GetMapping("/searchFoods")
+    @GetMapping("/fetch-foods-by-category/{category}")
+    List<Food> fetchFoodsByCategory(@PathVariable String category) {
+        return foodService.fetchFoodByCategory(category);
+    }
+
+    @GetMapping("/search-foods-by-name")
     List<Food> searchFoods(@RequestParam("name") String name) {
         return foodService.searchFoodByTitle(name);
     }
