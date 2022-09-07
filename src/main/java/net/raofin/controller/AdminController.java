@@ -2,28 +2,18 @@ package net.raofin.controller;
 
 import net.raofin.model.Food;
 import net.raofin.model.User;
-import net.raofin.service.FoodService;
-import net.raofin.service.UserService;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 //@RequestMapping("/admin")
 public class AdminController
 {
-    public final FoodService foodService;
-    public final UserService userService;
-
-    public AdminController(FoodService foodService, UserService userService) {
-        this.foodService = foodService;
-        this.userService = userService;
-    }
-
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {
         StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);

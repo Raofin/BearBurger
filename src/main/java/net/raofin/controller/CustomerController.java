@@ -10,7 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -20,8 +26,8 @@ import java.security.Principal;
 //@RequestMapping("/customer")
 public class CustomerController
 {
-    public final UserService userService;
-    public final FoodService foodService;
+    private final UserService userService;
+    private final FoodService foodService;
     private final CommentService commentService;
 
     public CustomerController(UserService userService, FoodService foodService, CommentService commentService) {

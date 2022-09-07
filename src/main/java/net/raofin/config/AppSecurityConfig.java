@@ -9,6 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import java.util.concurrent.TimeUnit;
+
 @Configuration
 @EnableWebSecurity
 public class AppSecurityConfig
@@ -36,6 +38,8 @@ public class AppSecurityConfig
             .rememberMe()
                 .rememberMeParameter("remember-me")
                 .rememberMeCookieName("BearBurger-LoggedIn-User")
+                .tokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(68))
+                .key("Raofin")
                 .and()
             .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
