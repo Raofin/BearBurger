@@ -1,4 +1,4 @@
-package net.raofin.config;
+package net.raofin.bearburger.config;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +20,7 @@ import java.util.Properties;
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"net.raofin.dao", "net.raofin.service", "net.raofin.controller"})
+@ComponentScan(basePackages = {"net.raofin.bearburger.dao", "net.raofin.bearburger.service", "net.raofin.bearburger.controller"})
 public class AppConfig implements WebMvcConfigurer
 {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -41,7 +41,7 @@ public class AppConfig implements WebMvcConfigurer
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("net.raofin.model");
+        sessionFactory.setPackagesToScan("net.raofin.bearburger.model");
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 //        properties.setProperty("hibernate.show_sql", "true");

@@ -1,7 +1,7 @@
-package net.raofin.controller;
+package net.raofin.bearburger.controller;
 
-import net.raofin.model.User;
-import net.raofin.service.UserService;
+import net.raofin.bearburger.model.User;
+import net.raofin.bearburger.service.UserService;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

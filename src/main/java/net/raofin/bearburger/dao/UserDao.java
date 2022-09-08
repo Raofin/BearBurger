@@ -1,11 +1,10 @@
-package net.raofin.service;
+package net.raofin.bearburger.dao;
 
-import net.raofin.model.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import net.raofin.bearburger.model.User;
 
 import java.util.List;
 
-public interface UserService extends UserDetailsService
+public interface UserDao
 {
     List<User> fetchAllUsers();
 
@@ -32,6 +31,4 @@ public interface UserService extends UserDetailsService
     void removeAdmin(int id);
 
     List<User> searchUserByEmail(String email);
-
-
 }

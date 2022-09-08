@@ -1,6 +1,6 @@
-package net.raofin.dao;
+package net.raofin.bearburger.dao;
 
-import net.raofin.model.Comment;
+import net.raofin.bearburger.model.Comment;
 
 import java.util.List;
 

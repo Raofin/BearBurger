@@ -1,7 +1,7 @@
-package net.raofin.service;
+package net.raofin.bearburger.service;
 
-import net.raofin.dao.FoodDao;
-import net.raofin.model.Food;
+import net.raofin.bearburger.dao.FoodDao;
+import net.raofin.bearburger.model.Food;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

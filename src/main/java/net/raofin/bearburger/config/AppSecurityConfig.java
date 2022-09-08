@@ -1,4 +1,4 @@
-package net.raofin.config;
+package net.raofin.bearburger.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

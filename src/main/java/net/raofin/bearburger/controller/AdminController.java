@@ -1,7 +1,7 @@
-package net.raofin.controller;
+package net.raofin.bearburger.controller;
 
-import net.raofin.model.Food;
-import net.raofin.model.User;
+import net.raofin.bearburger.model.Food;
+import net.raofin.bearburger.model.User;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;

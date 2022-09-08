@@ -1,4 +1,4 @@
-package net.raofin.config;
+package net.raofin.bearburger.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

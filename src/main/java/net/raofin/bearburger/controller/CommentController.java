@@ -1,7 +1,7 @@
-package net.raofin.controller;
+package net.raofin.bearburger.controller;
 
-import net.raofin.model.Comment;
-import net.raofin.service.CommentService;
+import net.raofin.bearburger.model.Comment;
+import net.raofin.bearburger.service.CommentService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,6 +1,6 @@
-package net.raofin.dao;
+package net.raofin.bearburger.dao;
 
-import net.raofin.model.Food;
+import net.raofin.bearburger.model.Food;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

@@ -1,7 +1,7 @@
-package net.raofin.dao;
+package net.raofin.bearburger.dao;
 
-import net.raofin.model.User;
-import net.raofin.model.UserRoles;
+import net.raofin.bearburger.model.User;
+import net.raofin.bearburger.model.UserRoles;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

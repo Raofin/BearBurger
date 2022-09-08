@@ -1,6 +1,6 @@
-package net.raofin.service;
+package net.raofin.bearburger.service;
 
-import net.raofin.model.Comment;
+import net.raofin.bearburger.model.Comment;
 
 import java.util.List;
 

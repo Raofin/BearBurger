@@ -1,8 +1,8 @@
-package net.raofin.service;
+package net.raofin.bearburger.service;
 
-import net.raofin.dao.UserDao;
-import net.raofin.model.User;
-import net.raofin.model.UserRoles;
+import net.raofin.bearburger.dao.UserDao;
+import net.raofin.bearburger.model.User;
+import net.raofin.bearburger.model.UserRoles;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

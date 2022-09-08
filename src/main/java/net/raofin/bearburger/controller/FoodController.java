@@ -1,9 +1,9 @@
-package net.raofin.controller;
+package net.raofin.bearburger.controller;
 
-import net.raofin.model.Food;
-import net.raofin.model.User;
-import net.raofin.service.FoodService;
-import net.raofin.service.UserService;
+import net.raofin.bearburger.model.Food;
+import net.raofin.bearburger.model.User;
+import net.raofin.bearburger.service.FoodService;
+import net.raofin.bearburger.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

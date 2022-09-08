@@ -1,4 +1,4 @@
-package net.raofin.model;
+package net.raofin.bearburger.model;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
