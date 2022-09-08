@@ -26,11 +26,7 @@ CREATE TABLE IF NOT EXISTS Roles
 (
     RoleID INT AUTO_INCREMENT PRIMARY KEY,
     UserID INT,
-    Role   VARCHAR(10)/*,
-        CONSTRAINT Role_FK
-            FOREIGN KEY (UserID)
-                REFERENCES Users (UserID)
-                ON DELETE CASCADE*/
+    Role   VARCHAR(10)
 );
 
 # insert user data
@@ -82,11 +78,7 @@ CREATE TABLE IF NOT EXISTS Comments
     FoodID    INT         NOT NULL,
     PostedBy  VARCHAR(30) NOT NULL,
     Comment   TEXT        NOT NULL,
-    PostDate  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP/*,
-    CONSTRAINT FoodID_FK
-        FOREIGN KEY (FoodID)
-            REFERENCES foods (FoodID)
-            ON DELETE CASCADE*/
+    PostDate  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 # insert food data
