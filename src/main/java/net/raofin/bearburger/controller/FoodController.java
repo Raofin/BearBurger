@@ -28,17 +28,17 @@ public class FoodController
 
     @GetMapping("/fetch-all-foods")
     List<Food> allFoods() {
-        return foodService.fetchAllFoods();
+        return foodService.findAll();
     }
 
     @GetMapping("/fetch-foods-by-category/{category}")
     List<Food> fetchFoodsByCategory(@PathVariable String category) {
-        return foodService.fetchFoodByCategory(category);
+        return foodService.findByCategory(category);
     }
 
     @GetMapping("/search-foods-by-name")
     List<Food> searchFoods(@RequestParam("name") String name) {
-        return foodService.searchFoodByTitle(name);
+        return foodService.searchByTitle(name);
     }
 
     @GetMapping("/payment-action")

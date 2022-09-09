@@ -1,6 +1,6 @@
 package net.raofin.bearburger.service;
 
-import net.raofin.bearburger.dao.CommentDao;
+import net.raofin.bearburger.repository.CommentRepository;
 import net.raofin.bearburger.model.Comment;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,25 +12,25 @@ import java.util.List;
 @Transactional
 public class CommentServiceImpl implements CommentService
 {
-    private final CommentDao commentDao;
+    private final CommentRepository commentDao;
 
-    public CommentServiceImpl(CommentDao commentDao) {
+    public CommentServiceImpl(CommentRepository commentDao) {
         this.commentDao = commentDao;
     }
 
     @Override
     public List<Comment> fetchAllComment() {
-        return commentDao.fetchAllComment();
+        return commentDao.findAll();
     }
 
     @Override
     public List<Comment> fetchCommentByFoodID(int foodID) {
-        return commentDao.fetchCommentByFoodID(foodID);
+        return commentDao.findByFoodId(foodID);
     }
 
     @Override
     public List<Comment> fetchCommentByParentID(int foodID, int parentID) {
-        return commentDao.fetchCommentByParentID(foodID, parentID);
+        return commentDao.findByParentId(foodID, parentID);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class CommentServiceImpl implements CommentService
 
         StringBuilder commentsString = new StringBuilder();
 
-        List<Comment> comments = commentDao.fetchCommentByParentID(foodID, 0);
+        List<Comment> comments = commentDao.findByParentId(foodID, 0);
 
         for (Comment comment : comments) {
             commentsString.append(commentHTML(comment, 0, 0));
@@ -53,7 +53,7 @@ public class CommentServiceImpl implements CommentService
 
         StringBuilder replyString = new StringBuilder();
 
-        List<Comment> comments = commentDao.fetchCommentByParentID(foodID, parentID);
+        List<Comment> comments = commentDao.findByParentId(foodID, parentID);
 
         marginLeft = parentID == 0 ? 0 : marginLeft + 50;
 
@@ -67,7 +67,8 @@ public class CommentServiceImpl implements CommentService
 
     @Override
     public void addComment(Comment comment) {
-        commentDao.addComment(comment);
+        System.out.println(comment);
+        commentDao.save(comment);
     }
 
     private String commentHTML(Comment comment, int parentID, int marginLeft) {

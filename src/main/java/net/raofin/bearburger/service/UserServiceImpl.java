@@ -1,6 +1,7 @@
 package net.raofin.bearburger.service;
 
-import net.raofin.bearburger.dao.UserDao;
+import net.raofin.bearburger.repository.RolesRepository;
+import net.raofin.bearburger.repository.UserRepository;
 import net.raofin.bearburger.model.User;
 import net.raofin.bearburger.model.UserRoles;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,19 +19,21 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService
 {
-    private final UserDao userDao;
+    private final UserRepository userRepository;
+    private final RolesRepository rolesRepository;
 
     private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserDao userDao, PasswordEncoder passwordEncoder) {
-        this.userDao = userDao;
+    public UserServiceImpl(UserRepository userRepository, RolesRepository rolesRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.rolesRepository = rolesRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User user = userDao.fetchUserByUsername(username);
+        User user = userRepository.findByUsername(username).orElse(null);
 
         if (user == null)
             throw new UsernameNotFoundException("Username not found.");
@@ -47,68 +50,78 @@ public class UserServiceImpl implements UserService
     @Override
     @Transactional(readOnly = true)
     public List<User> fetchAllUsers() {
-        return userDao.fetchAllUsers();
+        return userRepository.findAll();
     }
 
     @Override
     public void registerUser(User user) {
+
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userDao.registerUser(user);
+        userRepository.save(user);
+        rolesRepository.save(new UserRoles(user.getUserID()));
     }
 
     @Override
     public User fetchUserById(int id) {
-        return userDao.fetchUserById(id);
+        return userRepository.findById(id).orElse(null);
     }
 
     @Override
     public User fetchUserByUsername(String username) {
-        return userDao.fetchUserByUsername(username);
+        return userRepository.findByUsername(username).orElse(null);
     }
 
     @Override
     public User fetchUserByEmail(String email) {
-        return userDao.fetchUserByEmail(email);
+        return userRepository.findByEmail(email).orElse(null);
     }
 
     @Override
     public void updateUser(User user) {
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userDao.updateUser(user);
+        userRepository.save(user);
     }
 
     @Override
     public void deleteUser(String username) {
-        userDao.deleteUser(username);
+        userRepository.deleteUser(username);
     }
 
     @Override
     public void deleteUserById(int id) {
-        userDao.deleteUserById(id);
+        userRepository.deleteById(id);
     }
 
     @Override
     public void disableUser(int id) {
-        userDao.disableUser(id);
+
+        User user = userRepository.getReferenceById(id);
+        user.setEnabled(false);
+        userRepository.save(user);
     }
 
     @Override
     public void enableUser(int id) {
-        userDao.enableUser(id);
+
+        User user = userRepository.getReferenceById(id);
+        user.setEnabled(true);
+        userRepository.save(user);
     }
 
     @Override
     public void makeAdmin(int id) {
-        userDao.makeAdmin(id);
+        rolesRepository.save(new UserRoles(id, "ADMIN"));
     }
 
     @Override
     public void removeAdmin(int id) {
-        userDao.removeAdmin(id);
+        rolesRepository.deleteByUserId(id);
     }
 
     @Override
     public List<User> searchUserByEmail(String email) {
-        return userDao.searchUserByEmail(email);
+        return userRepository.searchByEmail(email);
     }
 }

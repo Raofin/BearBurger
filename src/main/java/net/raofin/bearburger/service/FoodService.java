@@ -6,19 +6,17 @@ import java.util.List;
 
 public interface FoodService
 {
-    List<Food> fetchAllFoods();
+    List<Food> findAll();
 
-    void addFood(Food food);
+    void save(Food food);
 
-    Food fetchFoodByID(int id);
+    Food findById(int id);
 
-    Food fetchFoodByTitle(String title);
+    Food findByTitle(String title);
 
-    List<Food> fetchFoodByCategory(String category);
+    List<Food> findByCategory(String category);
 
-    void updateFood(Food food);
+    void deleteById(int id);
 
-    void deleteFoodById(int id);
-
-    List<Food> searchFoodByTitle(String title);
+    List<Food> searchByTitle(String title);
 }

@@ -74,7 +74,7 @@ public class UserController
 
     @GetMapping("/delete-food/{id}")
     void deleteFood(@PathVariable String id) {
-        foodService.deleteFoodById(Integer.parseInt(id));
+        foodService.deleteById(Integer.parseInt(id));
     }
 
     @PostMapping("/add-user-action")
@@ -97,7 +97,7 @@ public class UserController
         if (bindingResult.hasErrors())
             return "error";
 
-        foodService.addFood(food);
+        foodService.save(food);
 
         return "added";
     }

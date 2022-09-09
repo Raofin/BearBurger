@@ -1,6 +1,6 @@
 package net.raofin.bearburger.service;
 
-import net.raofin.bearburger.dao.FoodDao;
+import net.raofin.bearburger.repository.FoodRepository;
 import net.raofin.bearburger.model.Food;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,49 +11,44 @@ import java.util.List;
 @Transactional
 public class FoodServiceImpl implements FoodService
 {
-    private final FoodDao foodDao;
+    private final FoodRepository foodDao;
 
-    public FoodServiceImpl(FoodDao foodDao) {
+    public FoodServiceImpl(FoodRepository foodDao) {
         this.foodDao = foodDao;
     }
 
     @Override
-    public List<Food> fetchAllFoods() {
-        return foodDao.fetchAllFoods();
+    public List<Food> findAll() {
+        return foodDao.findAll();
     }
 
     @Override
-    public void addFood(Food food) {
-        foodDao.addFood(food);
+    public void save(Food food) {
+        foodDao.save(food);
     }
 
     @Override
-    public Food fetchFoodByID(int id) {
-        return foodDao.fetchFoodByID(id);
+    public Food findById(int id) {
+        return foodDao.findById(id).orElse(null);
     }
 
     @Override
-    public Food fetchFoodByTitle(String title) {
-        return foodDao.fetchFoodByTitle(title);
+    public Food findByTitle(String title) {
+        return foodDao.findByTitle(title).orElse(null);
     }
 
     @Override
-    public List<Food> fetchFoodByCategory(String category) {
-        return foodDao.fetchFoodByCategory(category);
+    public List<Food> findByCategory(String category) {
+        return foodDao.findByCategory(category);
     }
 
     @Override
-    public void updateFood(Food food) {
-        foodDao.updateFood(food);
+    public void deleteById(int id) {
+        foodDao.deleteById(id);
     }
 
     @Override
-    public void deleteFoodById(int id) {
-        foodDao.deleteFoodById(id);
-    }
-
-    @Override
-    public List<Food> searchFoodByTitle(String title) {
-        return foodDao.searchFoodByTitle(title);
+    public List<Food> searchByTitle(String title) {
+        return foodDao.searchByTitle(title);
     }
 }
