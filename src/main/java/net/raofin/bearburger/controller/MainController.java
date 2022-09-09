@@ -6,14 +6,11 @@ import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.Objects;
 
 @Controller
@@ -55,12 +52,20 @@ public class MainController
     }
 
     @RequestMapping("/login")
-    public String showLoginPage() {
+    public String showLoginPage(Principal principal) {
+
+        if (principal != null)
+            return "redirect:/home";
+
         return "Login";
     }
 
     @RequestMapping(value = "/register", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showRegisterPage(@ModelAttribute("user") User user) {
+    public String showRegisterPage(@ModelAttribute("user") User user, Principal principal) {
+
+        if (principal != null)
+            return "redirect:/home";
+
         return "Register";
     }
 
@@ -70,7 +75,7 @@ public class MainController
         if (bindingResult.hasErrors() || !Objects.equals(user.getPassword(), user.getcPassword()))
             return "redirect:/register?error";
 
-        if(userService.fetchUserByUsername(user.getUsername()) != null)
+        if (userService.fetchUserByUsername(user.getUsername()) != null)
             return "redirect:/register?duplicate";
 
         userService.registerUser(user);

@@ -5,17 +5,16 @@ function fetchAllUsers() {
     $.getJSON("api/v1/admin/fetch-all-users",
         data => {
             let user = '';
-            console.log(data);
 
             $.each(data, (key, value) => {
-                let admin = value['userRoles'].length !== 1;
+                let admin = value['roles'].length !== 1;
                 user +=
                     '<tr>' +
                     '    <td>' + value['userID'] + '</td> ' +
                     '    <td>' + value['username'] + '</td> ' +
                     '    <td>' + value['email'] + '</td> ' +
-                    '    <td id="role' + value['userID'] + '">' + titleCase(value['userRoles'][0]['role']);
-                if (admin) user += ', ' + titleCase(value['userRoles'][1]['role']);
+                    '    <td id="role' + value['userID'] + '">' + titleCase(value['roles'][0]['name']);
+                if (admin) user += ', ' + titleCase(value['roles'][1]['name']);
                 user += '    </td> ';
                 user += admin === true
                     ? '        <td><a  id="user' + value['userID'] + '" class="tomato-text" onclick="' + 'modifyRole(' + value['userID'] + ')">Remove Admin</a></td>'

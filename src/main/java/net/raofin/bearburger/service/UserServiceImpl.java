@@ -1,11 +1,13 @@
 package net.raofin.bearburger.service;
 
-import net.raofin.bearburger.repository.RolesRepository;
-import net.raofin.bearburger.repository.UserRepository;
+import net.raofin.bearburger.model.Role;
 import net.raofin.bearburger.model.User;
-import net.raofin.bearburger.model.UserRoles;
+import net.raofin.bearburger.repository.RoleRepository;
+import net.raofin.bearburger.repository.UserRepository;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,19 +16,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Transactional
 public class UserServiceImpl implements UserService
 {
-    private final UserRepository userRepository;
-    private final RolesRepository rolesRepository;
 
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, RolesRepository rolesRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository,
+                           RoleRepository roleRepository,
+                           PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-        this.rolesRepository = rolesRepository;
+        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -40,8 +45,8 @@ public class UserServiceImpl implements UserService
 
         ArrayList<GrantedAuthority> authorities = new ArrayList<>();
 
-        for (UserRoles userRoles : user.getUserRoles())
-            authorities.add(new SimpleGrantedAuthority("ROLE_" + userRoles.getRole()));
+        for (Role roles : user.getRoles())
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + roles.getName()));
 
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(), user.getPassword(), authorities);
@@ -56,10 +61,9 @@ public class UserServiceImpl implements UserService
     @Override
     public void registerUser(User user) {
 
-
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        rolesRepository.save(new UserRoles(user.getUserID()));
+        roleRepository.save(new Role(user.getUserID()));
     }
 
     @Override
@@ -86,38 +90,65 @@ public class UserServiceImpl implements UserService
 
     @Override
     public void deleteUser(String username) {
+
+        userRepository.findByUsername(username)
+                .orElseThrow(() -> new IllegalStateException("User doesn't exist!"));
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (Objects.equals(username, auth.getName()))
+            return;
+
         userRepository.deleteUser(username);
     }
 
     @Override
     public void deleteUserById(int id) {
+
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("User doesn't exist!"));
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (Objects.equals(user.getUsername(), auth.getName()))
+            return;
+
         userRepository.deleteById(id);
     }
 
     @Override
+    @Transactional
     public void disableUser(int id) {
 
-        User user = userRepository.getReferenceById(id);
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("User doesn't exist!"));
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (Objects.equals(user.getUsername(), auth.getName()))
+            return;
+
         user.setEnabled(false);
-        userRepository.save(user);
     }
 
     @Override
+    @Transactional
     public void enableUser(int id) {
 
-        User user = userRepository.getReferenceById(id);
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("User doesn't exist!"));
+
         user.setEnabled(true);
-        userRepository.save(user);
     }
 
     @Override
     public void makeAdmin(int id) {
-        rolesRepository.save(new UserRoles(id, "ADMIN"));
+        roleRepository.save(new Role(id, "ADMIN"));
     }
 
     @Override
     public void removeAdmin(int id) {
-        rolesRepository.deleteByUserId(id);
+        roleRepository.deleteByUserId(id);
     }
 
     @Override

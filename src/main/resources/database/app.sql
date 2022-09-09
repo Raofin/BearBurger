@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS Roles
 (
     Role_ID INT AUTO_INCREMENT PRIMARY KEY,
     User_ID INT,
-    Role    VARCHAR(10)
+    Name    VARCHAR(255)
 );
 
 # insert user data
@@ -43,7 +43,7 @@ VALUES ('Raofin', 'hello@raofin.net', '$2a$10$l1xCEl5Vns6NbmzeiRPWpuy7nWB9ikSI/A
        ('admin', 'admin@email.com', '$2a$10$3l0p7n2pIIykRYaPsPbvt.8y60kvyNF9E7Q6e21sMi7tBRPqL8zvS', '+6478912356147', 'Male', 0, TRUE);
 
 # insert user data
-INSERT IGNORE INTO Roles (User_ID, Role)
+INSERT IGNORE INTO Roles (User_ID, Name)
 VALUES (1, 'CUSTOMER'),
        (1, 'ADMIN'),
        (2, 'CUSTOMER'),
@@ -64,8 +64,8 @@ VALUES (1, 'CUSTOMER'),
 CREATE TABLE IF NOT EXISTS Foods
 (
     Food_ID     INT AUTO_INCREMENT PRIMARY KEY,
-    Category    VARCHAR(30)  NOT NULL,
-    Title       VARCHAR(100) NOT NULL UNIQUE,
+    Category    VARCHAR(255) NOT NULL,
+    Title       VARCHAR(30)  NOT NULL,
     Description TEXT         NOT NULL,
     Price       INT          NOT NULL
 );
@@ -74,11 +74,11 @@ CREATE TABLE IF NOT EXISTS Foods
 CREATE TABLE IF NOT EXISTS Comments
 (
     Comment_ID INT AUTO_INCREMENT PRIMARY KEY,
-    Parent_ID  INT         NOT NULL,
-    Food_ID    INT         NOT NULL,
-    Posted_By  VARCHAR(30) NOT NULL,
-    Comment    TEXT        NOT NULL,
-    Post_Date  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    Parent_ID  INT          NOT NULL,
+    Food_ID    INT          NOT NULL,
+    Posted_By  VARCHAR(255) NOT NULL,
+    Comment    TEXT         NOT NULL,
+    Post_Date  DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 # insert food data
