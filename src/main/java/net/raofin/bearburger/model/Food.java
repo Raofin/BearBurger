@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -31,16 +33,18 @@ public class Food
     private String category;
 
     @NotNull
-    @Size(min = 4, max = 100)
+    @Size(min = 5, max = 30)
     @Column(name = "Title")
     private String title;
 
     @NotNull
     @Size(min = 4, max = 500)
-    @Column(name = "Description")
+    @Column(name = "Description", columnDefinition="TEXT")
     private String description;
 
     @NotNull
+    @Min(50)
+    @Max(10_000)
     @Column(name = "Price")
     private int price;
 

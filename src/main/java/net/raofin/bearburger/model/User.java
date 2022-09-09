@@ -62,7 +62,7 @@ public class User
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "User_ID")
-    private List<UserRoles> userRoles;
+    private List<Role> roles;
 
     public String getRegDateFormatted() {
         String pattern = "E, dd MMM yyyy"; // Sun, 21 Aug 2022 11:34 PM

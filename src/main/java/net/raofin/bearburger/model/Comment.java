@@ -30,7 +30,7 @@ public class Comment
     @Column(name = "Posted_By")
     private String postedBy;
 
-    @Column(name="Comment"/*, columnDefinition="TEXT"*/)
+    @Column(name="Comment", columnDefinition="TEXT")
     private String comment;
 
     @CreationTimestamp

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = "Roles")
-public class UserRoles
+public class Role
 {
     @Id
     @Column(name = "Role_ID")
@@ -22,18 +22,18 @@ public class UserRoles
     @Column(name = "User_ID")
     private int userID;
 
-    @Column(name = "Role")
-    private String role;
+    @Column(name = "Name")
+    private String name;
 
-    public UserRoles() { }
+    public Role() { }
 
-    public UserRoles(int userID) {
+    public Role(int userID) {
         this.userID = userID;
-        this.role = "CUSTOMER";
+        this.name = "CUSTOMER";
     }
 
-    public UserRoles(int userID, String role) {
+    public Role(int userID, String name) {
         this.userID = userID;
-        this.role = role;
+        this.name = name;
     }
 }
