@@ -13,27 +13,27 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "comments")
+@Table(name = "Comments")
 public class Comment
 {
     @Id
-    @Column(name = "commentID")
+    @Column(name = "Comment_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int commentID;
 
-    @Column(name = "parentID")
+    @Column(name = "Parent_ID")
     private int parentID;
 
-    @Column(name = "foodID")
+    @Column(name = "Food_ID")
     private int foodID;
 
-    @Column(name = "postedBy")
+    @Column(name = "Posted_By")
     private String postedBy;
 
-    @Column(name = "comment")
+    @Column(name="Comment"/*, columnDefinition="TEXT"*/)
     private String comment;
 
     @CreationTimestamp
-    @Column(name = "PostDate")
+    @Column(name = "Post_Date")
     private Date PostDate;
 }

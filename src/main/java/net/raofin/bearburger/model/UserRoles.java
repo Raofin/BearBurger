@@ -11,18 +11,18 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "roles")
+@Table(name = "Roles")
 public class UserRoles
 {
     @Id
-    @Column(name = "roleID")
+    @Column(name = "Role_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int roleID;
 
-    @Column(name = "userID")
+    @Column(name = "User_ID")
     private int userID;
 
-    @Column(name = "role")
+    @Column(name = "Role")
     private String role;
 
     public UserRoles() { }

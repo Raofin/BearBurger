@@ -18,33 +18,33 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "foods")
+@Table(name = "Foods")
 public class Food
 {
     @Id
-    @Column(name = "foodID")
+    @Column(name = "Food_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int foodID;
 
     @NotNull
-    @Column(name = "category")
+    @Column(name = "Category")
     private String category;
 
     @NotNull
     @Size(min = 4, max = 100)
-    @Column(name = "title")
+    @Column(name = "Title")
     private String title;
 
     @NotNull
     @Size(min = 4, max = 500)
-    @Column(name = "description")
+    @Column(name = "Description")
     private String description;
 
     @NotNull
-    @Column(name = "price")
+    @Column(name = "Price")
     private int price;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "foodID")
+    @JoinColumn(name = "Food_ID")
     private List<Comment> comments;
 }
