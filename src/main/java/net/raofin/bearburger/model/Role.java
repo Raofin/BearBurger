@@ -11,29 +11,29 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "roles")
-public class UserRoles
+@Table(name = "Roles")
+public class Role
 {
     @Id
-    @Column(name = "roleID")
+    @Column(name = "Role_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int roleID;
 
-    @Column(name = "userID")
+    @Column(name = "User_ID")
     private int userID;
 
-    @Column(name = "role")
-    private String role;
+    @Column(name = "Name")
+    private String name;
 
-    public UserRoles() { }
+    public Role() { }
 
-    public UserRoles(int userID) {
+    public Role(int userID) {
         this.userID = userID;
-        this.role = "CUSTOMER";
+        this.name = "CUSTOMER";
     }
 
-    public UserRoles(int userID, String role) {
+    public Role(int userID, String name) {
         this.userID = userID;
-        this.role = role;
+        this.name = name;
     }
 }

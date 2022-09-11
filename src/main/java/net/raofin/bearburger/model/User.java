@@ -3,17 +3,7 @@ package net.raofin.bearburger.model;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -23,28 +13,28 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "users")
+@Table(name = "Users")
 public class User
 {
     @Id
-    @Column(name = "userID")
+    @Column(name = "User_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userID;
 
     @NotNull
     @Size(min = 4, max = 15)
-    @Column(name = "username")
+    @Column(name = "Username")
     private String username;
 
     @Email
     @NotNull
     @Size(min = 6, max = 30)
-    @Column(name = "email")
+    @Column(name = "Email")
     private String email;
 
     @NotNull
     @Size(min = 4, max = 62)
-    @Column(name = "password")
+    @Column(name = "Password")
     private String password;
 
     @Transient
@@ -53,26 +43,26 @@ public class User
 
     @NotNull
     @Size(min = 6, max = 14)
-    @Column(name = "phoneNumber")
+    @Column(name = "Phone_Number")
     private String phoneNumber;
 
     @NotNull
-    @Column(name = "gender")
+    @Column(name = "Gender")
     private String gender;
 
-    @Column(name = "spent")
+    @Column(name = "Spent")
     private int spent = 0;
 
-    @Column(name = "enabled")
+    @Column(name = "Enabled")
     private boolean isEnabled = true;
 
+    @Column(name = "Reg_Date")
     @CreationTimestamp
-    @Column(name = "regDate")
     private Date regDate;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "UserID")
-    private List<UserRoles> userRoles;
+    @JoinColumn(name = "User_ID")
+    private List<Role> roles;
 
     public String getRegDateFormatted() {
         String pattern = "E, dd MMM yyyy"; // Sun, 21 Aug 2022 11:34 PM

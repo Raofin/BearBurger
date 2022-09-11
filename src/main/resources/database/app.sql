@@ -1,36 +1,62 @@
-# drop BearBurger if exists
-DROP SCHEMA IF EXISTS BearBurger;
+## schema ##
 
-# create database
 CREATE DATABASE IF NOT EXISTS BearBurger;
 
-# select the database
-USE BearBurger;
+USE Bearburger;
 
-# create users table
 CREATE TABLE IF NOT EXISTS Users
 (
-    UserID      INT AUTO_INCREMENT PRIMARY KEY,
-    Username    VARCHAR(15) NOT NULL UNIQUE,
-    Email       VARCHAR(30) NOT NULL,
-    Password    VARCHAR(62) NOT NULL,
-    PhoneNumber VARCHAR(14) NOT NULL,
-    Gender      VARCHAR(6)  NOT NULL,
-    Spent       INT,
-    Enabled     BOOL        NOT NULL,
-    RegDate     TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    User_ID      INT AUTO_INCREMENT PRIMARY KEY,
+    Username     VARCHAR(15) NOT NULL UNIQUE,
+    Email        VARCHAR(30) NOT NULL,
+    Password     VARCHAR(62) NOT NULL,
+    Phone_Number VARCHAR(14) NOT NULL,
+    Gender       VARCHAR(6)  NOT NULL,
+    Spent        INT,
+    Enabled      BOOL        NOT NULL,
+    Reg_Date     DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-# create roles table
 CREATE TABLE IF NOT EXISTS Roles
 (
-    RoleID INT AUTO_INCREMENT PRIMARY KEY,
-    UserID INT,
-    Role   VARCHAR(10)
+    Role_ID INT AUTO_INCREMENT PRIMARY KEY,
+    User_ID INT,
+    Name    VARCHAR(255)
 );
 
-# insert user data
-INSERT IGNORE INTO Users (Username, Email, Password, PhoneNumber, Gender, Spent, Enabled)
+CREATE TABLE IF NOT EXISTS Foods
+(
+    Food_ID     INT AUTO_INCREMENT PRIMARY KEY,
+    Category    VARCHAR(255) NOT NULL,
+    Title       VARCHAR(30)  NOT NULL,
+    Description TEXT         NOT NULL,
+    Price       INT          NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Comments
+(
+    Comment_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Parent_ID  INT          NOT NULL,
+    Food_ID    INT          NOT NULL,
+    Posted_By  VARCHAR(255) NOT NULL,
+    Comment    TEXT         NOT NULL,
+    Post_Date  DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE Comments
+    ADD CONSTRAINT Food_Fk
+    FOREIGN KEY (Food_ID)
+    REFERENCES Foods (Food_ID);
+
+ALTER TABLE Roles
+    ADD CONSTRAINT User_Fk
+    FOREIGN KEY (User_ID)
+    REFERENCES Users (User_ID);
+
+
+## data ##
+
+INSERT IGNORE INTO Users (Username, Email, Password, Phone_Number, Gender, Spent, Enabled)
 VALUES ('Raofin', 'hello@raofin.net', '$2a$10$l1xCEl5Vns6NbmzeiRPWpuy7nWB9ikSI/A6z8SipFQoOKL8HojO.m', '+8801234567890', 'Male', 6801, TRUE),
        ('Bill Gates', 'billgates@outlook.com', '$2a$10$06Q7zDE.jtKiBsOFOCCileeVHhCaVPi8JMx6zaWWcj3E/JXdi17xy', '+6963343233159', 'Male', 9960, TRUE),
        ('Elon Musk', 'elonmusk@yahoo.com', '$2a$10$nwkSfj5g0.BZ8kJFIx99jOk9uIcMC.i9S2NRCrmyuR94CmlcezLqW', '+9668508170248', 'Male', 7856, FALSE),
@@ -42,8 +68,7 @@ VALUES ('Raofin', 'hello@raofin.net', '$2a$10$l1xCEl5Vns6NbmzeiRPWpuy7nWB9ikSI/A
        ('1111', '1111@1111.com', '$2a$10$w9byGF9YAD0U29wQdNpICehY.nBHBxZ47J4tTO8Mq46h9OFI2iMMO', '+4795131456789', 'Male', 68, TRUE),
        ('admin', 'admin@email.com', '$2a$10$3l0p7n2pIIykRYaPsPbvt.8y60kvyNF9E7Q6e21sMi7tBRPqL8zvS', '+6478912356147', 'Male', 0, TRUE);
 
-# insert user data
-INSERT IGNORE INTO Roles (UserID, Role)
+INSERT IGNORE INTO Roles (User_ID, Name)
 VALUES (1, 'CUSTOMER'),
        (1, 'ADMIN'),
        (2, 'CUSTOMER'),
@@ -60,28 +85,6 @@ VALUES (1, 'CUSTOMER'),
        (10, 'CUSTOMER'),
        (10, 'ADMIN');
 
-# create foods table
-CREATE TABLE IF NOT EXISTS Foods
-(
-    FoodID      INT AUTO_INCREMENT PRIMARY KEY,
-    Category    VARCHAR(30) NOT NULL,
-    Title       VARCHAR(100) NOT NULL UNIQUE,
-    Description TEXT        NOT NULL,
-    Price       INT         NOT NULL
-);
-
-# create users table
-CREATE TABLE IF NOT EXISTS Comments
-(
-    CommentID INT AUTO_INCREMENT PRIMARY KEY,
-    ParentID  INT         NOT NULL,
-    FoodID    INT         NOT NULL,
-    PostedBy  VARCHAR(30) NOT NULL,
-    Comment   TEXT        NOT NULL,
-    PostDate  TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
-# insert food data
 INSERT IGNORE INTO Foods (Category, Title, Description, Price)
 VALUES ('Burger', 'Cheese Burger', 'Prepared with beef patty, cheese, burger sauce, pickles & onion', 650),
        ('Burger', 'Bacon Cheese Burger', 'Prepared with beef patty, 2 slices cheese, bacon & burger sauce', 500),
@@ -124,8 +127,7 @@ VALUES ('Burger', 'Cheese Burger', 'Prepared with beef patty, cheese, burger sau
        ('Sides', 'Chicken Fingers', 'Chicken fried in finger sized', 130),
        ('Sides', 'Naga Drumsticks', 'Soft spicy chicken with crunchy outer', 120);
 
-# insert comment data
-INSERT IGNORE INTO Comments (CommentID, ParentID, FoodID, PostedBy, Comment, PostDate)
+INSERT IGNORE INTO Comments (Comment_ID, Parent_ID, Food_ID, Posted_By, Comment, Post_Date)
 VALUES (1, 0, 1, 'Raofin', 'I have to say, I enjoyed every single bite of the meal.', '2022-07-17 22:27:04'),
        (2, 1, 1, 'Bill Gates',
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum maxime modi necessitatibus rem sed. Ad consequuntur dolorem nobis sequi tempora?',
