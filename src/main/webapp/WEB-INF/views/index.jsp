@@ -18,6 +18,8 @@
     <a class="logo" href=""><img src="<c:url value="/resources/static/img/nav-logo.svg"/>" alt="logo"></a>
     <nav>
         <ul class="nav-links">
+            <li><a href="https://raofin.net">raofin.net</a></li>
+            <li><a href="https://github.com/Raofin/BearBurger">GitHub</a></li>
             <li><a href="./project-details">Project Details</a></li>
         </ul>
     </nav>

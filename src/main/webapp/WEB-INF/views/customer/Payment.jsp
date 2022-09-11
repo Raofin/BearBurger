@@ -9,9 +9,9 @@
         <div>
             <h1 class="payment-form-title">${food.title}</h1>
             <p class="payment-description">${food.description}</p>
-            <p class="payment-price">
+            <h3 class="payment-price">
                 Price: <span id="price" class="white-back-text">${food.price}tk</span>
-            </p>
+            </h3>
         </div>
         <div class="currency-text">
             <h3 class="">Pay with:

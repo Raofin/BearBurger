@@ -336,22 +336,22 @@ footer {
 
 .wrapper {
     display: grid;
-    place-items: center;
     color: white;
+    place-items: center;
 
 }
 
 .typing-demo {
-    width: 44ch;
-    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
-    white-space: nowrap;
-    overflow: hidden;
-    /*border-right: 3px solid;*/
     font-family: monospace;
     font-size: 20px;
-    padding-left: 10px;
+    overflow: hidden;
+    width: 44ch;
+    /*border-right: 3px solid;*/
     margin-bottom: 100px;
+    padding-left: 10px;
     cursor: pointer;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
 }
 
 @keyframes typing {
@@ -569,17 +569,17 @@ input[type='radio'].form-input-error {
 .search-input-box {
     font-family: 'Inter', sans-serif;
     font-size: 17px;
+    align-self: center;
     width: 75%;
     margin: 20px 0;
     padding: 10px;
-    border-radius: 5px;
     text-align: center;
-    align-self: center;
+    border-radius: 5px;
 }
 
 .not-found {
-    color: tomato;
     font-size: 20px;
+    color: tomato;
 }
 
 /*======================= Payment ======================*/
@@ -596,13 +596,12 @@ input[type='radio'].form-input-error {
 
 .payment-description {
     font-size: 20px;
-    text-align: center;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .payment-price {
     font-size: 22px;
-    font-weight: bold;
     padding: 10px 0;
 }
 
@@ -752,7 +751,7 @@ input[type='radio'].form-input-error {
     font-size: 40px;
     font-weight: 900;
     width: 300px;
-    margin: 0 auto ;
+    margin: 0 auto;
     padding: 10px;
     color: white;
     border-radius: 12px;
@@ -924,12 +923,6 @@ input[type='radio'].form-input-error {
     background: rgb(26, 25, 25);
 }
 
-/*
-.manage-users a:first-child {
-    padding-right: 20px;
-}
-*/
-
 .delete-col {
     padding-right: 10px;
 }
@@ -939,8 +932,8 @@ input[type='radio'].form-input-error {
 }
 
 .food-box p, .food-box h2 {
-    color: white;
     text-align: center;
+    color: white;
 }
 
 .food-container-buttons {
@@ -951,14 +944,18 @@ table#foods-table {
     text-align: center;
 }
 
-table.profile-table {
-    color: white;
-    font-size: 20px;
+input#confirm-button {
+    font-weight: bold;
+    color: red;
 }
 
-input#confirm-button {
-    color: red;
-    font-weight: bold;
+table.profile-table {
+    font-size: 20px;
+    color: white;
+}
+
+.profile-table td:first-child {
+    font-family: 'Inter-Bold', sans-serif;
 }
 
 /*======================= Error Page ======================*/
@@ -972,8 +969,8 @@ input#confirm-button {
 .error-page-title {
     font-size: 40px;
     font-weight: bold;
-    padding-bottom: 5px;
     display: block;
+    padding-bottom: 5px;
 }
 
 /*================ Project Details Page ===============*/
@@ -1020,9 +1017,9 @@ input#confirm-button {
 .raofin img {
     height: 100px;
     padding-right: 10px;
+    cursor: progress;
     border-radius: 50%;
     filter: drop-shadow(0px 0 5px #a18c6d);
-    cursor: progress;
 }
 
 .raofin p {
