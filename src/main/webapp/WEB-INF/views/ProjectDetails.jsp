@@ -35,7 +35,7 @@
         </div>
         <div class="project-details">
             BearBurger is a web based food management system, built using Spring MVC, Spring Security, Hibernate
-            with MySQL and Maven to manage the dependencies.
+            with MySQL, Spring Data JPA and Maven to manage the dependencies.
             <h2>Features</h2>
             <hr>
             <h4>Customers can browse foods, view details, and explore many other things. However, in order to make a purchase
