@@ -1,7 +1,7 @@
 package net.raofin.bearburger.dao;
 
 import net.raofin.bearburger.model.User;
-import net.raofin.bearburger.model.UserRoles;
+import net.raofin.bearburger.model.Role;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -36,14 +36,14 @@ public class UserDaoImpl implements UserDao
 
         Session session = this.sessionFactory.getCurrentSession();
         session.save(user);
-        session.save(new UserRoles(user.getUserID()));
+        session.save(new Role(user.getUserID()));
     }
 
     @Override
     public User fetchUserById(int id) {
 
         Session session = this.sessionFactory.getCurrentSession();
-        Query<User> userQuery = session.createQuery("FROM User WHERE UserID = " + id, User.class);
+        Query<User> userQuery = session.createQuery("FROM User WHERE User_ID = " + id, User.class);
 
         return userQuery.getSingleResult();
     }
@@ -78,6 +78,13 @@ public class UserDaoImpl implements UserDao
 
     @Override
     public void updateUser(User user) {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.update(user);
+    }
+
+    @Override
+    public void makePayment(User user) {
+
         Session session = this.sessionFactory.getCurrentSession();
         session.update(user);
     }
@@ -120,17 +127,16 @@ public class UserDaoImpl implements UserDao
     public void makeAdmin(int id) {
 
         Session session = this.sessionFactory.getCurrentSession();
-        UserRoles newRole = new UserRoles(id, "ADMIN");
-        session.save(newRole);
+        session.save(new Role(id, "ADMIN"));
     }
 
     @Override
     public void removeAdmin(int id) {
 
         Session session = this.sessionFactory.getCurrentSession();
-        Query<UserRoles> userRolesQuery = session.createQuery("FROM UserRoles WHERE Role = 'ADMIN' AND UserID = " + id, UserRoles.class);
-        List<UserRoles> userRoles = userRolesQuery.getResultList();
-        for (UserRoles role : userRoles)
+        Query<Role> userRolesQuery = session.createQuery("FROM Role WHERE Name = 'ADMIN' AND User_ID = " + id, Role.class);
+        List<Role> userRoles = userRolesQuery.getResultList();
+        for (Role role : userRoles)
             session.delete(role);
     }
 

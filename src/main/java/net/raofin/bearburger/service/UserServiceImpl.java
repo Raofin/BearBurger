@@ -2,9 +2,11 @@ package net.raofin.bearburger.service;
 
 import net.raofin.bearburger.dao.UserDao;
 import net.raofin.bearburger.model.User;
-import net.raofin.bearburger.model.UserRoles;
+import net.raofin.bearburger.model.Role;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Transactional
@@ -37,8 +40,8 @@ public class UserServiceImpl implements UserService
 
         ArrayList<GrantedAuthority> authorities = new ArrayList<>();
 
-        for (UserRoles userRoles : user.getUserRoles())
-            authorities.add(new SimpleGrantedAuthority("ROLE_" + userRoles.getRole()));
+        for (Role roles : user.getRoles())
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + roles.getName()));
 
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(), user.getPassword(), authorities);
@@ -78,17 +81,43 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
+    public void makePayment(User user) {
+        userDao.makePayment(user);
+    }
+
+    @Override
     public void deleteUser(String username) {
+        userDao.fetchUserByUsername(username);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (Objects.equals(username, auth.getName()))
+            return;
+
         userDao.deleteUser(username);
     }
 
     @Override
     public void deleteUserById(int id) {
+        User user = userDao.fetchUserById(id);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (Objects.equals(user.getUsername(), auth.getName()))
+            return;
+
         userDao.deleteUserById(id);
     }
 
     @Override
     public void disableUser(int id) {
+        User user = userDao.fetchUserById(id);
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (Objects.equals(user.getUsername(), auth.getName()))
+            return;
+
         userDao.disableUser(id);
     }
 

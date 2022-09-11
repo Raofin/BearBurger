@@ -30,7 +30,9 @@ public class CustomerController
     private final FoodService foodService;
     private final CommentService commentService;
 
-    public CustomerController(UserService userService, FoodService foodService, CommentService commentService) {
+    public CustomerController(UserService userService,
+                              FoodService foodService,
+                              CommentService commentService) {
         this.userService = userService;
         this.foodService = foodService;
         this.commentService = commentService;
@@ -62,7 +64,9 @@ public class CustomerController
     }
 
     @RequestMapping("/profile-modify-action")
-    public String profileModifyAction(@Valid @ModelAttribute("user") User updatedUser, BindingResult bindingResult, Principal principal) {
+    public String profileModifyAction(@Valid @ModelAttribute("user") User updatedUser,
+                                      BindingResult bindingResult,
+                                      Principal principal) {
 
         if (bindingResult.hasFieldErrors("email") || bindingResult.hasFieldErrors("password")
                 || bindingResult.hasFieldErrors("phoneNumber")) {
@@ -79,7 +83,9 @@ public class CustomerController
     }
 
     @RequestMapping(value = "/payment", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showPaymentPage(@RequestParam("foodId") int foodId, Model model, HttpSession session) {
+    public String showPaymentPage(@RequestParam("foodId") int foodId,
+                                  Model model,
+                                  HttpSession session) {
 
         model.addAttribute("food", foodService.fetchFoodByID(foodId));
         session.setAttribute("price", foodService.fetchFoodByID(foodId).getPrice());
@@ -94,7 +100,8 @@ public class CustomerController
 
 
     @RequestMapping(value = "/comments/{foodID}", method = {RequestMethod.GET, RequestMethod.POST})
-    public String selectFoodID(@PathVariable("foodID") int foodID, HttpSession session) {
+    public String selectFoodID(@PathVariable("foodID") int foodID,
+                               HttpSession session) {
 
         session.setAttribute("foodID", foodID);
         return "redirect:/comments";
@@ -111,16 +118,15 @@ public class CustomerController
 
     @RequestMapping(value = "/post-comments")
     public String postComments(@RequestParam("commentID") int commentID,
-                               @Valid @ModelAttribute("comment") Comment comment,
-                               BindingResult bindingResult,
+                               @RequestParam("comment") String postedComment,
                                Principal principal,
                                HttpSession session) {
 
-        if (bindingResult.hasFieldErrors("comment"))
-            return "redirect:/comments?error";
+        Comment comment = new Comment();
 
         int foodID = session.getAttribute("foodID") == null ? 1 : (int) session.getAttribute("foodID");
 
+        comment.setComment(postedComment);
         comment.setPostedBy(principal.getName());
         comment.setFoodID(foodID);
         comment.setParentID(commentID);

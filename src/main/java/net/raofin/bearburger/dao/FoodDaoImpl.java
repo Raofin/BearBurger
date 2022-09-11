@@ -41,7 +41,7 @@ public class FoodDaoImpl implements FoodDao
     public Food fetchFoodByID(int id) {
 
         Session session = this.sessionFactory.getCurrentSession();
-        Query<Food> foodQuery = session.createQuery("FROM Food WHERE FoodID = " + id, Food.class);
+        Query<Food> foodQuery = session.createQuery("FROM Food WHERE Food_ID = " + id, Food.class);
 
         return foodQuery.getSingleResult();
     }

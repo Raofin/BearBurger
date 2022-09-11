@@ -46,7 +46,7 @@ public class FoodController
 
         User user = userService.fetchUserByUsername(principal.getName());
         user.setSpent(user.getSpent() + Integer.parseInt(session.getAttribute("price").toString()));
-        userService.updateUser(user);
+        userService.makePayment(user);
         session.removeAttribute("price");
     }
 }

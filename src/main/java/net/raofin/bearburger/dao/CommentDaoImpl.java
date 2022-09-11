@@ -34,7 +34,7 @@ public class CommentDaoImpl implements CommentDao
     public List<Comment> fetchCommentByFoodID(int foodID) {
 
         Session session = this.sessionFactory.getCurrentSession();
-        Query<Comment> commentQuery = session.createQuery("FROM Comment WHERE FoodID = :foodID", Comment.class);
+        Query<Comment> commentQuery = session.createQuery("FROM Comment WHERE Food_ID = :foodID", Comment.class);
         commentQuery.setParameter("foodID", foodID);
 
         return commentQuery.getResultList();
@@ -44,7 +44,7 @@ public class CommentDaoImpl implements CommentDao
     public List<Comment> fetchCommentByParentID(int foodID, int parentID) {
 
         Session session = this.sessionFactory.getCurrentSession();
-        Query<Comment> commentQuery = session.createQuery("FROM Comment WHERE FoodID = :foodID AND ParentID = :parentID", Comment.class);
+        Query<Comment> commentQuery = session.createQuery("FROM Comment WHERE Food_ID = :foodID AND Parent_ID = :parentID", Comment.class);
         commentQuery.setParameter("foodID", foodID);
         commentQuery.setParameter("parentID", parentID);
 

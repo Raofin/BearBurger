@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.Objects;
 
 @Controller
@@ -55,17 +56,27 @@ public class MainController
     }
 
     @RequestMapping("/login")
-    public String showLoginPage() {
+    public String showLoginPage(Principal principal) {
+
+        if (principal != null)
+            return "redirect:/home";
+
         return "Login";
     }
 
     @RequestMapping(value = "/register", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showRegisterPage(@ModelAttribute("user") User user) {
+    public String showRegisterPage(@ModelAttribute("user") User user,
+                                   Principal principal) {
+
+        if (principal != null)
+            return "redirect:/home";
+
         return "Register";
     }
 
     @RequestMapping("/register-action")
-    public String register(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+    public String register(@Valid @ModelAttribute("user") User user,
+                           BindingResult bindingResult) {
 
         if (bindingResult.hasErrors() || !Objects.equals(user.getPassword(), user.getcPassword()))
             return "redirect:/register?error";

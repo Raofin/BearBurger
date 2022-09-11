@@ -18,6 +18,8 @@ public interface UserDao
 
     void updateUser(User user);
 
+    void makePayment(User user);
+
     void deleteUser(String username);
 
     void deleteUserById(int id);

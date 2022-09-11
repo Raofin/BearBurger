@@ -78,7 +78,8 @@ public class UserController
     }
 
     @PostMapping("/add-user-action")
-    String saveUser(@Valid @ModelAttribute(value = "user") User user, BindingResult bindingResult) {
+    String saveUser(@Valid @ModelAttribute(value = "user") User user,
+                    BindingResult bindingResult) {
 
         if (bindingResult.hasErrors())
             return "error";
@@ -92,7 +93,8 @@ public class UserController
     }
 
     @PostMapping("/add-food-action")
-    public String register(@Valid @ModelAttribute(value = "food") Food food, BindingResult bindingResult) {
+    public String register(@Valid @ModelAttribute(value = "food") Food food,
+                           BindingResult bindingResult) {
 
         if (bindingResult.hasErrors())
             return "error";
