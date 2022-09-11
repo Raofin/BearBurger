@@ -63,10 +63,10 @@
             <h4>Tools and technologies used to develop the project-</h4>
             <ul>
                 <li>Java, HTML, CSS, JavaScript & jQuery</li>
-                <li><b>Frameworks:</b> Spring MVC, Spring Security & Hibernate</li>
-                <li><b>Database:</b> MySQL</li>
-                <li><b>Server:</b> Apache Tomcat</li>
-                <li><b>IDE:</b> IntelliJ IDEA</li>
+                <li><b>Frameworks: </b>Spring MVC, Spring Security & Hibernate</li>
+                <li><b>Database: </b>MySQL</li>
+                <li><b>Server: </b>Apache Tomcat</li>
+                <li><b>IDE: </b>IntelliJ IDEA</li>
             </ul>
         </div>
         <div class="raofin">

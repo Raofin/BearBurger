@@ -3,7 +3,7 @@
 <c:import url="/resources/templates/CustomerHeader.jsp"/>
 
 <div class="food-container">
-    <h1><label for="search-input">Search Your Favourite Foods!</label></h1>
+    <h1><label for="search-input">Search Foods</label></h1>
     <input autofocus class="search-input-box" id="search-input" spellcheck="false"
            type="text" placeholder="Type anything to search">
     <table id="foods-table"></table>
