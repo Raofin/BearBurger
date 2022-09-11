@@ -1,7 +1,6 @@
 package net.raofin.bearburger.controller;
 
 import net.raofin.bearburger.model.Food;
-import net.raofin.bearburger.model.User;
 import net.raofin.bearburger.service.FoodService;
 import net.raofin.bearburger.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
-import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -42,11 +40,12 @@ public class FoodController
     }
 
     @GetMapping("/payment-action")
-    void paymentAction(Principal principal, HttpSession session) {
+    void paymentAction(HttpSession session) {
 
-        User user = userService.fetchUserByUsername(principal.getName());
-        user.setSpent(user.getSpent() + Integer.parseInt(session.getAttribute("price").toString()));
-        userService.updateUser(user);
+        int spent = Integer.parseInt(session.getAttribute("price").toString());
+
+        userService.makePayment(spent);
+
         session.removeAttribute("price");
     }
 }

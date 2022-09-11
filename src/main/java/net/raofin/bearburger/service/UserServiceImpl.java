@@ -89,6 +89,17 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
+    @Transactional
+    public void makePayment(int spent) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        User user = userRepository.findByUsername(auth.getName())
+                .orElseThrow(() -> new IllegalStateException("User doesn't exist!"));
+
+        user.setSpent(user.getSpent() + spent);
+    }
+
+    @Override
     public void deleteUser(String username) {
 
         userRepository.findByUsername(username)

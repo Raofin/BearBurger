@@ -19,6 +19,8 @@ public interface UserService extends UserDetailsService
 
     void updateUser(User user);
 
+    void makePayment(int spent);
+
     void deleteUser(String username);
 
     void deleteUserById(int id);
@@ -32,6 +34,4 @@ public interface UserService extends UserDetailsService
     void removeAdmin(int id);
 
     List<User> searchUserByEmail(String email);
-
-
 }
