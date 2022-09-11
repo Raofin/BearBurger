@@ -61,7 +61,8 @@ public class MainController
     }
 
     @RequestMapping(value = "/register", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showRegisterPage(@ModelAttribute("user") User user, Principal principal) {
+    public String showRegisterPage(@ModelAttribute("user") User user,
+                                   Principal principal) {
 
         if (principal != null)
             return "redirect:/home";
@@ -70,7 +71,8 @@ public class MainController
     }
 
     @RequestMapping("/register-action")
-    public String register(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
+    public String register(@Valid @ModelAttribute("user") User user,
+                           BindingResult bindingResult) {
 
         if (bindingResult.hasErrors() || !Objects.equals(user.getPassword(), user.getcPassword()))
             return "redirect:/register?error";

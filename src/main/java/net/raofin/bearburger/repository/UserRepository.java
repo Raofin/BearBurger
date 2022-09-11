@@ -22,10 +22,4 @@ public interface UserRepository extends JpaRepository<User, Integer>
 
     @Query("SELECT u FROM User u WHERE u.email LIKE %?1%")
     List<User> searchByEmail(String email);
-
-    /*@Query("UPDATE User u SET u.isEnabled = false WHERE u.userID = ?1")
-    void disableUser(int id);
-
-    @Query("UPDATE User u SET u.isEnabled = false WHERE u.userID = ?1")
-    void enableUser(int id);*/
 }

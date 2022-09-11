@@ -67,7 +67,6 @@ public class CommentServiceImpl implements CommentService
 
     @Override
     public void addComment(Comment comment) {
-        System.out.println(comment);
         commentDao.save(comment);
     }
 

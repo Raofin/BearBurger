@@ -31,7 +31,10 @@ public class CommentController
     }
 
     @GetMapping("/fetch-comments-parent-id")
-    List<Comment> fetchCommentsByParentID(@RequestParam("foodID") int foodID, @RequestParam("parentID") int parentID) {
+    List<Comment> fetchCommentsByParentID(
+            @RequestParam("foodID") int foodID,
+            @RequestParam("parentID") int parentID) {
+
         return commentService.fetchCommentByParentID(foodID, parentID);
     }
 

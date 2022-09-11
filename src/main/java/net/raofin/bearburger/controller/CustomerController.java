@@ -10,13 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -30,7 +24,9 @@ public class CustomerController
     private final FoodService foodService;
     private final CommentService commentService;
 
-    public CustomerController(UserService userService, FoodService foodService, CommentService commentService) {
+    public CustomerController(UserService userService,
+                              FoodService foodService,
+                              CommentService commentService) {
         this.userService = userService;
         this.foodService = foodService;
         this.commentService = commentService;
@@ -62,7 +58,9 @@ public class CustomerController
     }
 
     @RequestMapping("/profile-modify-action")
-    public String profileModifyAction(@Valid @ModelAttribute("user") User updatedUser, BindingResult bindingResult, Principal principal) {
+    public String profileModifyAction(@Valid @ModelAttribute("user") User updatedUser,
+                                      BindingResult bindingResult,
+                                      Principal principal) {
 
         if (bindingResult.hasFieldErrors("email") || bindingResult.hasFieldErrors("password")
                 || bindingResult.hasFieldErrors("phoneNumber")) {
@@ -79,7 +77,9 @@ public class CustomerController
     }
 
     @RequestMapping(value = "/payment", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showPaymentPage(@RequestParam("foodId") int foodId, Model model, HttpSession session) {
+    public String showPaymentPage(@RequestParam("foodId") int foodId,
+                                  Model model,
+                                  HttpSession session) {
 
         model.addAttribute("food", foodService.findById(foodId));
         session.setAttribute("price", foodService.findById(foodId).getPrice());
@@ -94,7 +94,8 @@ public class CustomerController
 
 
     @RequestMapping(value = "/comments/{foodID}", method = {RequestMethod.GET, RequestMethod.POST})
-    public String selectFoodID(@PathVariable("foodID") int foodID, HttpSession session) {
+    public String selectFoodID(@PathVariable("foodID") int foodID,
+                               HttpSession session) {
 
         session.setAttribute("foodID", foodID);
         return "redirect:/comments";
