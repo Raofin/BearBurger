@@ -34,8 +34,8 @@
             <a href="https://github.com/Raofin/BearBurger">github.com/Raofin/BearBurger</a>
         </div>
         <div class="project-details">
-            BearBurger is a web based food management system, built using Spring MVC, Spring Security, Hibernate
-            with MySQL, Spring Data JPA and Maven to manage the dependencies.
+            BearBurger is a web based food management system, built using Spring MVC, Spring Boot, Spring Security, Hibernate
+            with MySQL, Spring Data JPA, JSP, and Maven to manage the dependencies.
             <h2>Features</h2>
             <hr>
             <h4>Customers can browse foods, view details, and explore many other things. However, in order to make a purchase
@@ -62,11 +62,11 @@
             <hr>
             <h4>Tools and technologies used to develop the project-</h4>
             <ul>
-                <li>Java, HTML, CSS, JavaScript & jQuery</li>
-                <li><b>Frameworks:</b> Spring MVC, Spring Security & Hibernate</li>
-                <li><b>Database:</b> MySQL</li>
-                <li><b>Server:</b> Apache Tomcat</li>
-                <li><b>IDE:</b> IntelliJ IDEA</li>
+                <li>Java, JSP, HTML, CSS, JavaScript & jQuery</li>
+                <li><b>Frameworks: </b>Spring MVC, Spring Boot, Spring Security & Hibernate</li>
+                <li><b>Database: </b>MySQL</li>
+                <li><b>Server: </b>Apache Tomcat</li>
+                <li><b>IDE: </b>IntelliJ IDEA</li>
             </ul>
         </div>
         <div class="raofin">
