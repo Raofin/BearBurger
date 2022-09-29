@@ -28,14 +28,14 @@ Customers can browse foods, view details, and explore many other things. However
 * **IDE:** IntelliJ IDEA
 
 ## How to Run
-1. Execute the [SQL queries](src/main/resources/database/app.sql) in your MySQL server.
-2. Clone the repository and open it with any Java IDE, like **IntelliJ IDEA**.
-3. Maven should automatically download the required dependencies. Wait till the process is completed.
-4. Make sure all the dependencies are properly downloaded **(Important!)**.
-5. Run `src\main\java\net\raofin\bearburger\BearBurgerApplication.java`.
-6. Go to http://localhost:8080.
+1. Clone the repository and open it with any Java IDE, like **IntelliJ IDEA**
+2. Maven should automatically download the required dependencies
+3. Make sure all the dependencies are properly downloaded **(Important!)**
+4. Execute the [SQL queries](src/main/resources/database/app.sql) in your MySQL server
+5. Run `src\main\java\net\raofin\bearburger\BearBurgerApplication.java`
+6. Go to http://localhost:8080
 
-*If you have a different MySQL **username**, **password** or running it on a different **port**, you can modify the project datasource configurations from `src\main\resources\application.properties`.
+*If you have a different MySQL **username**, **password** or running it on a **different port**, you can modify the project datasource configurations from `src\main\resources\application.properties`.
 
 ## Screenshots
 <img src="https://raofin.github.io/r/img/BearBurger/(1).jpg">
